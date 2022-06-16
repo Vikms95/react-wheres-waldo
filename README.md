@@ -18,6 +18,11 @@ The application has a timer to set how long did the user take to find all the ch
 Once the game ends, the user will be asked to insert an alias within a modal to registers its score to a leaderboard, where
 all the scores registered are stored in a Firebase database.
 
+## Functionalities
+
+1. 
+
+
 ## Getting started
 
 ```
@@ -29,9 +34,15 @@ npm start
 
 ## Project Objectives
 
-1. 
-2. 
-3. 
+1. Learn how to integrate an app with a Firebase backend database
+2. Learn how to use semantic HTML, landmark elements, roles and aria-roles
+3. Learn how to integrate responsive design and media-queries
+4. Use a css preprocessor
+5. Use typescript's strict mode upfront
+6. Keep using different git tools to solidify what I've learnt on previous lessons
+7. Establishing a good testing architecture combining unit and UI tests
+8. Learn how to check roles within the Devtools to know which elements to getByRole on my UI tests
+
 
 ## What I've learnt with this project
 
@@ -42,9 +53,13 @@ npm start
 
 ## Technologies used
 
-1. 
-2. 
-3. 
+1. React
+2. react-router
+3. Typescript
+4. Sass
+5. ESLint
+6. Jest/TL
+7. Firebase
 
 ## Challenges I faced 
 
