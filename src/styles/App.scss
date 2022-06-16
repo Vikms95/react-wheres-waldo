@@ -1,5 +1,5 @@
 *{
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 button{
@@ -9,6 +9,10 @@ button{
 a{
   text-decoration: none;
   color: black;
+}
+
+ul{
+  list-style: none;
 }
 
 .navigation-bar{
@@ -23,6 +27,9 @@ a{
 
 .homepage-container,
 .leaderboards-container{
+  display: flex;
+  flex-grow:1;
+  height: 100%;
   padding: 4rem;
 }
 
@@ -50,4 +57,28 @@ a{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(2, minmax(300px, 1fr));
+}
+
+.leaderboards-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leaderboards-table{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 30px ;
+}
+.table-header{
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.table-list{
+  display: grid;
+  grid-template-rows: 1fr;
 }

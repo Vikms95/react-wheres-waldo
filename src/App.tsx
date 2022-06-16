@@ -7,6 +7,10 @@ import Leaderboards from './components/Leaderboards/Leaderboards';
 import GameView from './components/GameView/GameView';
 
 export default function App() {
+  const hello = {
+    bye: 'No',
+    yes: 'No',
+  };
   return (
     <div className="App">
       <HashRouter>
@@ -17,7 +21,6 @@ export default function App() {
           <Route path="/game" element={<GameView />} />
         </Routes>
       </HashRouter>
-
     </div>
   );
 }
