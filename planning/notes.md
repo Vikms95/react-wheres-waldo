@@ -14,6 +14,7 @@
       Grid with name - score
 -Todo
 - Layout a basic UI with only one component
+- Setup router
 - Create components
 - Establish connection with Firebase
 https://pierreroussel.artstation.com/projects/oOVVlJ

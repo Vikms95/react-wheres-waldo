@@ -5,3 +5,19 @@
 .navigation-bar{
   display: flex;
 }
+
+.homepage-container{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.instructions{
+  display:flex;
+  flex-direction: column;
+}
+
+.map-selection-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}

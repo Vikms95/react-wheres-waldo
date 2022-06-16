@@ -1,21 +1,23 @@
-import React from 'react';
 import './styles/App.scss';
+import React from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import Homepage from './components/Homepage/Homepage';
+import Leaderboards from './components/Leaderboards/Leaderboards';
+import GameView from './components/GameView/GameView';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <nav className="navigation-bar">
-        <h1> FindMe </h1>
-        <h2> Leaderboards </h2>
-      </nav>
-      <main className="homepage-container">
-        <section />
-      </main>
-      <footer>
-        All right reserved
-      </footer>
+      <Navbar />
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/leaderboards" element={<Leaderboards />} />
+          <Route path="/game" element={<GameView />} />
+        </Routes>
+      </HashRouter>
+
     </div>
   );
 }
-
-export default App;

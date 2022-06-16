@@ -1,7 +1,16 @@
 import React from 'react';
 
-export default function Navbar() {
+interface Props{
+
+}
+
+function Navbar(props: Props) {
   return (
-    <div>Navbar</div>
+    <header className="navigation-bar">
+      <h1 className="webpage-header"> FindMe </h1>
+      <h2 className="leaderboards-header"> Leaderboards </h2>
+    </header>
   );
 }
+
+export default Navbar;
