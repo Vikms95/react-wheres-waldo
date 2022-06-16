@@ -9,8 +9,8 @@ import GameView from './components/GameView/GameView';
 export default function App() {
   return (
     <div className="App">
-      <Navbar />
       <HashRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/leaderboards" element={<Leaderboards />} />

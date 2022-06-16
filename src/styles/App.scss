@@ -2,22 +2,52 @@
   border: 1px solid red;
 }
 
+button{
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
 .navigation-bar{
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.webpage-header{
+  flex: 0 1 5rem;
+}
+
+.homepage-container,
+.leaderboards-container{
+  padding: 4rem;
 }
 
 .homepage-container{
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display:grid;
+  grid-template-columns: 1fr minmax(200px, 1fr);
 }
 
-.instructions{
+.instructions-container{
   display:flex;
   flex-direction: column;
+}
+
+.instructions-header{
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.instructions-container > *{
+  flex:1 1 auto;
+  padding: 2rem;
 }
 
 .map-selection-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: repeat(2, minmax(300px, 1fr));
 }

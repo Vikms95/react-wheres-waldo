@@ -8,12 +8,30 @@ export default function Homepage(props: Props) {
   return (
     <main className="homepage-container">
       <section className="instructions-container">
-        <h3>Instructions</h3>
+        <h3 className="instructions-header">Instructions</h3>
+        <div className="instructions-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Voluptatum nulla ex molestias error cum ipsa, repellendus
+          vitae placeat dolores aliquam pariatur ducimus eum, recusandae
+          consectetur quae. Fugiat tempore asperiores placeat.
+        </div>
         <article>
           <h4>How to play</h4>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Voluptatum nulla ex molestias error cum ipsa, repellendus
+            vitae placeat dolores aliquam pariatur ducimus eum, recusandae
+            consectetur quae. Fugiat tempore asperiores placeat.
+          </div>
         </article>
         <article>
           <h4>Leaderboard</h4>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Voluptatum nulla ex molestias error cum ipsa, repellendus
+            vitae placeat dolores aliquam pariatur ducimus eum, recusandae
+            consectetur quae. Fugiat tempore asperiores placeat.
+          </div>
         </article>
       </section>
       <section className="map-selection-container">
