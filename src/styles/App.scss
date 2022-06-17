@@ -29,6 +29,7 @@ ul{
 .navigation-bar{
   background-color:$primary-color; 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
@@ -36,8 +37,9 @@ ul{
 .webpage-header{
   color: $font-color;
   flex: 0 1 5rem;
-  display: inline-block;
   position: relative;
+  display: inline-block;
+  padding: 0 3rem;
   transition: text-shadow .5s;
 
   &:hover{
@@ -75,6 +77,7 @@ ul{
   flex-grow: 1;
   min-height: 100%;
   max-height: fit-content;
+  row-gap: 4rem;
   display:flex;
   align-items: center;
   flex-wrap: wrap;
@@ -103,20 +106,22 @@ ul{
   column-gap: 1rem;
   align-items: flex-start;
   justify-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 2fr));
 }
 
 .map-selection-container > a > img{
   height: auto;
-  width: 14rem;
+  width: 10rem;
   border-radius: 15px;
-  transition: transform .5s, box-shadow .5s;
+  box-shadow: 0px 5px 20px 1px;
+  transition: transform .3s, box-shadow 1s;
 
   &:hover{
     cursor: pointer;
     transform: translateX(-3px) translateY(-3px);
-    box-shadow: .2em .2em 0 0 rgb(255, 255, 255, .19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow:0 2px 10px 0 white; 
   }
+  
 }
 
 .leaderboards-container{
