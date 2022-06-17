@@ -15,8 +15,9 @@
 -Todo
 <!-- - Layout a basic UI with only one component -->
 <!-- - Setup router -->
-- Create components
-- Establish connection with Firebase
+<!-- - Create components -->
+<!-- - Establish connection with Firebase -->
+- Pass in image as a prop to Link
 - 
 
 Ideas

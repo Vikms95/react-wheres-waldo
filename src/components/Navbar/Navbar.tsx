@@ -13,7 +13,7 @@ function Navbar(props: Props) {
         <h1> FindMe </h1>
       </Link>
       <Link to="/leaderboards" className="webpage-header">
-        <h2>Leaderboards</h2>
+        <h1>Leaderboards</h1>
       </Link>
 
     </header>

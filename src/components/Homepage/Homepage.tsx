@@ -6,10 +6,12 @@ import ps2 from '../../assets/ps2.jpg';
 import gc from '../../assets/gamecube.jpg';
 
 interface Props{
-
+  handleConsoleImage: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }
 
 export default function Homepage(props: Props) {
+  const { handleConsoleImage } = props;
+
   return (
     <main className="homepage-container">
       <section className="instructions-container">
@@ -41,10 +43,34 @@ export default function Homepage(props: Props) {
       </section>
 
       <section className="map-selection-container">
-        <img src={snes} alt="super-nintendo-map" />
-        <img src={gc} alt="gamecube-map" />
-        <img src={ps1} alt="playstation1-map" />
-        <img src={ps2} alt="playstation2-map" />
+        <Link
+          to="/game"
+          data-type="super-nintendo"
+          onClick={(e) => handleConsoleImage(e)}
+        >
+          <img src={snes} alt="super-nintendo" />
+        </Link>
+        <Link
+          to="/game"
+          data-type="gamecube"
+          onClick={(e) => handleConsoleImage(e)}
+        >
+          <img src={gc} alt="gamecube" />
+        </Link>
+        <Link
+          to="/game"
+          data-type="playstation-1"
+          onClick={(e) => handleConsoleImage(e)}
+        >
+          <img src={ps1} alt="playstation-1" />
+        </Link>
+        <Link
+          to="/game"
+          data-type="playstation-2"
+          onClick={(e) => handleConsoleImage(e)}
+        >
+          <img src={ps2} alt="playstation-2" />
+        </Link>
       </section>
 
     </main>

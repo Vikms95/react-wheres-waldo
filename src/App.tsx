@@ -1,5 +1,5 @@
 import './styles/App.scss';
-import React, {} from 'react';
+import React, { useState } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
 import { initializeApp } from 'firebase/app';
@@ -21,14 +21,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export default function App() {
+  const [consoleName, setConsoleName] = useState<string | null>('');
+
+  const handleConsoleImage = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    const imageElement = event.target as HTMLInputElement;
+    const gameImage:string | null = imageElement.getAttribute('alt');
+    setConsoleName(gameImage);
+  };
+
   return (
     <div className="App">
       <HashRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Homepage handleConsoleImage={handleConsoleImage} />} />
           <Route path="/leaderboards" element={<Leaderboards />} />
-          <Route path="/game" element={<GameView />} />
+          <Route path="/game" element={<GameView consoleName={consoleName} />} />
         </Routes>
       </HashRouter>
     </div>
