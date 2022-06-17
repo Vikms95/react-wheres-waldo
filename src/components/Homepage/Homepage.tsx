@@ -1,4 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import snes from '../../assets/snes.jpg';
+import ps1 from '../../assets/ps1.jpg';
+import ps2 from '../../assets/ps2.jpg';
+import gc from '../../assets/gamecube.jpg';
 
 interface Props{
 
@@ -34,12 +39,14 @@ export default function Homepage(props: Props) {
           </div>
         </article>
       </section>
+
       <section className="map-selection-container">
-        <img src="" alt="super-nintendo-map" />
-        <img src="" alt="gamecube-map" />
-        <img src="" alt="playstation1-map" />
-        <img src="" alt="playstation2-map" />
+        <img src={snes} alt="super-nintendo-map" />
+        <img src={gc} alt="gamecube-map" />
+        <img src={ps1} alt="playstation1-map" />
+        <img src={ps2} alt="playstation2-map" />
       </section>
+
     </main>
   );
 }

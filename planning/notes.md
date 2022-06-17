@@ -13,8 +13,12 @@
       Title
       Grid with name - score
 -Todo
-- Layout a basic UI with only one component
-- Setup router
+<!-- - Layout a basic UI with only one component -->
+<!-- - Setup router -->
 - Create components
 - Establish connection with Firebase
+- 
+
+Ideas
+- Where I got the images from:
 https://pierreroussel.artstation.com/projects/oOVVlJ

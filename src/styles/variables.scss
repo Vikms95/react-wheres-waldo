@@ -2,3 +2,7 @@ $primary-color:#1f2937;
 $secondary-color:#314158;
 $font-color:#F3F7F0;
 $font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+@mixin page-positioning {
+  padding: 3rem;
+}

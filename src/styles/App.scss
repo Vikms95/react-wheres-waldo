@@ -9,9 +9,9 @@ body,
   height: 100%;
 }
 
-*{
-  border: 1px solid red;
-}
+// *{
+//   border: 1px solid red;
+// }
 
 button{
   cursor: pointer;
@@ -40,18 +40,23 @@ ul{
 
 .homepage-container,
 .leaderboards-container{
-  // display: flex;
-  // flex:1 1 auto;
+  @include page-positioning;
+
+  background-color: $secondary-color;
+  color: $font-color;
 }
 
 .homepage-container{
-  display:grid;
-  grid-template-columns: 1fr minmax(200px, 1fr);
+  flex-grow: 1;
+  height: 100%;
+  display:flex;
+  flex-wrap: wrap;
 }
 
 .instructions-container{
   display:flex;
   flex-direction: column;
+  max-width: 35rem;
 }
 
 .instructions-header{
@@ -60,14 +65,24 @@ ul{
 }
 
 .instructions-container > *{
-  flex:1 1 auto;
-  padding: 2rem;
+  font-size: 1.2rem;
+  padding: .5rem 2rem;
 }
 
 .map-selection-container{
+  flex: 1 1 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(2, minmax(300px, 1fr));
+  row-gap: 1.5rem;
+  column-gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+}
+
+.map-selection-container > img{
+  height: auto;
+  width: 14rem;
+  border-radius: 15px;
 }
 
 .leaderboards-container{
