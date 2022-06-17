@@ -1,5 +1,16 @@
+@import './variables.scss';
+
+html,
+body,
+#root,
+.App{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 *{
-  // border: 1px solid red;
+  border: 1px solid red;
 }
 
 button{
@@ -16,21 +27,21 @@ ul{
 }
 
 .navigation-bar{
+  background-color:$primary-color; 
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
 .webpage-header{
+  color: $font-color;
   flex: 0 1 5rem;
 }
 
 .homepage-container,
 .leaderboards-container{
-  display: flex;
-  flex-grow:1;
-  height: 100%;
-  padding: 4rem;
+  // display: flex;
+  // flex:1 1 auto;
 }
 
 .homepage-container{
@@ -67,14 +78,16 @@ ul{
 
 .leaderboards-table{
   display: grid;
-  justify-content: center;
-  align-items: center;
+  justify-content:space-between;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 30px ;
+  gap: 3rem;
+  height: 100%;
+  padding: 4rem 0;
 }
+
 .table-header{
   display: flex;
-  padding: 2rem;
   flex-direction: column;
 }
 
