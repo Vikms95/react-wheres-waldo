@@ -17,8 +17,11 @@
 <!-- - Setup router -->
 <!-- - Create components -->
 <!-- - Establish connection with Firebase -->
-- Pass in image as a prop to Link
-- 
+<!-- - Pass in image as a prop to Gameview -->
+- Set timer when Gameview loads
+  :do I have to set the state on App? it will be set to the database, so no need to pass it to Leaderboards
+- Setup character showcase and timer elements
+- Setup character positions in the database
 
 Ideas
 - Where I got the images from:

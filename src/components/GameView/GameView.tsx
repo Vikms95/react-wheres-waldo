@@ -1,5 +1,4 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import React, { useState, useEffect } from 'react';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
@@ -11,7 +10,14 @@ interface Props{
 
 export default function GameView(props: Props) {
   const { consoleName } = props;
-  const renderImage = (par: string | null) => {
+
+  const [timeElapsed, setTimeElapsed] = useState(0);
+
+  /**
+   * Renders one of the imported images based on
+   * consoleName prop
+   */
+  const renderImage = (name: string | null) => {
     const IMAGES = {
       'super-nintendo': snes,
       gamecube: gc,
@@ -19,12 +25,24 @@ export default function GameView(props: Props) {
       'playstation-2': ps2,
     };
 
-    return IMAGES[par as keyof typeof IMAGES];
+    return IMAGES[name as keyof typeof IMAGES];
   };
+
+  const incrementTimer = () => {
+    setTimeElapsed((prevTimeElapsed) => prevTimeElapsed + 1);
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(incrementTimer, 1000);
+    return () => clearInterval(intervalId);
+  }, [timeElapsed]);
 
   return (
     <main className="gameview-container">
-      <img src={renderImage(consoleName)} alt="hi" />
+      <section className="timer-container">
+        {timeElapsed}
+      </section>
+      <img src={renderImage(consoleName)} alt={consoleName as string} />
     </main>
   );
 }

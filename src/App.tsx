@@ -23,7 +23,13 @@ const app = initializeApp(firebaseConfig);
 export default function App() {
   const [consoleName, setConsoleName] = useState<string | null>('');
 
-  const handleConsoleImage = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  /**
+   * Sets the image to use when Gameview is loaded
+   * based on the console clicked
+   */
+  const handleConsoleImage = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) => {
     const imageElement = event.target as HTMLInputElement;
     const gameImage:string | null = imageElement.getAttribute('alt');
     setConsoleName(gameImage);
@@ -34,9 +40,26 @@ export default function App() {
       <HashRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage handleConsoleImage={handleConsoleImage} />} />
-          <Route path="/leaderboards" element={<Leaderboards />} />
-          <Route path="/game" element={<GameView consoleName={consoleName} />} />
+          <Route
+            path="/"
+            element={(
+              <Homepage
+                handleConsoleImage={handleConsoleImage}
+              />
+)}
+          />
+          <Route
+            path="/leaderboards"
+            element={<Leaderboards />}
+          />
+          <Route
+            path="/game"
+            element={(
+              <GameView
+                consoleName={consoleName}
+              />
+)}
+          />
         </Routes>
       </HashRouter>
     </div>

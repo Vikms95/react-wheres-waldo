@@ -150,6 +150,10 @@ ul{
   grid-template-rows: 1fr;
 }
 
+.gameview-container{
+  position: relative;
+}
+
 .gameview-container > img{
   display: flex;
   width: 100%;
@@ -158,3 +162,16 @@ ul{
   background-size: cover;
   background-position: center center;
 }
+
+.timer-container{
+  background-color: rgba($color: $primary-color, $alpha: 1);
+  color:$font-color;
+  border-radius: 40px;
+  padding:2rem 4rem;
+  font-size: 2rem;
+  opacity: .7;
+  position: fixed;
+  right: 5%;
+  top: 15%;
+}
+
