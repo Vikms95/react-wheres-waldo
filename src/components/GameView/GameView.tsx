@@ -3,6 +3,7 @@ import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
 import gc from '../../assets/gamecube.jpg';
+import formatTimer from '../../utils/formatTimer';
 
 interface Props{
   consoleName :string | null
@@ -40,7 +41,7 @@ export default function GameView(props: Props) {
   return (
     <main className="gameview-container">
       <section className="timer-container">
-        {timeElapsed}
+        {formatTimer(timeElapsed.toString())}
       </section>
       <img src={renderImage(consoleName)} alt={consoleName as string} />
     </main>
