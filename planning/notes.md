@@ -22,6 +22,9 @@
   :do I have to set the state on App? it will be set to the database, so no need to pass it to Leaderboards -->
 <!-- - Setup character showcase and timer elements -->
 - Setup drowpdown when user clicks the screen
+  :got the position on px but seems like I need to substract another unit(offset position?)
+  :https://stackoverflow.com/questions/50180442/getting-top-and-right-position-based-on-click
+  https://stackoverflow.com/questions/3234256/find-mouse-position-relative-to-element
 - Setup character positions in the database
 
 Ideas

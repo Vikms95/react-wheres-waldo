@@ -16,7 +16,7 @@ export default function GameView(props: Props) {
   const { consoleName } = props;
 
   const [timeElapsed, setTimeElapsed] = useState(0);
-  const [dropdownOffset, setDropdownOffset] = useState<number[]>([0, 0]);
+  const [dropdownCoords, setDropdownCoords] = useState<DOMRect[]>([]);
   const dropdownRef = useRef<HTMLInputElement>(null);
 
   /**
@@ -45,13 +45,18 @@ export default function GameView(props: Props) {
     event: React.MouseEvent<HTMLImageElement>
     | React.KeyboardEvent<HTMLImageElement>,
   ) => {
-    const click = event as any;
-    setDropdownOffset([dropdownOffset[0] - click.clientX, dropdownOffset[1] - click.clientY]);
+    const click = event.target as HTMLInputElement;
+    // TODO check if I can get the pos with this method, check notes.md links
+    setDropdownCoords([click.getBoundingClientRect(), click.getBoundingClientRect()]);
 
-    // move dropdown to the coordinates where the user clicked
-    //
-    //
-    //
+    if (dropdownRef.current !== null) {
+      dropdownRef.current.style.top = `${dropdownCoords[0] + document.body.scrollTop}px`;
+      dropdownRef.current.style.left = `${dropdownCoords[1] + document.body.scrollLeft}px`;
+    }
+
+    console.log(dropdownRef.current?.style.top);
+    console.log(dropdownRef.current?.style.left);
+    console.log('new coords');
   };
 
   useEffect(() => {
