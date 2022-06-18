@@ -188,8 +188,12 @@ ul{
 .characters-container > img {
   height: auto;
   width: 5rem;
+
+  &.selected{
+    opacity: .5;
+  }
 }
 
-.characters-container > img.selected{
-  opacity:.5;
+.dropdown-container{
+  position: absolute;
 }
