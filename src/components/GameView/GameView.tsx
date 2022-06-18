@@ -3,6 +3,7 @@ import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
 import gc from '../../assets/gamecube.jpg';
+import mario from '../../assets/mario-snes.png';
 import formatTimer from '../../utils/formatTimer';
 
 interface Props{
@@ -29,6 +30,9 @@ export default function GameView(props: Props) {
     return IMAGES[name as keyof typeof IMAGES];
   };
 
+  /**
+   * Increments timer state by 1
+   */
   const incrementTimer = () => {
     setTimeElapsed((prevTimeElapsed) => prevTimeElapsed + 1);
   };
@@ -40,6 +44,11 @@ export default function GameView(props: Props) {
 
   return (
     <main className="gameview-container">
+      <section className="characters-container">
+        <img src={mario} alt="terra" className="character-image" />
+        <img src={mario} alt="terra" className="character-image" />
+        <img src={mario} alt="terra" className="character-image" />
+      </section>
       <section className="timer-container">
         {formatTimer(timeElapsed.toString())}
       </section>

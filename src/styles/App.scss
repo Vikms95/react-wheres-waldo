@@ -164,14 +164,32 @@ ul{
 }
 
 .timer-container{
-  background-color: rgba($color: $primary-color, $alpha: 1);
+  background-color: rgba($color: $primary-color, $alpha: .5);
   color:$font-color;
   border-radius: 40px;
-  padding:2rem 4rem;
+  padding:1rem 2rem;
   font-size: 2rem;
-  opacity: .7;
   position: fixed;
   right: 5%;
   top: 15%;
 }
 
+.characters-container{
+  background-color: rgba($color: $primary-color, $alpha: .5);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 40px;
+  padding:1rem 2rem;
+  position: fixed;
+  left: 5%;
+  top: 15%;
+}
+
+.characters-container > img {
+  height: auto;
+  width: 5rem;
+}
+
+.characters-container > img.selected{
+  opacity:.5;
+}
