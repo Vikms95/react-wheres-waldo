@@ -87,17 +87,25 @@ ul{
 .instructions-container{
   display:flex;
   flex-direction: column;
-  max-width: 35rem;
+  width: clamp(45ch, 50%, 75ch);
+}
+
+.instructions-article{
+  display: flex;
+  flex-direction: column;
 }
 
 .instructions-header{
   font-size: 1.5em;
   font-style: italic;
+  align-self: center;
 }
 
-.instructions-container > *{
+
+.instructions-text{
   font-size: 1.2em;
   padding: .5rem 2rem;
+  line-height: 1.4em;
 }
 
 .map-selection-container{
