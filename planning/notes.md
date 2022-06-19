@@ -26,6 +26,10 @@
 <!-- - Get 3 images per console(12) -->
 <!-- - Assign 3 characters per console(use an object? snes:{mario: 'image.png'...} and conditionally import each one) -->
 - Setup event listener to check with coordinates were clicked
+  :invisible divs to know if the location is the right one? (could be easy to cheat)
+  :store coordinates range on each character object?
+  :setup state where the coordinates will be stored on each image click
+  :if any character from the dropdown is
 
 - Setup character positions in the database
   :object with character name as key and coordinates as value?

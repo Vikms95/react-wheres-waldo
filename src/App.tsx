@@ -1,9 +1,13 @@
+/* eslint-disable no-restricted-globals */
 import './styles/App.scss';
-import React, { useState } from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {
+  HashRouter, Routes, Route, Navigate,
+} from 'react-router-dom';
 
 import { initializeApp } from 'firebase/app';
 
+import { getActiveElement } from '@testing-library/user-event/dist/utils';
 import Navbar from './components/Navbar/Navbar';
 import Homepage from './components/Homepage/Homepage';
 import Leaderboards from './components/Leaderboards/Leaderboards';
@@ -21,7 +25,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export default function App() {
-  const [consoleName, setConsoleName] = useState<string | null>('');
+  const [consoleName, setConsoleName] = useState<string | null>(
+    localStorage.getItem('consoleName') || '',
+  );
 
   /**
    * Sets the image to use when Gameview is loaded
@@ -33,7 +39,14 @@ export default function App() {
     const imageElement = event.target as HTMLInputElement;
     const gameImage:string | null = imageElement.getAttribute('alt');
     setConsoleName(gameImage);
+    localStorage.setItem('consoleName', gameImage as string);
   };
+
+  useEffect(() => {
+    window.addEventListener('load', () => {
+      location.href = '/';
+    });
+  }, []);
 
   return (
     <div className="App">

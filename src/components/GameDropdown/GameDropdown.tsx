@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 import capitalizeString from '../../utils/capitalizeString';
+import isClickOutside from '../../utils/isClickOutside';
 
 interface Props{
   dropdownRef: React.RefObject<HTMLInputElement>;
@@ -10,8 +11,26 @@ interface Props{
 export default function GameDropdown(props: Props) {
   const { dropdownRef, consoleName } = props;
 
+  const handleClickOutsideDropdown = (event: MouseEvent) => {
+    // eslint-disable-next-line no-debugger
+    console.log(isClickOutside(event, dropdownRef));
+    if (dropdownRef.current && isClickOutside(event, dropdownRef)) {
+      dropdownRef.current.style.display = 'none';
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutsideDropdown);
+    return () => {
+      document.addEventListener('mousedown', handleClickOutsideDropdown);
+    };
+  }, []);
+
   return (
-    <div className="dropdown-container" ref={dropdownRef}>
+    <div
+      className="dropdown-container"
+      ref={dropdownRef}
+    >
       <ul className="character-list">
         {getConsoleCharacterData(consoleName).map(({ name }) => (
           <li
