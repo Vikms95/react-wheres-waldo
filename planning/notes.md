@@ -23,8 +23,8 @@
 <!-- - Setup character showcase and timer elements -->
 <!-- - Setup drowpdown when user clicks the screen
   :got the position on px but seems like I need to substract another unit(offset position?) -->
-- Get 3 images per console(12)
-- Assign 3 characters per console(use an object? snes:{mario: 'image.png'...} and conditionally import each one)
+<!-- - Get 3 images per console(12) -->
+<!-- - Assign 3 characters per console(use an object? snes:{mario: 'image.png'...} and conditionally import each one) -->
 - Setup event listener to check with coordinates were clicked
 
 - Setup character positions in the database
@@ -40,3 +40,4 @@ https://pierreroussel.artstation.com/projects/oOVVlJ
 
 Bugs
 -Reloading GameView causes it to crash, probably bc I don't have any console name as state?
+-Clicking on the left or bottom edge of the image causes the window to expand and show blank

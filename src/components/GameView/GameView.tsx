@@ -6,10 +6,10 @@ import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
 import gc from '../../assets/gamecube.jpg';
-import mario from '../../assets/mario-snes.png';
 import formatTimer from '../../utils/formatTimer';
+import capitalizeString from '../../utils/capitalizeString';
 import GameDropdown from '../GameDropdown/GameDropdown';
-import getConsoleCharacterImages from '../../utils/getConsoleCharactersData';
+import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 
 interface Props{
   consoleName :string | null
@@ -57,7 +57,7 @@ export default function GameView(props: Props) {
    */
   const moveDropdownOnClick = (coordsY: number, coordsX: number) => {
     if (dropdownRef.current !== null) {
-      dropdownRef.current.style.display = 'block';
+      dropdownRef.current.style.display = 'flex';
       dropdownRef.current.style.top = `${coordsY}px`;
       dropdownRef.current.style.left = `${coordsX}px`;
     }
@@ -87,12 +87,15 @@ export default function GameView(props: Props) {
     <main className="gameview-container">
       <GameDropdown dropdownRef={dropdownRef} consoleName={consoleName} />
       <section className="characters-container">
-        {getConsoleCharacterImages(consoleName).map((characterImage) => (
-          <img
-            src={characterImage}
-            alt={`${consoleName as string}-character`}
-            className="character-image"
-          />
+        {getConsoleCharacterData(consoleName).map(({ image, name }) => (
+          <div className="character-data-container">
+            <span className="character-name">{capitalizeString(name)}</span>
+            <img
+              src={image}
+              alt={name}
+              className="character-image"
+            />
+          </div>
         ))}
       </section>
       <section className="timer-container">

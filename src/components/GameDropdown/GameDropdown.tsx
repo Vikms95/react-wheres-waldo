@@ -1,5 +1,6 @@
 import React from 'react';
-import getConsoleCharacterImages from '../../utils/getConsoleCharactersData';
+import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
+import capitalizeString from '../../utils/capitalizeString';
 
 interface Props{
   dropdownRef: React.RefObject<HTMLInputElement>;
@@ -11,14 +12,10 @@ export default function GameDropdown(props: Props) {
 
   return (
     <div className="dropdown-container" ref={dropdownRef}>
-      <ul>
-        {getConsoleCharacterImages(consoleName).map((characterImage) => (
-          <li>
-            <img
-              src={characterImage}
-              alt="dropdown-character"
-              className="dropdown-character-image"
-            />
+      <ul className="character-list">
+        {getConsoleCharacterData(consoleName).map(({ name }) => (
+          <li className="character-name">
+            <p>{capitalizeString(name)}</p>
           </li>
         ))}
       </ul>

@@ -24,6 +24,7 @@ a{
 
 ul{
   list-style: none;
+  padding-inline-start: 0;
 }
 
 .navigation-bar{
@@ -90,12 +91,12 @@ ul{
 }
 
 .instructions-header{
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-style: italic;
 }
 
 .instructions-container > *{
-  font-size: 1.2rem;
+  font-size: 1.2em;
   padding: .5rem 2rem;
 }
 
@@ -168,7 +169,7 @@ ul{
   color:$font-color;
   border-radius: 40px;
   padding:1rem 2rem;
-  font-size: 2rem;
+  font-size: 2em;
   position: fixed;
   right: 5%;
   top: 15%;
@@ -179,16 +180,34 @@ ul{
   grid-template-columns: repeat(3, 1fr);
   display: grid;
   column-gap: 2rem;
-  align-items: center;
+  align-items: stretch;
   border-radius: 40px;
-  padding:.5rem 3rem;
+  padding: 1rem 3rem;
   position: fixed;
   left: 5%;
   top: 15%;
 }
 
-.characters-container > img {
-  height: auto;
+.character-data-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.character-name{
+  font-family: $font-family;
+  color: $font-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1.3em;
+  font-variant: small-caps;
+}
+
+.character-data-container > img {
   width: 5rem;
 
   &.selected{
@@ -205,8 +224,31 @@ ul{
   left: 0px ;
 }
 
+.dropdown-container > ul{
+  justify-content: center;
+  align-items: center;
+  padding:0 2rem;
+}
+
+
+
 .dropdown-character-image{
   height: auto;
   width: 3rem;
 
+}
+
+.character-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.character-list > .character-name{
+  flex-grow: 1;
+  width: 100%;
+  padding: 0 1.5rem;
+  border-radius: 15px;
+  &:hover{
+    background-color: $secondary-color;
+  }
 }

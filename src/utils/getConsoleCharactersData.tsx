@@ -11,14 +11,31 @@ import ratchetPhoto from '../assets/ratchet-ps2.png';
 import princePhoto from '../assets/prince-ps2.png';
 import chibiPhoto from '../assets/chibi-ps2.png';
 
-const getConsoleCharacterImages = (consoleName: string | null) => {
+const getConsoleCharacterData = (consoleName: string | null) => {
   const CHARACTER_IMAGES = {
-    'super-nintendo': [marioPhoto, chronoPhoto, zeroPhoto],
-    gamecube: [samusPhoto, marthPhoto, toadPhoto],
-    'playstation-1': [mantisPhoto, viviPhoto, alucardPhoto],
-    'playstation-2': [ratchetPhoto, princePhoto, chibiPhoto],
+    'super-nintendo':
+    [
+      { name: 'mario', image: marioPhoto },
+      { name: 'chrono', image: chronoPhoto },
+      { name: 'zero', image: zeroPhoto },
+    ],
+    gamecube: [
+      { name: 'samus', image: samusPhoto },
+      { name: 'marth', image: marthPhoto },
+      { name: 'toad', image: toadPhoto },
+    ],
+    'playstation-1': [
+      { name: 'mantis', image: mantisPhoto },
+      { name: 'vivi', image: viviPhoto },
+      { name: 'alucard', image: alucardPhoto },
+    ],
+    'playstation-2': [
+      { name: 'ratchet', image: ratchetPhoto },
+      { name: 'prince', image: princePhoto },
+      { name: 'chibi', image: chibiPhoto },
+    ],
   };
   return CHARACTER_IMAGES[consoleName as keyof typeof CHARACTER_IMAGES];
 };
 
-export default getConsoleCharacterImages;
+export default getConsoleCharacterData;
