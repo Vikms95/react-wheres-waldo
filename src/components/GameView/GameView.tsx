@@ -87,11 +87,10 @@ export default function GameView(props: Props) {
     <main className="gameview-container">
       <GameDropdown dropdownRef={dropdownRef} consoleName={consoleName} />
       <section className="characters-container">
-        {/* Use consoleCharacters.map()? */}
         {getConsoleCharacterImages(consoleName).map((characterImage) => (
           <img
             src={characterImage}
-            alt={consoleName as string}
+            alt={`${consoleName as string}-character`}
             className="character-image"
           />
         ))}
