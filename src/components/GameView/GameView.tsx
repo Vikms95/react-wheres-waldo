@@ -54,9 +54,10 @@ export default function GameView(props: Props) {
     const coordsX = event.pageX - event.currentTarget.offsetLeft;
     const coordsY = event.pageY - event.currentTarget.offsetTop - 80;
 
-    if (dropdownRef.current !== null) {
-      setIsDropdownRendered(true);
+    setIsDropdownRendered(true);
 
+    if (dropdownRef.current !== null) {
+      dropdownRef.current.style.display = 'block';
       dropdownRef.current.style.top = `${coordsY}px`;
       dropdownRef.current.style.left = `${coordsX}px`;
     }
@@ -69,12 +70,7 @@ export default function GameView(props: Props) {
 
   return (
     <main className="gameview-container">
-      { (isDropdownRendered) && (
-      <GameDropdown
-        dropdownRef={dropdownRef}
-        setIsDropdownRendered={setIsDropdownRendered}
-      />
-      )}
+      <GameDropdown dropdownRef={dropdownRef} />
       <section className="characters-container">
         <img src={mario} alt="terra" className="character-image" />
         <img src={mario} alt="terra" className="character-image" />

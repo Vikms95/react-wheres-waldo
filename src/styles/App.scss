@@ -195,9 +195,16 @@ ul{
 }
 
 .dropdown-container{
-  // display: none;
+  background-color: rgba($color: $primary-color, $alpha: .5);
+  display: none;
   border: 1px solid red;
   position: absolute;
   top: 0px ;
   left: 0px ;
+}
+
+.dropdown-container > ul > li > img {
+  height: auto;
+  width: 5rem;
+
 }
