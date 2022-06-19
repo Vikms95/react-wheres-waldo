@@ -35,6 +35,7 @@
   :It can be called within this function,so just parametize the function to store the characters
 
 Ideas
+- Use Link params to pass the console clicked
 - Where I got the images from:
 https://pierreroussel.artstation.com/projects/oOVVlJ
 
