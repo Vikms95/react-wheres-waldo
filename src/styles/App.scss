@@ -164,7 +164,7 @@ ul{
 }
 
 .timer-container{
-  background-color: rgba($color: $primary-color, $alpha: .5);
+  background-color: rgba($color: $primary-color, $alpha: .8);
   color:$font-color;
   border-radius: 40px;
   padding:1rem 2rem;
@@ -175,11 +175,13 @@ ul{
 }
 
 .characters-container{
-  background-color: rgba($color: $primary-color, $alpha: .5);
-  display: grid;
+  background-color: rgba($color: $primary-color, $alpha: .8);
   grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  column-gap: 2rem;
+  align-items: center;
   border-radius: 40px;
-  padding:1rem 2rem;
+  padding:.5rem 3rem;
   position: fixed;
   left: 5%;
   top: 15%;
@@ -195,16 +197,16 @@ ul{
 }
 
 .dropdown-container{
-  background-color: rgba($color: $primary-color, $alpha: .5);
-  display: none;
-  border: 1px solid red;
+  background-color: rgba($color: $primary-color, $alpha: 1);
+  border-radius: 15px;
   position: absolute;
+  display: none;
   top: 0px ;
   left: 0px ;
 }
 
-.dropdown-container > ul > li > img {
+.dropdown-character-image{
   height: auto;
-  width: 5rem;
+  width: 3rem;
 
 }

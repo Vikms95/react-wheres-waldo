@@ -1,26 +1,26 @@
-import React, { useEffect } from 'react';
-import isClickOutside from '../../utils/isClickOutside';
-import mario from '../../assets/mario-snes.png';
+import React from 'react';
+import getConsoleCharacterImages from '../../utils/getConsoleCharactersData';
 
 interface Props{
   dropdownRef: React.RefObject<HTMLInputElement>;
+  consoleName: string | null
 }
 
 export default function GameDropdown(props: Props) {
-  const { dropdownRef } = props;
+  const { dropdownRef, consoleName } = props;
 
   return (
     <div className="dropdown-container" ref={dropdownRef}>
       <ul>
-        <li>
-          <img src={mario} alt="mario" className="character-image" />
-        </li>
-        <li>
-          <img src={mario} alt="mario" className="character-image" />
-        </li>
-        <li>
-          <img src={mario} alt="mario" className="character-image" />
-        </li>
+        {getConsoleCharacterImages(consoleName).map((characterImage) => (
+          <li>
+            <img
+              src={characterImage}
+              alt="dropdown-character"
+              className="dropdown-character-image"
+            />
+          </li>
+        ))}
       </ul>
     </div>
   );

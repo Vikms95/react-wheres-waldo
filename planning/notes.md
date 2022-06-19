@@ -21,12 +21,22 @@
 <!-- - Set timer when Gameview loads
   :do I have to set the state on App? it will be set to the database, so no need to pass it to Leaderboards -->
 <!-- - Setup character showcase and timer elements -->
-- Setup drowpdown when user clicks the screen
-  :got the position on px but seems like I need to substract another unit(offset position?)
-  :https://stackoverflow.com/questions/50180442/getting-top-and-right-position-based-on-click
-  https://stackoverflow.com/questions/3234256/find-mouse-position-relative-to-element
+<!-- - Setup drowpdown when user clicks the screen
+  :got the position on px but seems like I need to substract another unit(offset position?) -->
+- Get 3 images per console(12)
+- Assign 3 characters per console(use an object? snes:{mario: 'image.png'...} and conditionally import each one)
+- Setup event listener to check with coordinates were clicked
+
 - Setup character positions in the database
+  :object with character name as key and coordinates as value?
+  :from this link onwards seems like it might be the info I need
+  https://firebase.google.com/codelabs/firebase-web#7 
+  :Store coordinates clicked to later add them to the object along with the character?
+  :It can be called within this function,so just parametize the function to store the characters
 
 Ideas
 - Where I got the images from:
 https://pierreroussel.artstation.com/projects/oOVVlJ
+
+Bugs
+-Reloading GameView causes it to crash, probably bc I don't have any console name as state?
