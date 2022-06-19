@@ -36,6 +36,7 @@
 
 Ideas
 - Use Link params to pass the console clicked
+https://www.youtube.com/watch?v=QBLbXgeXMU8&list=WL&index=6
 - Where I got the images from:
 https://pierreroussel.artstation.com/projects/oOVVlJ
 
