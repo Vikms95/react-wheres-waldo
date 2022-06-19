@@ -14,8 +14,16 @@ export default function GameDropdown(props: Props) {
     <div className="dropdown-container" ref={dropdownRef}>
       <ul className="character-list">
         {getConsoleCharacterData(consoleName).map(({ name }) => (
-          <li className="character-name">
-            <p>{capitalizeString(name)}</p>
+          <li
+            key={name}
+            className="character-name"
+          >
+            <button
+              type="button"
+              className="character-name"
+            >
+              {capitalizeString(name)}
+            </button>
           </li>
         ))}
       </ul>

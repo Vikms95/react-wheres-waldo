@@ -158,8 +158,7 @@ ul{
 .gameview-container > img{
   display: flex;
   width: 100%;
-  background-color: red;
-  overflow: visible;
+  overflow: hidden;
   background-size: cover;
   background-position: center center;
 }
@@ -227,15 +226,11 @@ ul{
 .dropdown-container > ul{
   justify-content: center;
   align-items: center;
-  padding:0 2rem;
 }
-
-
 
 .dropdown-character-image{
   height: auto;
   width: 3rem;
-
 }
 
 .character-list{
@@ -246,9 +241,14 @@ ul{
 .character-list > .character-name{
   flex-grow: 1;
   width: 100%;
-  padding: 0 1.5rem;
   border-radius: 15px;
+
   &:hover{
     background-color: $secondary-color;
+  }
+  &>button{
+    padding: .2rem 2rem;
+    border: none;
+    background-color: transparent;
   }
 }

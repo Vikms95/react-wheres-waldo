@@ -44,15 +44,6 @@ export default function GameView(props: Props) {
   };
 
   /**
-   * Takes a click event and calculates a computed value with the current click offset
-   */
-  const getClickCoordinates = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
-    const coordsX = event.pageX - event.currentTarget.offsetLeft;
-    const coordsY = event.pageY - event.currentTarget.offsetTop - 80;
-    return { coordsY, coordsX };
-  };
-
-  /**
    * Moves dropdown to click coordinates
    */
   const moveDropdownOnClick = (coordsY: number, coordsX: number) => {
@@ -71,8 +62,7 @@ export default function GameView(props: Props) {
   const renderGameDropdown = (
     event: React.MouseEvent<HTMLImageElement, MouseEvent>,
   ) => {
-    const { coordsY, coordsX } = getClickCoordinates(event);
-    moveDropdownOnClick(coordsY, coordsX);
+    moveDropdownOnClick((event.pageY - 80), event.pageX);
     // Store coordinates clicked to later add them to the object along with the character?
     // It can be called within this function,so just parametize the function to store the characters
     // checkIfCharacter
@@ -88,7 +78,10 @@ export default function GameView(props: Props) {
       <GameDropdown dropdownRef={dropdownRef} consoleName={consoleName} />
       <section className="characters-container">
         {getConsoleCharacterData(consoleName).map(({ image, name }) => (
-          <div className="character-data-container">
+          <div
+            key={name}
+            className="character-data-container"
+          >
             <span className="character-name">{capitalizeString(name)}</span>
             <img
               src={image}
