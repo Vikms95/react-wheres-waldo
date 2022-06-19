@@ -259,4 +259,26 @@ ul{
     border: none;
     background-color: transparent;
   }
+
+}
+
+.close-dropdown-button{
+  flex-grow: 1;
+  width: 100%;
+  border-radius: 15px;
+  border: none;
+  background-color: transparent;
+  font-family: $font-family;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: .6rem;
+  font-weight: 500;
+  font-size: 1.3em;
+  font-variant: small-caps;
+  padding: .6rem 2rem;
+  &:hover{
+    background-color: rgb(235, 79, 79);
+  }
 }

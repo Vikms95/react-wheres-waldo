@@ -1,13 +1,12 @@
 /* eslint-disable no-restricted-globals */
 import './styles/App.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  HashRouter, Routes, Route, Navigate,
+  HashRouter, Routes, Route,
 } from 'react-router-dom';
 
 import { initializeApp } from 'firebase/app';
 
-import { getActiveElement } from '@testing-library/user-event/dist/utils';
 import Navbar from './components/Navbar/Navbar';
 import Homepage from './components/Homepage/Homepage';
 import Leaderboards from './components/Leaderboards/Leaderboards';
@@ -38,15 +37,9 @@ export default function App() {
   ) => {
     const imageElement = event.target as HTMLInputElement;
     const gameImage:string | null = imageElement.getAttribute('alt');
-    setConsoleName(gameImage);
     localStorage.setItem('consoleName', gameImage as string);
+    setConsoleName(gameImage);
   };
-
-  useEffect(() => {
-    window.addEventListener('load', () => {
-      location.href = '/';
-    });
-  }, []);
 
   return (
     <div className="App">
