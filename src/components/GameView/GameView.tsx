@@ -1,5 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, {
-  useState, useEffect, useRef, MouseEventHandler, RefObject, KeyboardEventHandler,
+  useState, useEffect, useRef,
 } from 'react';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
@@ -7,6 +8,7 @@ import ps2 from '../../assets/ps2.jpg';
 import gc from '../../assets/gamecube.jpg';
 import mario from '../../assets/mario-snes.png';
 import formatTimer from '../../utils/formatTimer';
+import GameDropdown from '../GameDropdown/GameDropdown';
 
 interface Props{
   consoleName :string | null
@@ -16,7 +18,7 @@ export default function GameView(props: Props) {
   const { consoleName } = props;
 
   const [timeElapsed, setTimeElapsed] = useState(0);
-  const [dropdownCoords, setDropdownCoords] = useState<DOMRect[]>([]);
+  const [isDropdownRendered, setIsDropdownRendered] = useState(false);
   const dropdownRef = useRef<HTMLInputElement>(null);
 
   /**
@@ -41,22 +43,23 @@ export default function GameView(props: Props) {
     setTimeElapsed((prevTimeElapsed) => prevTimeElapsed + 1);
   };
 
+  /**
+   * Takes event as parameter and changes element's top and left
+   * values based on the registered click coordinates
+   *
+   */
   const renderGameDropdown = (
-    event: React.MouseEvent<HTMLImageElement>
-    | React.KeyboardEvent<HTMLImageElement>,
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
   ) => {
-    const click = event.target as HTMLInputElement;
-    // TODO check if I can get the pos with this method, check notes.md links
-    setDropdownCoords([click.getBoundingClientRect(), click.getBoundingClientRect()]);
+    const coordsX = event.pageX - event.currentTarget.offsetLeft;
+    const coordsY = event.pageY - event.currentTarget.offsetTop - 80;
 
     if (dropdownRef.current !== null) {
-      dropdownRef.current.style.top = `${dropdownCoords[0] + document.body.scrollTop}px`;
-      dropdownRef.current.style.left = `${dropdownCoords[1] + document.body.scrollLeft}px`;
-    }
+      setIsDropdownRendered(true);
 
-    console.log(dropdownRef.current?.style.top);
-    console.log(dropdownRef.current?.style.left);
-    console.log('new coords');
+      dropdownRef.current.style.top = `${coordsY}px`;
+      dropdownRef.current.style.left = `${coordsX}px`;
+    }
   };
 
   useEffect(() => {
@@ -66,13 +69,12 @@ export default function GameView(props: Props) {
 
   return (
     <main className="gameview-container">
-      <div className="dropdown-container" ref={dropdownRef}>
-        <ul>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-        </ul>
-      </div>
+      { (isDropdownRendered) && (
+      <GameDropdown
+        dropdownRef={dropdownRef}
+        setIsDropdownRendered={setIsDropdownRendered}
+      />
+      )}
       <section className="characters-container">
         <img src={mario} alt="terra" className="character-image" />
         <img src={mario} alt="terra" className="character-image" />
@@ -85,7 +87,6 @@ export default function GameView(props: Props) {
         src={renderGameImage(consoleName)}
         alt={consoleName as string}
         onClick={(e) => renderGameDropdown(e as React.MouseEvent<HTMLImageElement>)}
-        onKeyDown={(e) => renderGameDropdown(e as React.KeyboardEvent<HTMLImageElement>)}
       />
     </main>
   );

@@ -195,8 +195,9 @@ ul{
 }
 
 .dropdown-container{
+  // display: none;
+  border: 1px solid red;
   position: absolute;
   top: 0px ;
   left: 0px ;
-  border: 1px solid red;
 }
