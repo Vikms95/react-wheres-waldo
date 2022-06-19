@@ -29,11 +29,14 @@
 :add a button within the dropdown to close it?? since maybe the user does not want to close the modal -->
 
 - Setup event listener to check with coordinates were clicked
-  :invisible divs to know if the location is the right one? (could be easy to cheat)
+ characterName1: {coordsRangeX: value, coordsRangeY:value}
+  characterName2: {coordsRangeX: value, coordsRangeY: value}
   :store coordinates range on each character object?
-  :setup state where the coordinates will be stored on each image click
-  :if any character from the dropdown is
-
+  :setup state where the coordinates to validate will be stored on each image click
+  :if any character from the dropdown is validated, set some state validating on the front-end
+  
+  :Now hook up the functionality for validating with your back end whether the user has clicked in the right place for that character.
+  :Tie it into your front end so you can seamlessly select characters, validate them, and place the appropriate markers on the map if the selection was correct.
 
 - Setup character positions in the database
   :object with character name as key and coordinates as value?

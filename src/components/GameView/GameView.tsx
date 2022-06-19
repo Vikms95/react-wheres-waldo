@@ -18,6 +18,7 @@ interface Props{
 export default function GameView(props: Props) {
   const { consoleName } = props;
 
+  const [clickedCoords, setClickedCoords] = useState([0, 0]);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const dropdownRef = useRef<HTMLInputElement>(null);
 
