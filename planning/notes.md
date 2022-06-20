@@ -36,23 +36,28 @@
   <!-- :use viewport units? -->
 
 <!-- - Setup event listener to check with coordinates were clicked -->
+
+<!-- - Setup event listener on dropdown buttons that will take the value from the current console + button(char name),
+  lookup the charname within the database and see if the lastCoordninates clicked are within the range of
+  the character -->
+
+  <!-- :if any character from the dropdown is validated, set some state validating on the front-end   -->
 - Give coordinates range to each character to the database
 
-- Setup event listener on dropdown buttons that will take the value from the current console + button(char name),
-  lookup the charname within the database and see if the lastCoordninates clicked are within the range of
-  the character
+- If click is valid, change dropdown to show (V correct) and fade dropdown after some interval
+    Fade character image opacity on the absolute positioned div
+    If validatedCharacters.length === 3
+      Congratulate and show modal (fading from top part) asking for alias to upload the score to the database
 
-  :if any character from the dropdown is validated, set some state validating on the front-end  
-
-  :Now hook up the functionality for validating with your back end whether the user has clicke  d in the right place for that character.
-  :Tie it into your front end so you can seamlessly select characters, validate them, and place the appropriate markers on the map if the selection was correct.
 
 <!-- - Setup character positions in the database -->
   <!-- :object with character name as key and coordinates as value? -->
   <!-- :from this link onwards seems like it might be the info I need -->
   <!-- https://firebase.google.com/codelabs/firebase-web#7  -->
-  :Store coordinates clicked to later compare them to the object within the database tied to the console name > character name?
-  :It can be called within this function,so just parametize the function to store the characters
+  <!-- :Store coordinates clicked to later compare them to the object within the database tied to the console name > character name?
+  :It can be called within this function,so just parametize the function to store the characters -->
+
+- Make chars div vertical so it does not overlap with the photo and the alignment looks better?
 
 Ideas
 - Use Link params to pass the console clicked

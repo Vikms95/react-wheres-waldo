@@ -23,6 +23,7 @@ interface Props{
 export default function GameView(props: Props) {
   const { consoleName } = props;
 
+  const [validatedCharacters, setValidatedCharacters] = useState<string[]>([]);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const dropdownRef = useRef<HTMLInputElement>(null);
@@ -82,9 +83,13 @@ export default function GameView(props: Props) {
     storeLastClickedCoords(e);
   };
 
-  const areCoordsInRange = (coords: number[], object: any) => (
+  const isClickInRange = (coords: number[], object: any) => (
     coords[0] >= object.width[0] && coords[0] <= object.width[1]
     && coords[1] >= object.height[0] && coords[1] <= object.height[1]
+  );
+
+  const isCharPendingToValidate = (name: string) => (
+    !validatedCharacters.includes(name)
   );
 
   const checkCoordinatesOnDatabase = (
@@ -98,8 +103,11 @@ export default function GameView(props: Props) {
       const data = snapshot.docs[0].data().characterCoordinates;
       const keyToCheck = data[consoleName as string];
       const characterToCheck = keyToCheck[characterName];
-      if (areCoordsInRange(coordsToCompare, characterToCheck)) {
-        console.log('Hi');
+      if (isCharPendingToValidate(characterName) && isClickInRange(coordsToCompare, characterToCheck)) {
+        setValidatedCharacters((prevValidatedCharacters) => [...prevValidatedCharacters, characterName]);
+        // Let the component know that one of the characters has been validated
+        // Store that character name within a state validatedCharacters
+        // Check if validated character length is 3
       }
     });
   };
@@ -108,6 +116,13 @@ export default function GameView(props: Props) {
     const intervalId = setInterval(incrementTimer, 1000);
     return () => clearInterval(intervalId);
   }, [timeElapsed]);
+
+  useEffect(() => {
+    // If validated chars length === 3, show modal
+    if (validatedCharacters.length === 3) {
+      console.log('win!');
+    }
+  }, [validatedCharacters]);
 
   return (
     <main className="gameview-container">
