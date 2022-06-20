@@ -19,7 +19,7 @@ const getConsoleCharacterData = (consoleName: string | null) => {
       { name: 'chrono', image: chronoPhoto },
       { name: 'zero', image: zeroPhoto },
     ],
-    gamecube: [
+    'game-cube': [
       { name: 'samus', image: samusPhoto },
       { name: 'marth', image: marthPhoto },
       { name: 'toad', image: toadPhoto },

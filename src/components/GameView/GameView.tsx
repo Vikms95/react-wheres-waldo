@@ -29,7 +29,7 @@ export default function GameView(props: Props) {
   const renderGameImage = (name: string | null) => {
     const IMAGES = {
       'super-nintendo': snes,
-      gamecube: gc,
+      'game-cube': gc,
       'playstation-1': ps1,
       'playstation-2': ps2,
     };

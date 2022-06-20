@@ -54,10 +54,10 @@ export default function Homepage(props: Props) {
         </Link>
         <Link
           to="/game"
-          data-type="gamecube"
+          data-type="game-cube"
           onClick={(e) => handleConsoleImage(e)}
         >
-          <img src={gc} alt="gamecube" />
+          <img src={gc} alt="game-cube" />
         </Link>
         <Link
           to="/game"

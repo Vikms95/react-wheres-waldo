@@ -29,6 +29,7 @@
 :add a button within the dropdown to close it?? since maybe the user does not want to close the modal -->
 
 - Setup event listener to check with coordinates were clicked
+
 - https://firebase.google.com/codelabs/firebase-web#7 
  characterName1: {coordsRangeX: value, coordsRangeY:value}
   characterName2: {coordsRangeX: value, coordsRangeY: value}

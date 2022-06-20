@@ -29,3 +29,37 @@
 [info] i  hosting: 127.0.0.1 - - [17/Jun/2022:05:13:37 +0000] "GET /%PUBLIC_URL%/favicon.ico HTTP/1.1" 500 - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [17/Jun/2022:05:13:37 +0000] \"GET /%PUBLIC_URL%/favicon.ico HTTP/1.1\" 500 - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36\""}}
 [info] i  hosting: 127.0.0.1 - - [17/Jun/2022:05:13:59 +0000] "GET /%PUBLIC_URL%/manifest.json HTTP/1.1" 500 - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [17/Jun/2022:05:13:59 +0000] \"GET /%PUBLIC_URL%/manifest.json HTTP/1.1\" 500 - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36\""}}
 [info] i  hosting: 127.0.0.1 - - [17/Jun/2022:05:13:59 +0000] "GET /%PUBLIC_URL%/favicon.ico HTTP/1.1" 500 - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [17/Jun/2022:05:13:59 +0000] \"GET /%PUBLIC_URL%/favicon.ico HTTP/1.1\" 500 - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36\""}}
+[debug] [2022-06-20T06:06:21.490Z] ----------------------------------------------------------------------
+[debug] [2022-06-20T06:06:21.493Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2022-06-20T06:06:21.493Z] CLI Version:   11.1.0
+[debug] [2022-06-20T06:06:21.494Z] Platform:      linux
+[debug] [2022-06-20T06:06:21.494Z] Node Version:  v16.15.0
+[debug] [2022-06-20T06:06:21.505Z] Time:          Mon Jun 20 2022 08:06:21 GMT+0200 (Central European Summer Time)
+[debug] [2022-06-20T06:06:21.505Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-20T06:06:21.514Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-06-20T06:06:21.624Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-20T06:06:21.624Z] > authorizing via signed-in user (vmartinserra@gmail.com)
+[debug] [2022-06-20T06:06:21.625Z] [iam] checking project wheres-waldo-c41c4 for permissions ["firebase.projects.get"]
+[debug] [2022-06-20T06:06:21.626Z] > refreshing access token with scopes: []
+[debug] [2022-06-20T06:06:21.626Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-06-20T06:06:21.626Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-06-20T06:06:21.740Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-06-20T06:06:21.740Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-06-20T06:06:21.749Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/wheres-waldo-c41c4:testIamPermissions [none]
+[debug] [2022-06-20T06:06:21.749Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wheres-waldo-c41c4:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-06-20T06:06:22.028Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-06-20T06:06:22.028Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-06-20T06:06:22.499Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/wheres-waldo-c41c4:testIamPermissions 200
+[debug] [2022-06-20T06:06:22.499Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wheres-waldo-c41c4:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-06-20T06:06:22.500Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wheres-waldo-c41c4 [none]
+[debug] [2022-06-20T06:06:22.775Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wheres-waldo-c41c4 200
+[debug] [2022-06-20T06:06:22.775Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wheres-waldo-c41c4 {"projectId":"wheres-waldo-c41c4","projectNumber":"479455283648","displayName":"wheres-waldo","name":"projects/wheres-waldo-c41c4","resources":{"hostingSite":"wheres-waldo-c41c4","storageBucket":"wheres-waldo-c41c4.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[debug] [2022-06-20T06:06:22.776Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/wheres-waldo-c41c4/sites 
+[debug] [2022-06-20T06:06:23.923Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/wheres-waldo-c41c4/sites 200
+[debug] [2022-06-20T06:06:23.923Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/wheres-waldo-c41c4/sites {"sites":[{"name":"projects/wheres-waldo-c41c4/sites/wheres-waldo-c41c4","defaultUrl":"https://wheres-waldo-c41c4.web.app","appId":"1:479455283648:web:83d64240ea9b28b111a025","type":"DEFAULT_SITE"}]}
+[debug] [2022-06-20T06:06:23.924Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wheres-waldo-c41c4/webApps/1:479455283648:web:83d64240ea9b28b111a025/config [none]
+[debug] [2022-06-20T06:06:24.791Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wheres-waldo-c41c4/webApps/1:479455283648:web:83d64240ea9b28b111a025/config 200
+[debug] [2022-06-20T06:06:24.791Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wheres-waldo-c41c4/webApps/1:479455283648:web:83d64240ea9b28b111a025/config {"projectId":"wheres-waldo-c41c4","appId":"1:479455283648:web:83d64240ea9b28b111a025","storageBucket":"wheres-waldo-c41c4.appspot.com","locationId":"us-central","apiKey":"AIzaSyBXpredE18hwvOQufPrjZR99-bhGB7cq6g","authDomain":"wheres-waldo-c41c4.firebaseapp.com","messagingSenderId":"479455283648"}
+[info] i  hosting: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
