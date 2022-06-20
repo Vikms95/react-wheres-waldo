@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, {
   useState, useEffect, useRef,
 } from 'react';
 import {
-  query, onSnapshot, collection, getFirestore,
+  query, onSnapshot, collection, getFirestore, connectFirestoreEmulator,
 } from 'firebase/firestore';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
@@ -67,15 +69,16 @@ export default function GameView(props: Props) {
     event: React.MouseEvent<HTMLImageElement, MouseEvent>,
   ) => {
     moveDropdownOnClick((event.pageY - 80), event.pageX);
+    console.log((event.nativeEvent.offsetX / window.innerWidth) * 2 - 1);
+    console.log(1 - (event.nativeEvent.offsetY / window.innerHeight) * 2 - 1);
+    // console.log(window.innerHeight, innerWidth);
     // Store coordinates clicked to later add them to the object along with the character?
     // It can be called within this function,so just parametize the function to store the characters
     // checkIfCharacter
     const coordQuery = query(collection(getFirestore(), 'coordinates'));
     onSnapshot(coordQuery, (snapshot) => {
-      console.log(snapshot.docs);
-      // snapshot.docChanges().forEach((change) => {
-      // console.log(change.doc.data());
-      // });
+      // method to retrieve data!!
+      // console.log(snapshot.docs[0].data());
     });
   };
 

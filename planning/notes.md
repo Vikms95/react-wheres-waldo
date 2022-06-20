@@ -2,6 +2,8 @@
   Be able to select a map (start with only one)
   Timer started on app load and stopped when all three characters are found
   Click the photo to make a dropdown appear with all three characters to find
+- https://firebase.google.com/codelabs/firebase-web#7 
+
 
 -Hierarchy
   App
@@ -27,24 +29,23 @@
 <!-- - Assign 3 characters per console(use an object? snes:{mario: 'image.png'...} and conditionally import each one) -->
 <!-- - Make dropdown dissapear if neither the dropdown or the console image are clicked within the window
 :add a button within the dropdown to close it?? since maybe the user does not want to close the modal -->
+<!-- :store coordinates range on each character object? -->
 
+- Setup coordinates to not be dependent on page shrinking
+  :use percentages?
+  :use viewport units?
 - Setup event listener to check with coordinates were clicked
+- Setup state where the coordinates to validate will be stored on each image click
+  :if any character from the dropdown is validated, set some state validating on the front-end  
 
-- https://firebase.google.com/codelabs/firebase-web#7 
- characterName1: {coordsRangeX: value, coordsRangeY:value}
-  characterName2: {coordsRangeX: value, coordsRangeY: value}
-  :store coordinates range on each character object?
-  :setup state where the coordinates to validate will be stored on each image click
-  :if any character from the dropdown is validated, set some state validating on the front-end
-  
-  :Now hook up the functionality for validating with your back end whether the user has clicked in the right place for that character.
+  :Now hook up the functionality for validating with your back end whether the user has clicke  d in the right place for that character.
   :Tie it into your front end so you can seamlessly select characters, validate them, and place the appropriate markers on the map if the selection was correct.
 
-- Setup character positions in the database
-  :object with character name as key and coordinates as value?
-  :from this link onwards seems like it might be the info I need
-  https://firebase.google.com/codelabs/firebase-web#7 
-  :Store coordinates clicked to later add them to the object along with the character?
+<!-- - Setup character positions in the database -->
+  <!-- :object with character name as key and coordinates as value? -->
+  <!-- :from this link onwards seems like it might be the info I need -->
+  <!-- https://firebase.google.com/codelabs/firebase-web#7  -->
+  :Store coordinates clicked to later compare them to the object within the database tied to the console name > character name?
   :It can be called within this function,so just parametize the function to store the characters
 
 Ideas
