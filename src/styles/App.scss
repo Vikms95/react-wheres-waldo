@@ -229,6 +229,7 @@ ul{
   display: none;
   top: 0px ;
   left: 0px ;
+  overflow: hidden;
 }
 
 .dropdown-container > ul{
@@ -250,9 +251,13 @@ ul{
   flex-grow: 1;
   width: 100%;
   border-radius: 15px;
-
+  
   &:hover{
     background-color: $secondary-color;
+  }
+  &:active{
+    box-shadow: 1px 1px 1px 1px $primary-color;
+    transform: translateY(2px);
   }
   &>button{
     padding: .2rem 2rem;
