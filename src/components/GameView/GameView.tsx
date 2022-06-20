@@ -2,6 +2,9 @@
 import React, {
   useState, useEffect, useRef,
 } from 'react';
+import {
+  query, onSnapshot, collection, getFirestore,
+} from 'firebase/firestore';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
@@ -67,6 +70,13 @@ export default function GameView(props: Props) {
     // Store coordinates clicked to later add them to the object along with the character?
     // It can be called within this function,so just parametize the function to store the characters
     // checkIfCharacter
+    const coordQuery = query(collection(getFirestore(), 'coordinates'));
+    onSnapshot(coordQuery, (snapshot) => {
+      console.log(snapshot.docs[0].data());
+      // snapshot.docChanges().forEach((change) => {
+      // console.log(change.doc.data());
+      // });
+    });
   };
 
   useEffect(() => {

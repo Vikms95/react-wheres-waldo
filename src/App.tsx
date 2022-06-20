@@ -5,11 +5,14 @@ import {
   HashRouter, Routes, Route,
 } from 'react-router-dom';
 
+import {
+  collection, getFirestore, onSnapshot, query,
+} from 'firebase/firestore';
 import Navbar from './components/Navbar/Navbar';
 import Homepage from './components/Homepage/Homepage';
 import Leaderboards from './components/Leaderboards/Leaderboards';
 import GameView from './components/GameView/GameView';
-import saveCoordinates from './utils/setupDatabase';
+import saveCoordinatesToDatabase from './utils/setupDatabase';
 
 export default function App() {
   const [consoleName, setConsoleName] = useState<string | null>(
@@ -30,7 +33,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    saveCoordinates();
+    saveCoordinatesToDatabase();
   }, []);
 
   return (

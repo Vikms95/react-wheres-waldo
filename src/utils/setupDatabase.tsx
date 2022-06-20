@@ -13,16 +13,30 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const saveCoordinates = async () => {
+const saveCoordinatesToDatabase = async () => {
   const consoleNames = ['super-nintendo', 'game-cube', 'playstation-1', 'playstation-2'];
 
   try {
     await addDoc(collection(getFirestore(), 'coordinates'), {
-      name: 'super-nintendo',
-      coordinates: [
+      'super-nintendo': [
         { mario: ['500', '200'] },
         { chrono: ['200', '400'] },
         { zero: ['900', '300'] },
+      ],
+      'game-cube': [
+        { samus: ['500', '200'] },
+        { marth: ['200', '400'] },
+        { toad: ['900', '300'] },
+      ],
+      'playstation-1': [
+        { mantis: ['500', '200'] },
+        { vivi: ['200', '400'] },
+        { alucard: ['900', '300'] },
+      ],
+      'playstation-2': [
+        { ratchet: ['500', '200'] },
+        { prince: ['200', '400'] },
+        { chibi: ['900', '300'] },
       ],
     });
   } catch (err) {
@@ -30,4 +44,4 @@ const saveCoordinates = async () => {
   }
 };
 
-export default saveCoordinates;
+export default saveCoordinatesToDatabase;
