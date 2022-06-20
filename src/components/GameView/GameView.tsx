@@ -146,6 +146,7 @@ export default function GameView(props: Props) {
       <GameDropdown
         dropdownRef={dropdownRef}
         consoleName={consoleName}
+        setIsLastClickValid={setIsLastClickValid}
         isLastClickValid={isLastClickValid}
         validatedCharacters={validatedCharacters}
         checkCoordinatesOnDatabase={checkCoordinatesOnDatabase}

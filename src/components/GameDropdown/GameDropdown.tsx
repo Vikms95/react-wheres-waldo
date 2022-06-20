@@ -9,6 +9,7 @@ interface Props{
   consoleName: string | null;
   validatedCharacters: string[];
   isLastClickValid: boolean
+  setIsLastClickValid: React.Dispatch<React.SetStateAction<boolean>>
   checkCoordinatesOnDatabase: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     characterName: string) => void
@@ -21,6 +22,7 @@ export default function GameDropdown(props: Props) {
     checkCoordinatesOnDatabase,
     validatedCharacters,
     isLastClickValid,
+    setIsLastClickValid,
   } = props;
 
   const closeDropdown = () => {
@@ -44,13 +46,19 @@ export default function GameDropdown(props: Props) {
   const renderSuccesfulClick = () => (
     <li className="succesful-click">
       <FontAwesomeIcon icon={faCheck} />
-      Correct !
+      Correct
     </li>
   );
 
-  // useEffect(() => {
-  //   setIsLastClickValid(true);
-  // }, [validatedCharacters]);
+  const renderSuccesfulClickFeedback = () => {
+    setIsLastClickValid(false);
+    closeDropdown();
+  };
+
+  useEffect(() => {
+    setTimeout(renderSuccesfulClick, 1000);
+    setTimeout(closeDropdown, 1200);
+  }, [validatedCharacters]);
 
   return (
     <div
@@ -73,7 +81,6 @@ export default function GameDropdown(props: Props) {
           </button>
         </li>
         ) }
-
       </ul>
     </div>
   );

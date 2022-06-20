@@ -288,3 +288,16 @@ ul{
     color: black;
   }
 }
+
+.succesful-click{
+  color: rgb(113, 238, 113);
+  font-family: $font-family;
+  display: flex;
+  gap: .5rem;
+  padding: 0 1.5rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1.3em;
+  font-variant: small-caps;
+}
