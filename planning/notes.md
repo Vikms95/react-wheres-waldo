@@ -34,6 +34,7 @@
 - Setup coordinates to not be dependent on page shrinking
   :use percentages?
   :use viewport units?
+  
 - Setup event listener to check with coordinates were clicked
 - Setup state where the coordinates to validate will be stored on each image click
   :if any character from the dropdown is validated, set some state validating on the front-end  

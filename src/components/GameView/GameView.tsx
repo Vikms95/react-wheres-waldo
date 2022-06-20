@@ -69,8 +69,8 @@ export default function GameView(props: Props) {
     event: React.MouseEvent<HTMLImageElement, MouseEvent>,
   ) => {
     moveDropdownOnClick((event.pageY - 80), event.pageX);
-    console.log((event.nativeEvent.offsetX / window.innerWidth) * 2 - 1);
-    console.log(1 - (event.nativeEvent.offsetY / window.innerHeight) * 2 - 1);
+    console.log(Math.ceil(((event.nativeEvent.offsetX / window.innerWidth) * 100)));
+    console.log((Math.ceil((event.nativeEvent.offsetY / window.innerWidth) * 100)));
     // console.log(window.innerHeight, innerWidth);
     // Store coordinates clicked to later add them to the object along with the character?
     // It can be called within this function,so just parametize the function to store the characters
