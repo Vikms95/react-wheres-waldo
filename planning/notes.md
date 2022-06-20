@@ -49,6 +49,9 @@
     If validatedCharacters.length === 3
       Congratulate and show modal (fading from top part) asking for alias to upload the score to the database
 
+1.Dropdown appears showing V correct
+2. After 1 sec, dropdown fades
+3. Character gets faded on the images
 
 <!-- - Setup character positions in the database -->
   <!-- :object with character name as key and coordinates as value? -->

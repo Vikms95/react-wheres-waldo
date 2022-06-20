@@ -5,7 +5,7 @@ import React, {
   useState, useEffect, useRef,
 } from 'react';
 import {
-  query, onSnapshot, collection, getFirestore,
+  query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData,
 } from 'firebase/firestore';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
@@ -25,6 +25,7 @@ export default function GameView(props: Props) {
 
   const [validatedCharacters, setValidatedCharacters] = useState<string[]>([]);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
+  const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const dropdownRef = useRef<HTMLInputElement>(null);
 
@@ -79,9 +80,19 @@ export default function GameView(props: Props) {
   const renderGameDropdown = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,
   ) => {
+    setIsLastClickValid(false);
     moveDropdownOnClick((e.pageY - 80), e.pageX);
     storeLastClickedCoords(e);
   };
+
+  const renderCharacterImages = () => (
+    getConsoleCharacterData(consoleName).map(({ image, name }) => (
+      <div key={name} className="character-data-container">
+        <span className="character-name">{capitalizeString(name)}</span>
+        <img src={image} alt={name} className="character-image" />
+      </div>
+    ))
+  );
 
   const isClickInRange = (coords: number[], object: any) => (
     coords[0] >= object.width[0] && coords[0] <= object.width[1]
@@ -92,19 +103,25 @@ export default function GameView(props: Props) {
     !validatedCharacters.includes(name)
   );
 
+  const retrieveCharFromDatabase = (
+    dbSnapshot: QuerySnapshot<DocumentData>,
+    characterName: string,
+  ) => {
+    const data = dbSnapshot.docs[0].data().characterCoordinates;
+    return data[consoleName as string][characterName];
+  };
+
   const checkCoordinatesOnDatabase = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     characterName: string,
   ) => {
-    const coordsToCompare = lastClickedCoords;
-
     const databaseQuery = query(collection(getFirestore(), 'coordinates'));
     onSnapshot(databaseQuery, (snapshot) => {
-      const data = snapshot.docs[0].data().characterCoordinates;
-      const keyToCheck = data[consoleName as string];
-      const characterToCheck = keyToCheck[characterName];
-      if (isCharPendingToValidate(characterName) && isClickInRange(coordsToCompare, characterToCheck)) {
+      const characterToCheck = retrieveCharFromDatabase(snapshot, characterName);
+
+      if (isCharPendingToValidate(characterName) && isClickInRange(lastClickedCoords, characterToCheck)) {
         setValidatedCharacters((prevValidatedCharacters) => [...prevValidatedCharacters, characterName]);
+        setIsLastClickValid(true);
         // Let the component know that one of the characters has been validated
         // Store that character name within a state validatedCharacters
         // Check if validated character length is 3
@@ -129,22 +146,12 @@ export default function GameView(props: Props) {
       <GameDropdown
         dropdownRef={dropdownRef}
         consoleName={consoleName}
+        isLastClickValid={isLastClickValid}
+        validatedCharacters={validatedCharacters}
         checkCoordinatesOnDatabase={checkCoordinatesOnDatabase}
       />
       <section className="characters-container">
-        {getConsoleCharacterData(consoleName).map(({ image, name }) => (
-          <div
-            key={name}
-            className="character-data-container"
-          >
-            <span className="character-name">{capitalizeString(name)}</span>
-            <img
-              src={image}
-              alt={name}
-              className="character-image"
-            />
-          </div>
-        ))}
+        {renderCharacterImages()}
       </section>
       <section className="timer-container">
         {formatTimer(timeElapsed.toString())}

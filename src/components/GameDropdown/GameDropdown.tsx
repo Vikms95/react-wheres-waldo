@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 import capitalizeString from '../../utils/capitalizeString';
 
 interface Props{
   dropdownRef: React.RefObject<HTMLInputElement>;
-  consoleName: string | null
-  checkCoordinatesOnDatabase: (event:
-     React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  consoleName: string | null;
+  validatedCharacters: string[];
+  isLastClickValid: boolean
+  checkCoordinatesOnDatabase: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     characterName: string) => void
 }
 
@@ -17,6 +19,8 @@ export default function GameDropdown(props: Props) {
     dropdownRef,
     consoleName,
     checkCoordinatesOnDatabase,
+    validatedCharacters,
+    isLastClickValid,
   } = props;
 
   const closeDropdown = () => {
@@ -25,6 +29,7 @@ export default function GameDropdown(props: Props) {
 
   const renderDropdownButtons = () => getConsoleCharacterData(consoleName).map(({ name }) => (
     <li key={name} className="character-name">
+
       <button
         type="button"
         className="character-name"
@@ -32,8 +37,20 @@ export default function GameDropdown(props: Props) {
       >
         {capitalizeString(name)}
       </button>
+
     </li>
   ));
+
+  const renderSuccesfulClick = () => (
+    <li className="succesful-click">
+      <FontAwesomeIcon icon={faCheck} />
+      Correct !
+    </li>
+  );
+
+  // useEffect(() => {
+  //   setIsLastClickValid(true);
+  // }, [validatedCharacters]);
 
   return (
     <div
@@ -41,13 +58,22 @@ export default function GameDropdown(props: Props) {
       ref={dropdownRef}
     >
       <ul className="character-list">
-        {renderDropdownButtons()}
+        {(isLastClickValid)
+          ? renderSuccesfulClick()
+          : renderDropdownButtons()}
+        {!isLastClickValid && (
         <li className="close-dropdown">
-          <button className="close-dropdown-button" type="button" onClick={closeDropdown}>
+          <button
+            className="close-dropdown-button"
+            type="button"
+            onClick={closeDropdown}
+          >
             <FontAwesomeIcon icon={faXmark} />
             Close
           </button>
         </li>
+        ) }
+
       </ul>
     </div>
   );
