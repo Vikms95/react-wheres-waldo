@@ -122,9 +122,8 @@ export default function GameView(props: Props) {
       if (isCharPendingToValidate(characterName) && isClickInRange(lastClickedCoords, characterToCheck)) {
         setValidatedCharacters((prevValidatedCharacters) => [...prevValidatedCharacters, characterName]);
         setIsLastClickValid(true);
-        // Let the component know that one of the characters has been validated
-        // Store that character name within a state validatedCharacters
-        // Check if validated character length is 3
+        // TODO change with ref
+        document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');
       }
     });
   };
@@ -151,6 +150,12 @@ export default function GameView(props: Props) {
         validatedCharacters={validatedCharacters}
         checkCoordinatesOnDatabase={checkCoordinatesOnDatabase}
       />
+      { (validatedCharacters.length === 3)
+        && (
+        <section className="game-win-modal">
+          hello
+        </section>
+        )}
       <section className="characters-container">
         {renderCharacterImages()}
       </section>

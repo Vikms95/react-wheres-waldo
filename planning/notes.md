@@ -42,16 +42,12 @@
   the character -->
 
   <!-- :if any character from the dropdown is validated, set some state validating on the front-end   -->
-- Give coordinates range to each character to the database
+<!-- - Give coordinates range to each character to the database -->
 
-- If click is valid, change dropdown to show (V correct) and fade dropdown after some interval
-    Fade character image opacity on the absolute positioned div
+<!-- - If click is valid, change dropdown to show (V correct) and fade dropdown after some interval -->
+<!-- Fade character image opacity on the absolute positioned div -->
     If validatedCharacters.length === 3
       Congratulate and show modal (fading from top part) asking for alias to upload the score to the database
-
-1.Dropdown appears showing V correct
-2. After 1 sec, dropdown fades
-3. Character gets faded on the images
 
 <!-- - Setup character positions in the database -->
   <!-- :object with character name as key and coordinates as value? -->

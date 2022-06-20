@@ -50,13 +50,13 @@ export default function GameDropdown(props: Props) {
     </li>
   );
 
-  const renderSuccesfulClickFeedback = () => {
-    setIsLastClickValid(false);
-    closeDropdown();
-  };
-
+  /**
+   * Renders succesful click feedback everytime
+   * a new one is validated and removes
+   * the dropdown 1 second after
+   */
   useEffect(() => {
-    setTimeout(renderSuccesfulClick, 1000);
+    setTimeout(() => setIsLastClickValid, 1000);
     setTimeout(closeDropdown, 1200);
   }, [validatedCharacters]);
 

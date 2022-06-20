@@ -187,9 +187,9 @@ ul{
   grid-template-rows: repeat(3, 1fr);
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 1rem;
   border-radius: 40px;
-  padding: 1rem 3rem;
+  padding: 1rem 1rem;
   position: fixed;
   left: 5%;
   top: 15%;
@@ -210,7 +210,7 @@ ul{
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  font-size: 1.3em;
+  font-size: 1.7vw;
   font-variant: small-caps;
 }
 .character-data-container > img {
@@ -237,14 +237,10 @@ ul{
   align-items: center;
 }
 
-.dropdown-character-image{
-  height: auto;
-  width: 3rem;
-}
-
 .character-list{
   display: flex;
   flex-direction: column;
+  padding:none;
 }
 
 .character-list > .character-name{
@@ -260,7 +256,7 @@ ul{
     transform: translateY(2px);
   }
   &>button{
-    padding: .2rem 2rem;
+    padding: .2rem 3vw;
     border: none;
     background-color: transparent;
   }
@@ -280,9 +276,10 @@ ul{
   align-items: flex-end;
   gap: .6rem;
   font-weight: 500;
-  font-size: 1.3em;
   font-variant: small-caps;
-  padding: .6rem 2rem;
+  padding: .2rem 3vw;
+  font-size: 1.5vw;
+
   &:hover{
     background-color: rgb(235, 79, 79);
     color: black;
@@ -290,14 +287,33 @@ ul{
 }
 
 .succesful-click{
+  flex-grow: 1;
+  width: 100%;
   color: rgb(113, 238, 113);
   font-family: $font-family;
   display: flex;
   gap: .5rem;
-  padding: 0 1.5rem;
+  padding: 0 2vw;
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  font-size: 1.3em;
+  font-size: 1.5vw;
   font-variant: small-caps;
 }
+
+.game-win-modal{
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+// @keyframes fadein {
+//   from{
+//     transform: translateY();
+//   }
+
+//   to{
+//     transform: translateY(2);
+//   }
+// }
