@@ -37,7 +37,11 @@
 
 <!-- - Setup event listener to check with coordinates were clicked -->
 - Give coordinates range to each character to the database
-- Setup state where the coordinates to validate will be stored on each image click
+
+- Setup event listener on dropdown buttons that will take the value from the current console + button(char name),
+  lookup the charname within the database and see if the lastCoordninates clicked are within the range of
+  the character
+
   :if any character from the dropdown is validated, set some state validating on the front-end  
 
   :Now hook up the functionality for validating with your back end whether the user has clicke  d in the right place for that character.

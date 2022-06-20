@@ -16,26 +16,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const characterCoordinates = {
-  'super-nintendo': [
-    { mario: { width: [87, 94], height: [101, 112] } },
-    { chrono: { width: [48, 53], height: [126, 134] } },
-    { zero: [900, 300] },
-  ],
-  'game-cube': [
-    { samus: [500, 200] },
-    { marth: [200, 400] },
-    { toad: [900, 300] },
-  ],
-  'playstation-1': [
-    { mantis: [500, 200] },
-    { vivi: [200, 400] },
-    { alucard: [900, 300] },
-  ],
-  'playstation-2': [
-    { ratchet: [500, 200] },
-    { prince: [200, 400] },
-    { chibi: [900, 300] },
-  ],
+  'super-nintendo': {
+    mario: { width: [87, 94], height: [101, 112] },
+    chrono: { width: [48, 53], height: [126, 134] },
+    zero: [900, 300],
+  },
+  'game-cube': {
+    samus: [500, 200],
+    marth: [200, 400],
+    toad: [900, 300],
+  },
+  'playstation-1': {
+    mantis: [500, 200],
+    vivi: [200, 400],
+    alucard: [900, 300],
+  },
+  'playstation-2': {
+    ratchet: [500, 200],
+    prince: [200, 400],
+    chibi: [900, 300],
+  },
 };
 
 /**

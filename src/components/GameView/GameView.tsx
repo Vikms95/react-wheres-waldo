@@ -5,7 +5,7 @@ import React, {
   useState, useEffect, useRef,
 } from 'react';
 import {
-  query, onSnapshot, collection, getFirestore, connectFirestoreEmulator,
+  query, onSnapshot, collection, getFirestore,
 } from 'firebase/firestore';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
@@ -23,7 +23,7 @@ interface Props{
 export default function GameView(props: Props) {
   const { consoleName } = props;
 
-  const [clickedCoords, setClickedCoords] = useState([0, 0]);
+  const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const dropdownRef = useRef<HTMLInputElement>(null);
 
@@ -67,7 +67,7 @@ export default function GameView(props: Props) {
   const storeLastClickedCoords = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     const coordsX = Math.ceil((event.nativeEvent.offsetX / window.innerWidth) * 100);
     const coordsY = Math.ceil((event.nativeEvent.offsetY / window.innerWidth) * 100);
-    setClickedCoords([coordsX, coordsY]);
+    setLastClickedCoords([coordsX, coordsY]);
   };
 
   /**
@@ -76,18 +76,31 @@ export default function GameView(props: Props) {
    *
    */
   const renderGameDropdown = (
-    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
   ) => {
-    moveDropdownOnClick((event.pageY - 80), event.pageX);
-    storeLastClickedCoords(event);
+    moveDropdownOnClick((e.pageY - 80), e.pageX);
+    storeLastClickedCoords(e);
+  };
 
-    // Store coordinates clicked to later add them to the object along with the character?
-    // It can be called within this function,so just parametize the function to store the characters
-    // checkIfCharacter
-    const coordQuery = query(collection(getFirestore(), 'coordinates'));
-    onSnapshot(coordQuery, (snapshot) => {
-      // method to retrieve data!!
-      // console.log(snapshot.docs[0].data());
+  const areCoordsInRange = (coords: number[], object: any) => (
+    coords[0] >= object.width[0] && coords[0] <= object.width[1]
+    && coords[1] >= object.height[0] && coords[1] <= object.height[1]
+  );
+
+  const checkCoordinatesOnDatabase = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    characterName: string,
+  ) => {
+    const coordsToCompare = lastClickedCoords;
+
+    const databaseQuery = query(collection(getFirestore(), 'coordinates'));
+    onSnapshot(databaseQuery, (snapshot) => {
+      const data = snapshot.docs[0].data().characterCoordinates;
+      const keyToCheck = data[consoleName as string];
+      const characterToCheck = keyToCheck[characterName];
+      if (areCoordsInRange(coordsToCompare, characterToCheck)) {
+        console.log('Hi');
+      }
     });
   };
 
@@ -98,7 +111,11 @@ export default function GameView(props: Props) {
 
   return (
     <main className="gameview-container">
-      <GameDropdown dropdownRef={dropdownRef} consoleName={consoleName} />
+      <GameDropdown
+        dropdownRef={dropdownRef}
+        consoleName={consoleName}
+        checkCoordinatesOnDatabase={checkCoordinatesOnDatabase}
+      />
       <section className="characters-container">
         {getConsoleCharacterData(consoleName).map(({ image, name }) => (
           <div
