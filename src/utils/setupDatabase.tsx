@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addSyntheticLeadingComment } from 'typescript';
 import getConsoleCharacterData from './getConsoleCharactersData';
 
 const firebaseConfig = {
@@ -13,34 +14,38 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
+/**
+ * Sets up character positions data only when the collection does not exist
+ */
 const saveCoordinatesToDatabase = async () => {
   const consoleNames = ['super-nintendo', 'game-cube', 'playstation-1', 'playstation-2'];
-
-  try {
-    await addDoc(collection(getFirestore(), 'coordinates'), {
-      'super-nintendo': [
-        { mario: ['500', '200'] },
-        { chrono: ['200', '400'] },
-        { zero: ['900', '300'] },
-      ],
-      'game-cube': [
-        { samus: ['500', '200'] },
-        { marth: ['200', '400'] },
-        { toad: ['900', '300'] },
-      ],
-      'playstation-1': [
-        { mantis: ['500', '200'] },
-        { vivi: ['200', '400'] },
-        { alucard: ['900', '300'] },
-      ],
-      'playstation-2': [
-        { ratchet: ['500', '200'] },
-        { prince: ['200', '400'] },
-        { chibi: ['900', '300'] },
-      ],
-    });
-  } catch (err) {
-    console.error(err);
+  if (collection(getFirestore(), 'coordinates').id.length === 0) {
+    try {
+      await addDoc(collection(getFirestore(), 'coordinates'), {
+        'super-nintendo': [
+          { mario: ['500', '200'] },
+          { chrono: ['200', '400'] },
+          { zero: ['900', '300'] },
+        ],
+        'game-cube': [
+          { samus: ['500', '200'] },
+          { marth: ['200', '400'] },
+          { toad: ['900', '300'] },
+        ],
+        'playstation-1': [
+          { mantis: ['500', '200'] },
+          { vivi: ['200', '400'] },
+          { alucard: ['900', '300'] },
+        ],
+        'playstation-2': [
+          { ratchet: ['500', '200'] },
+          { prince: ['200', '400'] },
+          { chibi: ['900', '300'] },
+        ],
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 };
 

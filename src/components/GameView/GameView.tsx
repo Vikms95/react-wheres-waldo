@@ -72,7 +72,7 @@ export default function GameView(props: Props) {
     // checkIfCharacter
     const coordQuery = query(collection(getFirestore(), 'coordinates'));
     onSnapshot(coordQuery, (snapshot) => {
-      console.log(snapshot.docs[0].data());
+      console.log(snapshot.docs);
       // snapshot.docChanges().forEach((change) => {
       // console.log(change.doc.data());
       // });
