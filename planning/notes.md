@@ -31,11 +31,12 @@
 :add a button within the dropdown to close it?? since maybe the user does not want to close the modal -->
 <!-- :store coordinates range on each character object? -->
 
-- Setup coordinates to not be dependent on page shrinking
-  :use percentages?
-  :use viewport units?
-  
-- Setup event listener to check with coordinates were clicked
+<!-- - Setup coordinates to not be dependent on page shrinking -->
+  <!-- :use percentages? -->
+  <!-- :use viewport units? -->
+
+<!-- - Setup event listener to check with coordinates were clicked -->
+- Give coordinates range to each character to the database
 - Setup state where the coordinates to validate will be stored on each image click
   :if any character from the dropdown is validated, set some state validating on the front-end  
 

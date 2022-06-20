@@ -61,6 +61,16 @@ export default function GameView(props: Props) {
   };
 
   /**
+   * Stores last clicked coordinates on state to compare use them
+   * whenever a character is selected from the dropdown later on
+   */
+  const storeLastClickedCoords = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    const coordsX = Math.ceil((event.nativeEvent.offsetX / window.innerWidth) * 100);
+    const coordsY = Math.ceil((event.nativeEvent.offsetY / window.innerWidth) * 100);
+    setClickedCoords([coordsX, coordsY]);
+  };
+
+  /**
    * Takes event as parameter and changes element's top and left
    * values based on the registered click coordinates
    *
@@ -69,9 +79,8 @@ export default function GameView(props: Props) {
     event: React.MouseEvent<HTMLImageElement, MouseEvent>,
   ) => {
     moveDropdownOnClick((event.pageY - 80), event.pageX);
-    console.log(Math.ceil(((event.nativeEvent.offsetX / window.innerWidth) * 100)));
-    console.log((Math.ceil((event.nativeEvent.offsetY / window.innerWidth) * 100)));
-    // console.log(window.innerHeight, innerWidth);
+    storeLastClickedCoords(event);
+
     // Store coordinates clicked to later add them to the object along with the character?
     // It can be called within this function,so just parametize the function to store the characters
     // checkIfCharacter

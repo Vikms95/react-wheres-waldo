@@ -19,32 +19,34 @@ const app = initializeApp(firebaseConfig);
  */
 const saveCoordinatesToDatabase = async () => {
   const consoleNames = ['super-nintendo', 'game-cube', 'playstation-1', 'playstation-2'];
+
+  // Only setup the database if no database is created
   if (collection(getFirestore(), 'coordinates').id.length === 0) {
     try {
       await addDoc(collection(getFirestore(), 'coordinates'), {
         'super-nintendo': [
-          { mario: ['500', '200'] },
-          { chrono: ['200', '400'] },
-          { zero: ['900', '300'] },
+          { mario: { width: [87, 94], height: [101, 112] } },
+          { chrono: { width: [48, 53], height: [126, 134] } },
+          { zero: [900, 300] },
         ],
         'game-cube': [
-          { samus: ['500', '200'] },
-          { marth: ['200', '400'] },
-          { toad: ['900', '300'] },
+          { samus: [500, 200] },
+          { marth: [200, 400] },
+          { toad: [900, 300] },
         ],
         'playstation-1': [
-          { mantis: ['500', '200'] },
-          { vivi: ['200', '400'] },
-          { alucard: ['900', '300'] },
+          { mantis: [500, 200] },
+          { vivi: [200, 400] },
+          { alucard: [900, 300] },
         ],
         'playstation-2': [
-          { ratchet: ['500', '200'] },
-          { prince: ['200', '400'] },
-          { chibi: ['900', '300'] },
+          { ratchet: [500, 200] },
+          { prince: [200, 400] },
+          { chibi: [900, 300] },
         ],
       });
     } catch (err) {
-      console.error(err);
+      console.error('Unable to create database: ', err);
     }
   }
 };
