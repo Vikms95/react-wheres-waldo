@@ -53,5 +53,8 @@
           "jest": true
         }
       }
-    ]
+    ],
+    "globals": {
+      "NodeJS": true
+    },
 }

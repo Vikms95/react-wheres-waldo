@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, {
   useState, useEffect, useRef,
 } from 'react';
@@ -29,16 +26,16 @@ export default function GameView(props: Props) {
   const [timeElapsed, setTimeElapsed] = useState(0);
 
   const dropdownRef = useRef<HTMLInputElement>(null);
+  const intervalId = useRef<NodeJS.Timer | null>(null);
 
   useEffect(() => {
-    const intervalId = setInterval(incrementTimer, 1000);
-    return () => clearInterval(intervalId);
+    intervalId.current = setInterval(incrementTimer, 1000);
+    return () => clearInterval(intervalId.current as NodeJS.Timer);
   }, [timeElapsed]);
 
   useEffect(() => {
-    // If validated chars length === 3, show modal
     if (validatedCharacters.length === 3) {
-      console.log('win!');
+      clearInterval(intervalId.current as NodeJS.Timer);
     }
   }, [validatedCharacters]);
 
@@ -87,7 +84,7 @@ export default function GameView(props: Props) {
       const characterToCheck = retrieveCharFromDatabase(snapshot, characterName);
 
       if (isCharPendingToValidate(characterName) && isClickInRange(lastClickedCoords, characterToCheck)) {
-        setTimeout(setValidatedCharacters((prevValidatedCharacters) => [...prevValidatedCharacters, characterName]), 1000);
+        setValidatedCharacters((prevValidatedCharacters) => [...prevValidatedCharacters, characterName]);
         setIsLastClickValid(true);
         // TODO change with ref
         document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');

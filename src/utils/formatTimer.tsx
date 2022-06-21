@@ -10,8 +10,7 @@ const formatTimer = (timer: string) => {
   if (minutes < 10) { formattedMinutes = `0${minutes}`; }
   if (seconds < 10) { formattedSeconds = `0${seconds}`; }
 
-  return `${formattedMinutes || minutes}
-         : ${formattedSeconds || seconds}`;
+  return `${formattedMinutes || minutes}:${formattedSeconds || seconds}`;
 };
 
 export default formatTimer;

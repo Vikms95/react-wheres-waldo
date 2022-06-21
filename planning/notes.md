@@ -48,6 +48,7 @@
 <!-- Fade character image opacity on the absolute positioned div -->
     @check within the gameView useEffect
     If validatedCharacters.length === 3
+      <!-- Stop timer -->
       Congratulate and show modal (fading from top part) asking for alias to upload the score to the database
     
     Take name introduced from modal, if no name is introduced use anonymous + a random id
