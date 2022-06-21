@@ -1,13 +1,9 @@
-/* eslint-disable no-restricted-globals */
 import './styles/App.scss';
 import React, { useEffect, useState } from 'react';
 import {
   HashRouter, Routes, Route,
 } from 'react-router-dom';
 
-import {
-  collection, getFirestore, onSnapshot, query,
-} from 'firebase/firestore';
 import Navbar from './components/Navbar/Navbar';
 import Homepage from './components/Homepage/Homepage';
 import Leaderboards from './components/Leaderboards/Leaderboards';
@@ -18,6 +14,10 @@ export default function App() {
   const [consoleName, setConsoleName] = useState<string | null>(
     localStorage.getItem('consoleName') || '',
   );
+
+  useEffect(() => {
+    saveCoordinatesToDatabase();
+  }, []);
 
   /**
    * Sets the image to use when Gameview is loaded
@@ -31,10 +31,6 @@ export default function App() {
     localStorage.setItem('consoleName', gameImage as string);
     setConsoleName(gameImage);
   };
-
-  useEffect(() => {
-    saveCoordinatesToDatabase();
-  }, []);
 
   return (
     <div className="App">

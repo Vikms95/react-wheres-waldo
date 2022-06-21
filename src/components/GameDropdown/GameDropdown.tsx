@@ -25,6 +25,16 @@ export default function GameDropdown(props: Props) {
     setIsLastClickValid,
   } = props;
 
+  /**
+   * Renders succesful click feedback everytime
+   * a new one is validated and removes
+   * the dropdown 1 second after
+   */
+  useEffect(() => {
+    setTimeout(() => setIsLastClickValid, 1000);
+    setTimeout(closeDropdown, 1200);
+  }, [validatedCharacters]);
+
   const closeDropdown = () => {
     if (dropdownRef.current) dropdownRef.current.style.display = 'none';
   };
@@ -49,16 +59,6 @@ export default function GameDropdown(props: Props) {
       Correct
     </li>
   );
-
-  /**
-   * Renders succesful click feedback everytime
-   * a new one is validated and removes
-   * the dropdown 1 second after
-   */
-  useEffect(() => {
-    setTimeout(() => setIsLastClickValid, 1000);
-    setTimeout(closeDropdown, 1200);
-  }, [validatedCharacters]);
 
   return (
     <div

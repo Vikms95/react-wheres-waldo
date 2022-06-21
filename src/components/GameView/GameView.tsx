@@ -23,26 +23,24 @@ interface Props{
 export default function GameView(props: Props) {
   const { consoleName } = props;
 
-  const [validatedCharacters, setValidatedCharacters] = useState<string[]>([]);
+  const [validatedCharacters, setValidatedCharacters] = useState<string[]>(['', '', '']);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
+
   const dropdownRef = useRef<HTMLInputElement>(null);
 
-  /**
-   * Renders one of the imported images based on
-   * consoleName prop
-   */
-  const renderGameImage = (name: string | null) => {
-    const IMAGES = {
-      'super-nintendo': snes,
-      'game-cube': gc,
-      'playstation-1': ps1,
-      'playstation-2': ps2,
-    };
+  useEffect(() => {
+    const intervalId = setInterval(incrementTimer, 1000);
+    return () => clearInterval(intervalId);
+  }, [timeElapsed]);
 
-    return IMAGES[name as keyof typeof IMAGES];
-  };
+  useEffect(() => {
+    // If validated chars length === 3, show modal
+    if (validatedCharacters.length === 3) {
+      console.log('win!');
+    }
+  }, [validatedCharacters]);
 
   /**
    * Increments timer state by 1
@@ -72,37 +70,6 @@ export default function GameView(props: Props) {
     setLastClickedCoords([coordsX, coordsY]);
   };
 
-  /**
-   * Takes event as parameter and changes element's top and left
-   * values based on the registered click coordinates
-   *
-   */
-  const renderGameDropdown = (
-    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-  ) => {
-    setIsLastClickValid(false);
-    moveDropdownOnClick((e.pageY - 80), e.pageX);
-    storeLastClickedCoords(e);
-  };
-
-  const renderCharacterImages = () => (
-    getConsoleCharacterData(consoleName).map(({ image, name }) => (
-      <div key={name} className="character-data-container">
-        <span className="character-name">{capitalizeString(name)}</span>
-        <img src={image} alt={name} className="character-image" />
-      </div>
-    ))
-  );
-
-  const isClickInRange = (coords: number[], object: any) => (
-    coords[0] >= object.width[0] && coords[0] <= object.width[1]
-    && coords[1] >= object.height[0] && coords[1] <= object.height[1]
-  );
-
-  const isCharPendingToValidate = (name: string) => (
-    !validatedCharacters.includes(name)
-  );
-
   const retrieveCharFromDatabase = (
     dbSnapshot: QuerySnapshot<DocumentData>,
     characterName: string,
@@ -128,17 +95,55 @@ export default function GameView(props: Props) {
     });
   };
 
-  useEffect(() => {
-    const intervalId = setInterval(incrementTimer, 1000);
-    return () => clearInterval(intervalId);
-  }, [timeElapsed]);
+  const submitScoreToDatabase = () => {
 
-  useEffect(() => {
-    // If validated chars length === 3, show modal
-    if (validatedCharacters.length === 3) {
-      console.log('win!');
-    }
-  }, [validatedCharacters]);
+  };
+
+  const isCharPendingToValidate = (name: string) => (
+    !validatedCharacters.includes(name)
+  );
+
+  const isClickInRange = (coords: number[], object: any) => (
+    coords[0] >= object.width[0] && coords[0] <= object.width[1]
+    && coords[1] >= object.height[0] && coords[1] <= object.height[1]
+  );
+
+  /**
+   * Renders one of the imported images based on
+   * consoleName prop
+   */
+  const renderGameImage = (name: string | null) => {
+    const IMAGES = {
+      'super-nintendo': snes,
+      'game-cube': gc,
+      'playstation-1': ps1,
+      'playstation-2': ps2,
+    };
+
+    return IMAGES[name as keyof typeof IMAGES];
+  };
+
+  /**
+   * Takes event as parameter and changes element's top and left
+   * values based on the registered click coordinates
+   *
+   */
+  const renderGameDropdown = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
+    setIsLastClickValid(false);
+    moveDropdownOnClick((e.pageY - 80), e.pageX);
+    storeLastClickedCoords(e);
+  };
+
+  const renderCharacterImages = () => (
+    getConsoleCharacterData(consoleName).map(({ image, name }) => (
+      <div key={name} className="character-data-container">
+        <span className="character-name">{capitalizeString(name)}</span>
+        <img src={image} alt={name} className="character-image" />
+      </div>
+    ))
+  );
 
   return (
     <main className="gameview-container">
@@ -152,9 +157,29 @@ export default function GameView(props: Props) {
       />
       { (validatedCharacters.length === 3)
         && (
-        <section className="game-win-modal">
-          hello
-        </section>
+          <section className="background-brightness-wrapper">
+            <article className="game-win-modal-border">
+              <article className="game-win-modal">
+                <article className="score-display">
+                  Your score is:
+                  {' '}
+                  {formatTimer(timeElapsed.toString())}
+                </article>
+                <form className="alias-form" onSubmit={submitScoreToDatabase}>
+                  <label htmlFor="score">
+                    Enter alias
+                    <input id="score" type="text" />
+                  </label>
+                  <button type="submit"> Upload score </button>
+                </form>
+                <article className="form buttons">
+                  <button type="button"> Leaderboards </button>
+                  <button type="button"> Retry </button>
+                  <button type="button"> Home </button>
+                </article>
+              </article>
+            </article>
+          </section>
         )}
       <section className="characters-container">
         {renderCharacterImages()}

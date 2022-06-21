@@ -46,8 +46,12 @@
 
 <!-- - If click is valid, change dropdown to show (V correct) and fade dropdown after some interval -->
 <!-- Fade character image opacity on the absolute positioned div -->
+    @check within the gameView useEffect
     If validatedCharacters.length === 3
       Congratulate and show modal (fading from top part) asking for alias to upload the score to the database
+    
+    Take name introduced from modal, if no name is introduced use anonymous + a random id
+    Take timer score from gameView
 
 <!-- - Setup character positions in the database -->
   <!-- :object with character name as key and coordinates as value? -->

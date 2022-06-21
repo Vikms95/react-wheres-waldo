@@ -175,8 +175,8 @@ ul{
   background-color: rgba($color: $primary-color, $alpha: .8);
   color:$font-color;
   border-radius: 40px;
-  padding:1rem 2rem;
-  font-size: 2em;
+  padding:1.5vw 2vw;
+  font-size: 2vw;
   position: fixed;
   right: 5%;
   top: 15%;
@@ -301,19 +301,43 @@ ul{
   font-variant: small-caps;
 }
 
-.game-win-modal{
+.background-brightness-wrapper{
   position: fixed;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  backdrop-filter: brightness(20%);
+  z-index: 1;
+}
+
+.game-win-modal-border{
+  position: fixed;
+  padding: 3px;
+  border-radius: 15px;
+  background-color: $primary-color;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
+  min-height: 31vw;
+  min-width: 36vw;
 }
 
-// @keyframes fadein {
-//   from{
-//     transform: translateY();
-//   }
+.game-win-modal{
+  position: fixed;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  color: $font-color;
+  background-color: $primary-color;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 15px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  min-height: 30vw;
+  min-width: 35vw;
+}
 
-//   to{
-//     transform: translateY(2);
-//   }
-// }
+.game-win-modal > * {
+  padding: 0 1vw;
+}
