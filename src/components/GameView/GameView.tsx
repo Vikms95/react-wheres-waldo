@@ -23,7 +23,7 @@ interface Props{
 export default function GameView(props: Props) {
   const { consoleName } = props;
 
-  const [validatedCharacters, setValidatedCharacters] = useState<string[]>(['', '', '']);
+  const [validatedCharacters, setValidatedCharacters] = useState<string[]>([]);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
@@ -87,7 +87,7 @@ export default function GameView(props: Props) {
       const characterToCheck = retrieveCharFromDatabase(snapshot, characterName);
 
       if (isCharPendingToValidate(characterName) && isClickInRange(lastClickedCoords, characterToCheck)) {
-        setValidatedCharacters((prevValidatedCharacters) => [...prevValidatedCharacters, characterName]);
+        setTimeout(setValidatedCharacters((prevValidatedCharacters) => [...prevValidatedCharacters, characterName]), 1000);
         setIsLastClickValid(true);
         // TODO change with ref
         document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');

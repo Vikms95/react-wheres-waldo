@@ -327,6 +327,8 @@ ul{
   position: fixed;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
   color: $font-color;
   background-color: $primary-color;
   border: 1px solid rgb(255, 255, 255);
@@ -336,8 +338,9 @@ ul{
   left: 50%;
   min-height: 30vw;
   min-width: 35vw;
-}
+  font-size: 2vw;
 
-.game-win-modal > * {
-  padding: 0 1vw;
+  & > button{
+    size: 1px;
+  }
 }
