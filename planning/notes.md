@@ -46,13 +46,13 @@
 
 <!-- - If click is valid, change dropdown to show (V correct) and fade dropdown after some interval -->
 <!-- Fade character image opacity on the absolute positioned div -->
-    @check within the gameView useEffect
-    If validatedCharacters.length === 3
-      <!-- Stop timer -->
-      Congratulate and show modal (fading from top part) asking for alias to upload the score to the database
-    
-    Take name introduced from modal, if no name is introduced use anonymous + a random id
-    Take timer score from gameView
+<!-- @check within the gameView useEffect
+If validatedCharacters.length === 3
+  <!-- Stop timer -->
+  <!-- Congratulate and show modal (fading from top part) asking for alias to upload the score to the database
+
+Take name introduced from modal, if no name is introduced use anonymous + a random id
+Take timer score from gameView --> -->
 
 <!-- - Setup character positions in the database -->
   <!-- :object with character name as key and coordinates as value? -->
@@ -61,7 +61,7 @@
   <!-- :Store coordinates clicked to later compare them to the object within the database tied to the console name > character name?
   :It can be called within this function,so just parametize the function to store the characters -->
 
-- Make chars div vertical so it does not overlap with the photo and the alignment looks better?
+<!-- - Make chars div vertical so it does not overlap with the photo and the alignment looks better? -->
 
 Ideas
 - Use Link params to pass the console clicked

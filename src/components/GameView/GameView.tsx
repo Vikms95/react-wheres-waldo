@@ -4,7 +4,7 @@ import React, {
 import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData, addDoc,
 } from 'firebase/firestore';
-import uniqid from 'uniqid';
+
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
@@ -21,7 +21,7 @@ interface Props{
 export default function GameView(props: Props) {
   const { consoleName } = props;
 
-  const [validatedCharacters, setValidatedCharacters] = useState<string[]>(['', '', '']);
+  const [validatedCharacters, setValidatedCharacters] = useState<string[]>([]);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
@@ -102,21 +102,20 @@ export default function GameView(props: Props) {
     });
   };
 
-  const submitScoreToDatabase = (
+  const submitScoreToDatabase = async (
     e: FormEvent<HTMLFormElement>,
-    name: string = `Anon${uniqid()}`,
+    name: string,
   ) => {
     e.preventDefault();
     const time = formatTimer(timeElapsed.toString());
+    const alias = name || 'Anonymous';
 
-    onSnapshot(query(collection(getFirestore(), 'highscores')), async (snapshot) => {
-      try {
-        console.log('hi');
-        await addDoc(collection(getFirestore(), 'highscores'), { alias: name, score: time });
-      } catch (err) {
-        console.log(err);
-      }
-    });
+    try {
+      await addDoc(collection(getFirestore(), 'highscores'), { alias, score: time });
+    } catch (err) {
+      console.log(err);
+    }
+    setPlayerAlias('');
   };
 
   const isCharPendingToValidate = (name: string) => (
@@ -183,25 +182,30 @@ export default function GameView(props: Props) {
                 <article className="score-display">
                   Your score is:
                   {' '}
-                  {formatTimer(timeElapsed.toString())}
+                  <span className="timer-value">
+                    {formatTimer(timeElapsed.toString())}
+                  </span>
                 </article>
                 <form
                   className="alias-form"
                   onSubmit={(e) => submitScoreToDatabase(e, playerAlias)}
                 >
-                  <label htmlFor="score">
+
+                  <label htmlFor="score" className="form-input">
                     Enter alias
                     <input
                       id="score"
                       type="text"
                       value={playerAlias}
                       onChange={handleInputChange}
-                      placeholder="player123"
+                      placeholder="Your alias here ..."
                     />
+                    <hr className="input-hr" />
                   </label>
+
                   <button type="submit"> Upload score </button>
                 </form>
-                <article className="form buttons">
+                <article className="form-buttons">
                   <button type="button"> Leaderboards </button>
                   <button type="button"> Retry </button>
                   <button type="button"> Home </button>
