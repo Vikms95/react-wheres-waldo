@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import {
-  addDoc, collection, getFirestore, onSnapshot, query, snapshotEqual,
+  addDoc, collection, getFirestore, onSnapshot, query,
 } from 'firebase/firestore';
 import getConsoleCharacterData from './getConsoleCharactersData';
 
@@ -44,8 +44,8 @@ const characterCoordinates = {
 const saveCoordinatesToDatabase = () => {
   const consoleNames = ['super-nintendo', 'game-cube', 'playstation-1', 'playstation-2'];
 
-  // Only setup the database if no database is created
   onSnapshot(query(collection(getFirestore(), 'coordinates')), async (snapshot) => {
+    // Only setup the database if no database is created
     if (snapshot.docs.length === 0) {
       try {
         await addDoc(collection(getFirestore(), 'coordinates'), { characterCoordinates });

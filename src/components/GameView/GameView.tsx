@@ -1,9 +1,10 @@
 import React, {
-  useState, useEffect, useRef,
+  useState, useEffect, useRef, SyntheticEvent, FormEvent,
 } from 'react';
 import {
-  query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData,
+  query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData, addDoc,
 } from 'firebase/firestore';
+import uniqid from 'uniqid';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
@@ -20,10 +21,11 @@ interface Props{
 export default function GameView(props: Props) {
   const { consoleName } = props;
 
-  const [validatedCharacters, setValidatedCharacters] = useState<string[]>([]);
+  const [validatedCharacters, setValidatedCharacters] = useState<string[]>(['', '', '']);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
+  const [playerAlias, setPlayerAlias] = useState('');
 
   const dropdownRef = useRef<HTMLInputElement>(null);
   const intervalId = useRef<NodeJS.Timer | null>(null);
@@ -44,6 +46,11 @@ export default function GameView(props: Props) {
    */
   const incrementTimer = () => {
     setTimeElapsed((prevTimeElapsed) => prevTimeElapsed + 1);
+  };
+
+  const handleInputChange = (event: MouseEvent | SyntheticEvent) => {
+    const inputElement = event.target as HTMLInputElement;
+    setPlayerAlias(inputElement.value);
   };
 
   /**
@@ -83,8 +90,11 @@ export default function GameView(props: Props) {
     onSnapshot(databaseQuery, (snapshot) => {
       const characterToCheck = retrieveCharFromDatabase(snapshot, characterName);
 
-      if (isCharPendingToValidate(characterName) && isClickInRange(lastClickedCoords, characterToCheck)) {
-        setValidatedCharacters((prevValidatedCharacters) => [...prevValidatedCharacters, characterName]);
+      if (isCharPendingToValidate(characterName)
+       && isClickInRange(lastClickedCoords, characterToCheck)) {
+        setValidatedCharacters(
+          (prevValidatedCharacters) => [...prevValidatedCharacters, characterName],
+        );
         setIsLastClickValid(true);
         // TODO change with ref
         document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');
@@ -92,8 +102,21 @@ export default function GameView(props: Props) {
     });
   };
 
-  const submitScoreToDatabase = () => {
+  const submitScoreToDatabase = (
+    e: FormEvent<HTMLFormElement>,
+    name: string = `Anon${uniqid()}`,
+  ) => {
+    e.preventDefault();
+    const time = formatTimer(timeElapsed.toString());
 
+    onSnapshot(query(collection(getFirestore(), 'highscores')), async (snapshot) => {
+      try {
+        console.log('hi');
+        await addDoc(collection(getFirestore(), 'highscores'), { alias: name, score: time });
+      } catch (err) {
+        console.log(err);
+      }
+    });
   };
 
   const isCharPendingToValidate = (name: string) => (
@@ -162,10 +185,19 @@ export default function GameView(props: Props) {
                   {' '}
                   {formatTimer(timeElapsed.toString())}
                 </article>
-                <form className="alias-form" onSubmit={submitScoreToDatabase}>
+                <form
+                  className="alias-form"
+                  onSubmit={(e) => submitScoreToDatabase(e, playerAlias)}
+                >
                   <label htmlFor="score">
                     Enter alias
-                    <input id="score" type="text" />
+                    <input
+                      id="score"
+                      type="text"
+                      value={playerAlias}
+                      onChange={handleInputChange}
+                      placeholder="player123"
+                    />
                   </label>
                   <button type="submit"> Upload score </button>
                 </form>
