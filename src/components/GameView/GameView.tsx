@@ -206,7 +206,7 @@ export default function GameView(props: Props) {
                   <button type="submit"> Upload score </button>
                 </form>
                 <article className="form-buttons">
-                  <button type="button"> Leaderboards </button>
+                  <button type="button" className="leaderboard-button"> Leaderboards </button>
                   <button type="button"> Retry </button>
                   <button type="button"> Home </button>
                 </article>

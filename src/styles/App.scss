@@ -328,6 +328,7 @@ ul{
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   justify-content: center;
+  justify-items: center;
   align-items: center;
   color: $font-color;
   background-color: $primary-color;
@@ -352,12 +353,16 @@ ul{
 .form-input{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   row-gap: 1rem;
 
   &>input{
+    color: $font-color;
     padding:.8vw;
     border:none;
     background-color: transparent;
+    outline: none;
     font-size: 1.2vw;
     width: 10vw;
 
@@ -376,12 +381,13 @@ ul{
 .alias-form{
   display: flex;
   justify-content: space-between;
+  column-gap: 3rem;
   align-content: center;
 
   &>button{
     font-size: max(1.5vw, .2rem);
     font-family: $font-family;
-    width: clamp(2rem, 9vw, 5rem);
+    width: clamp(2rem, 9vw, 10rem);
     height: 5vw;
     border-radius: 40px;
     color: $font-color;
@@ -398,12 +404,17 @@ ul{
   &>button{
     font-size: max(1.5vw, .2rem);
     font-family: $font-family;
-    width: clamp(fit-content, 10vw, 8rem);
-    height: 5vw;
+    width: clamp(2.5rem, 10vw, 10rem);
+    height: 4vw;
     border-radius: 40px;
     color: $font-color;
     border: 1px solid white;
     background-color: transparent;
+  }
+
+  &>.leaderboard-button{
+    width: clamp(3rem, 10vw, 10rem);
+    font-size: max(1.2vw, .2rem) ;
   }
 }
 
