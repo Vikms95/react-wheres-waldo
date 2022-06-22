@@ -63,6 +63,13 @@ Take timer score from gameView --> -->
 
 <!-- - Make chars div vertical so it does not overlap with the photo and the alignment looks better? -->
 
+- Implement animations to modal
+- Multiple fetches on VSC reload
+- CSS format and make responsive the Homepage, Leaderboards and the Game
+- Place markers on the map when the char click is correct
+- Fix weird error when submitting a score (score is still updated tho)
+- Button retry from modal to redo the same console map
+
 Ideas
 - Use Link params to pass the console clicked
 https://www.youtube.com/watch?v=QBLbXgeXMU8&list=WL&index=6

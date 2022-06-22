@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, SetStateAction } from 'react';
 import {
-  query, onSnapshot, collection, getFirestore,
+  query, onSnapshot, collection, getFirestore, orderBy, limit,
 } from 'firebase/firestore';
 
 export default function Leaderboards() {
-  const [scores, setScores] = useState([]);
+  const [scores, setScores] = useState<object[]>([]);
 
   useEffect(() => {
-    retrieveScoresFromDatabase();
+    fetchScoresFromDatabase();
   }, []);
 
-  const retrieveScoresFromDatabase = () => {
-    const databaseQuery = query(collection(getFirestore(), 'highscores'));
+  const fetchScoresFromDatabase = () => {
+    const databaseQuery = query(
+      collection(getFirestore(), 'highscores'),
+      orderBy('score', 'asc'),
+      limit(50),
+    );
 
     onSnapshot(databaseQuery, (snapshot) => {
       snapshot.docs.forEach((doc) => {
-        setScores((prevScores) => {
-          console.log(prevScores);
-          return [...prevScores, { ...doc.data() }];
-        });
+        setScores((prevScores: SetStateAction<object[]>) => [
+          ...prevScores as [], { ...doc.data() },
+        ]);
       });
     });
   };

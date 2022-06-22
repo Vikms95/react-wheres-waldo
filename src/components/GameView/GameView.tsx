@@ -22,14 +22,15 @@ interface Props{
 export default function GameView(props: Props) {
   const { consoleName } = props;
 
-  const [validatedCharacters, setValidatedCharacters] = useState<string[]>([]);
+  const [validatedCharacters, setValidatedCharacters] = useState<string[]>(['', '', '']);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [playerAlias, setPlayerAlias] = useState('');
 
-  const dropdownRef = useRef<HTMLInputElement>(null);
+  const dropdown = useRef<HTMLInputElement>(null);
   const intervalId = useRef<NodeJS.Timer | null>(null);
+  // const modal = useRef<React.LegacyRef<HTMLElement> | undefined>(null);
 
   useEffect(() => {
     intervalId.current = setInterval(incrementTimer, 1000);
@@ -58,10 +59,10 @@ export default function GameView(props: Props) {
    * Moves dropdown to click coordinates
    */
   const moveDropdownOnClick = (coordsY: number, coordsX: number) => {
-    if (dropdownRef.current !== null) {
-      dropdownRef.current.style.display = 'flex';
-      dropdownRef.current.style.top = `${coordsY}px`;
-      dropdownRef.current.style.left = `${coordsX}px`;
+    if (dropdown.current !== null) {
+      dropdown.current.style.display = 'flex';
+      dropdown.current.style.top = `${coordsY}px`;
+      dropdown.current.style.left = `${coordsX}px`;
     }
   };
 
@@ -75,7 +76,7 @@ export default function GameView(props: Props) {
     setLastClickedCoords([coordsX, coordsY]);
   };
 
-  const retrieveCharFromDatabase = (
+  const fetchCharFromDatabase = (
     dbSnapshot: QuerySnapshot<DocumentData>,
     characterName: string,
   ) => {
@@ -89,7 +90,7 @@ export default function GameView(props: Props) {
   ) => {
     const databaseQuery = query(collection(getFirestore(), 'coordinates'));
     onSnapshot(databaseQuery, (snapshot) => {
-      const characterToCheck = retrieveCharFromDatabase(snapshot, characterName);
+      const characterToCheck = fetchCharFromDatabase(snapshot, characterName);
 
       if (isCharPendingToValidate(characterName)
        && isClickInRange(lastClickedCoords, characterToCheck)) {
@@ -168,7 +169,7 @@ export default function GameView(props: Props) {
   return (
     <main className="gameview-container">
       <GameDropdown
-        dropdownRef={dropdownRef}
+        dropdownRef={dropdown}
         consoleName={consoleName}
         setIsLastClickValid={setIsLastClickValid}
         isLastClickValid={isLastClickValid}

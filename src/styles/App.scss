@@ -49,10 +49,10 @@ ul{
     position:absolute;
     width: 100%;
     transform: scaleX(0);
-    top: 59px;
+    top: 70px;
     height: 2px;
     left: 0;
-    transform-origin: bottom right;
+    transform-origin: bottom left;
     background-color: #ffffff;
     transition: transform .5s ease-out;
   }
@@ -112,7 +112,7 @@ ul{
   row-gap: 1.5rem;
   align-items: flex-start;
   justify-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 2fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 2fr));
 }
 
 .map-selection-container > a > img{
@@ -316,12 +316,24 @@ ul{
   padding: 3px;
   border-radius: 15px;
   background-color: $primary-color;
-  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
   min-height: 31vw;
   min-width: 36vw;
+  animation: fadein 1s;
 }
+
+ @keyframes fadein{
+  from{
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  }
+
+  to{
+    transform: translate(-50%, -100%);
+    opacity: 1;
+  }
+ }
 
 .game-win-modal{
   position: fixed;
