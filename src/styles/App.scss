@@ -9,9 +9,6 @@ body,
   height: calc(100% - 10px);
 }
 
-// *{
-//   border: 1px solid red;
-// }
 
 button{
   cursor: pointer;
@@ -133,10 +130,12 @@ ul{
   
 }
 
+
 .leaderboards-container{
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
 .leaderboards-table{
@@ -158,6 +157,7 @@ ul{
   display: grid;
   grid-template-rows: 1fr;
 }
+
 
 .gameview-container{
   position: relative;
@@ -340,10 +340,6 @@ ul{
   min-height: 30vw;
   min-width: 35vw;
   font-size: 2vw;
-
-  & > button{
-    size: 1px;
-  }
 }
 
 .timer-value{
@@ -384,8 +380,8 @@ ul{
   column-gap: 3rem;
   align-content: center;
 
-  &>button{
-    font-size: max(1.5vw, .2rem);
+  &> button{
+    font-size: max(1vw, .2rem);
     font-family: $font-family;
     width: clamp(2rem, 9vw, 10rem);
     height: 5vw;
@@ -393,6 +389,12 @@ ul{
     color: $font-color;
     border: 1px solid white;
     background-color: transparent;
+
+    &:hover{
+      background-color: white;
+      color:$primary-color;
+      border:1px solid $primary-color;
+    }
   }
 }
 
@@ -401,7 +403,7 @@ ul{
   justify-content: space-evenly;
   gap: 1rem;
 
-  &>button{
+  &> a >button{
     font-size: max(1.5vw, .2rem);
     font-family: $font-family;
     width: clamp(2.5rem, 10vw, 10rem);
@@ -414,7 +416,7 @@ ul{
 
   &>.leaderboard-button{
     width: clamp(3rem, 10vw, 10rem);
-    font-size: max(1.2vw, .2rem) ;
+    font-size: max(1.2vw, .1rem) ;
   }
 }
 

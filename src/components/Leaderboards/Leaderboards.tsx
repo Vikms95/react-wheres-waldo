@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {
+  query, onSnapshot, collection, getFirestore,
+} from 'firebase/firestore';
 
 export default function Leaderboards() {
+  const [scores, setScores] = useState([]);
+
+  useEffect(() => {
+    retrieveScoresFromDatabase();
+  }, []);
+
+  const retrieveScoresFromDatabase = () => {
+    const databaseQuery = query(collection(getFirestore(), 'highscores'));
+
+    onSnapshot(databaseQuery, (snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        setScores((prevScores) => {
+          console.log(prevScores);
+          return [...prevScores, { ...doc.data() }];
+        });
+      });
+    });
+  };
+
   return (
     <main className="leaderboards-container">
 
@@ -14,11 +36,7 @@ export default function Leaderboards() {
           <h2>Players</h2>
           <article className="player-names-container">
             <ul className="table-list">
-              <li>hi</li>
-              <li>hi</li>
-              <li>hi</li>
-              <li>hi</li>
-              <li>hi</li>
+              {scores?.map((score: any) => <div>{score.alias}</div>)}
             </ul>
           </article>
         </article>
@@ -27,11 +45,7 @@ export default function Leaderboards() {
           <h2>Scores</h2>
           <article className="player-scores-container">
             <ul className="table-list">
-              <li>hi</li>
-              <li>hi</li>
-              <li>hi</li>
-              <li>hi</li>
-              <li>hi</li>
+              {scores?.map((score: any) => <div>{score.score}</div>)}
             </ul>
           </article>
         </article>

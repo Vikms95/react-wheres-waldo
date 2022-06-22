@@ -27,7 +27,8 @@ export default function App() {
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
     const imageElement = event.target as HTMLInputElement;
-    const gameImage:string | null = imageElement.getAttribute('alt');
+    const gameImage:string | null = imageElement.getAttribute('data-type');
+
     localStorage.setItem('consoleName', gameImage as string);
     setConsoleName(gameImage);
   };

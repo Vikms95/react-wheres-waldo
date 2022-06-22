@@ -5,6 +5,7 @@ import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData, addDoc,
 } from 'firebase/firestore';
 
+import { Link } from 'react-router-dom';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
@@ -206,9 +207,15 @@ export default function GameView(props: Props) {
                   <button type="submit"> Upload score </button>
                 </form>
                 <article className="form-buttons">
-                  <button type="button" className="leaderboard-button"> Leaderboards </button>
-                  <button type="button"> Retry </button>
-                  <button type="button"> Home </button>
+                  <Link to="/leaderboards">
+                    <button type="button" className="leaderboard-button"> Leaderboards </button>
+                  </Link>
+                  <Link to="/game">
+                    <button type="button" data-type={consoleName}> Retry </button>
+                  </Link>
+                  <Link to="/">
+                    <button type="button"> Home </button>
+                  </Link>
                 </article>
               </article>
             </article>

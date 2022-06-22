@@ -50,28 +50,28 @@ export default function Homepage(props: Props) {
           data-type="super-nintendo"
           onClick={(e) => handleConsoleImage(e)}
         >
-          <img src={snes} alt="super-nintendo" />
+          <img src={snes} alt="super-nintendo" data-type="super-nintendo" />
         </Link>
         <Link
           to="/game"
           data-type="game-cube"
           onClick={(e) => handleConsoleImage(e)}
         >
-          <img src={gc} alt="game-cube" />
+          <img src={gc} alt="game-cube" data-type="game-cube" />
         </Link>
         <Link
           to="/game"
           data-type="playstation-1"
           onClick={(e) => handleConsoleImage(e)}
         >
-          <img src={ps1} alt="playstation-1" />
+          <img src={ps1} alt="playstation-1" data-type="playstation-1" />
         </Link>
         <Link
           to="/game"
           data-type="playstation-2"
           onClick={(e) => handleConsoleImage(e)}
         >
-          <img src={ps2} alt="playstation-2" />
+          <img src={ps2} alt="playstation-2" data-type="playstation-2" />
         </Link>
       </section>
 
