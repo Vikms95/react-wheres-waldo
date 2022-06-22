@@ -312,46 +312,46 @@ ul{
 }
 
 .game-win-modal-border{
-  position: fixed;
-  padding: 3px;
-  border-radius: 15px;
   background-color: $primary-color;
-  top: 50%;
-  left: 50%;
+  border-radius: 15px;
   min-height: 31vw;
   min-width: 36vw;
-  animation: fadein 1s;
+  padding: 3px;
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  margin-top: 10%;
+  transition: margin-top .5s ease-out, opacity .5s, visibility .5s linear;
 }
 
- @keyframes fadein{
-  from{
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  }
+.game-win-modal-border.show{
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0;
+  transition: margin-top .5s ease-out, opacity .5s, visibility .5s linear;
+}
 
-  to{
-    transform: translate(-50%, -100%);
-    opacity: 1;
-  }
- }
 
 .game-win-modal{
-  position: fixed;
+  font-size: 2vw;
+  color: $font-color;
+  background-color: $primary-color;
+  min-height: 30vw;
+  min-width: 35vw;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 15px;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   justify-content: center;
   justify-items: center;
   align-items: center;
-  color: $font-color;
-  background-color: $primary-color;
-  border: 1px solid rgb(255, 255, 255);
-  border-radius: 15px;
-  transform: translate(-50%, -50%);
+  position: fixed;
   top: 50%;
   left: 50%;
-  min-height: 30vw;
-  min-width: 35vw;
-  font-size: 2vw;
+  transform: translate(-50%, -50%);
 }
 
 .timer-value{

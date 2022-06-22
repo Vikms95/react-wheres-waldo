@@ -22,11 +22,11 @@ interface Props{
 export default function GameView(props: Props) {
   const { consoleName } = props;
 
-  const [validatedCharacters, setValidatedCharacters] = useState<string[]>(['', '', '']);
-  const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
-  const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [playerAlias, setPlayerAlias] = useState('');
+  const [isLastClickValid, setIsLastClickValid] = useState(false);
+  const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
+  const [validatedCharacters, setValidatedCharacters] = useState<string[]>([]);
 
   const dropdown = useRef<HTMLInputElement>(null);
   const intervalId = useRef<NodeJS.Timer | null>(null);
@@ -168,6 +168,7 @@ export default function GameView(props: Props) {
 
   return (
     <main className="gameview-container">
+
       <GameDropdown
         dropdownRef={dropdown}
         consoleName={consoleName}
@@ -176,16 +177,19 @@ export default function GameView(props: Props) {
         validatedCharacters={validatedCharacters}
         checkCoordinatesOnDatabase={checkCoordinatesOnDatabase}
       />
+
       { (validatedCharacters.length === 3)
         && (
           <Modal
             timeElapsed={timeElapsed}
-            submitScoreToDatabase={submitScoreToDatabase}
             playerAlias={playerAlias}
-            handleInputChange={handleInputChange}
             consoleName={consoleName}
+            validatedCharacters={validatedCharacters}
+            handleInputChange={handleInputChange}
+            submitScoreToDatabase={submitScoreToDatabase}
           />
         )}
+
       <section className="characters-container">
         {renderCharacterImages()}
       </section>
