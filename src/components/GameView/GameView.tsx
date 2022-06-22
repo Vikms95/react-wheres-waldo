@@ -5,7 +5,6 @@ import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData, addDoc,
 } from 'firebase/firestore';
 
-import { Link } from 'react-router-dom';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
@@ -13,6 +12,7 @@ import gc from '../../assets/gamecube.jpg';
 import formatTimer from '../../utils/formatTimer';
 import capitalizeString from '../../utils/capitalizeString';
 import GameDropdown from '../GameDropdown/GameDropdown';
+import Modal from '../Modal/Modal';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 
 interface Props{
@@ -178,49 +178,13 @@ export default function GameView(props: Props) {
       />
       { (validatedCharacters.length === 3)
         && (
-          <section className="background-brightness-wrapper">
-            <article className="game-win-modal-border">
-              <article className="game-win-modal">
-                <article className="score-display">
-                  Your score is:
-                  {' '}
-                  <span className="timer-value">
-                    {formatTimer(timeElapsed.toString())}
-                  </span>
-                </article>
-                <form
-                  className="alias-form"
-                  onSubmit={(e) => submitScoreToDatabase(e, playerAlias)}
-                >
-
-                  <label htmlFor="score" className="form-input">
-                    Enter alias
-                    <input
-                      id="score"
-                      type="text"
-                      value={playerAlias}
-                      onChange={handleInputChange}
-                      placeholder="Your alias here ..."
-                    />
-                    <hr className="input-hr" />
-                  </label>
-
-                  <button type="submit"> Upload score </button>
-                </form>
-                <article className="form-buttons">
-                  <Link to="/leaderboards">
-                    <button type="button" className="leaderboard-button"> Leaderboards </button>
-                  </Link>
-                  <Link to="/game">
-                    <button type="button" data-type={consoleName}> Retry </button>
-                  </Link>
-                  <Link to="/">
-                    <button type="button"> Home </button>
-                  </Link>
-                </article>
-              </article>
-            </article>
-          </section>
+          <Modal
+            timeElapsed={timeElapsed}
+            submitScoreToDatabase={submitScoreToDatabase}
+            playerAlias={playerAlias}
+            handleInputChange={handleInputChange}
+            consoleName={consoleName}
+          />
         )}
       <section className="characters-container">
         {renderCharacterImages()}

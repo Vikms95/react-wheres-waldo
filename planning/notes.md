@@ -65,6 +65,7 @@ Take timer score from gameView --> -->
 
 - Implement animations to modal
 - Multiple fetches on VSC reload
+- Add one leaderboard per map
 - CSS format and make responsive the Homepage, Leaderboards and the Game
 - Place markers on the map when the char click is correct
 - Fix weird error when submitting a score (score is still updated tho)
