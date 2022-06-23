@@ -1,8 +1,5 @@
 @import './variables.scss';
 
-*{
-  outline: 1px solid green;
-}
 
 html,
 body,
@@ -144,7 +141,7 @@ ul{
   color: $font-color;
   background-color:$secondary-color;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   justify-items: center;
   align-items: center;
   text-align-last: center;

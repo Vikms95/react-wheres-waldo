@@ -1,13 +1,11 @@
 import './styles/App.scss';
 import React, { useEffect, useState } from 'react';
-import {
-  HashRouter, Routes, Route,
-} from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
-import Navbar from './components/Navbar/Navbar';
-import Homepage from './components/Homepage/Homepage';
-import Leaderboards from './components/Leaderboards/Leaderboards';
-import GameView from './components/GameView/GameView';
+import Navbar from './components/Navbar';
+import Homepage from './components/Homepage';
+import Leaderboards from './components/Leaderboards';
+import GameView from './components/GameView';
 import LeaderboardMenu from './components/Leaderboards/LeaderboardMenu';
 import saveCoordinatesToDatabase from './utils/setupDatabase';
 

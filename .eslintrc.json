@@ -22,8 +22,8 @@
     "rules": {
       "no-unused-vars": 0,
       "no-use-before-define": "off",
-      "jsx-a11y/no-noninteractive-element-interactions": "off",
       "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-noninteractive-element-interactions": "off",
       "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
       "import/extensions": [
         "error",

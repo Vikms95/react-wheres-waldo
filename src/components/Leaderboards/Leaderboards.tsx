@@ -2,6 +2,8 @@ import React, { useState, useEffect, SetStateAction } from 'react';
 import {
   query, onSnapshot, collection, getFirestore, orderBy, limit,
 } from 'firebase/firestore';
+// @ts-ignore
+import uniqid from 'uniqid';
 import Score from './Score';
 import getCurrentDate from '../../utils/getCurrentDate';
 
@@ -39,6 +41,7 @@ export default function Leaderboards(props: Props) {
     return scores.filter((score: any) => (score.date === today))
       .map((score: any) => (
         <Score
+          key={uniqid()}
           alias={score.alias}
           score={score.score}
         />
@@ -79,6 +82,7 @@ export default function Leaderboards(props: Props) {
         <section className="leaderboards-table">
           {scores.map((score: any) => (
             <Score
+              key={uniqid()}
               alias={score.alias}
               score={score.score}
             />

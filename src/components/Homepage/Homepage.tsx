@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';

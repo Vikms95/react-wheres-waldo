@@ -70,19 +70,18 @@ Take timer score from gameView --> -->
   :check if some functions can be passed down to those components
    -->
 
-- Give keys to each mapped element/component
+<!-- - Give keys to each mapped element/component -->
+<!-- - CSS format and make responsive Leaderboards -->
+<!-- - Fix weird error when submitting a score (score is still updated tho) -->
+<!-- - Filter leaderboards by today's date -->
+- Create a base module to import from
 - Make database adding and fetching reusable
-- CSS format and make responsive Leaderboards
 - Implement google sign in and use Google name for the leaderboards
-- Fix weird error when submitting a score (score is still updated tho)
-- Button retry from modal to redo the same console map
-- Multiple fetches on VSC reload
 - Check accessible html tags
 - Use context for consoleName and handleSelectedConsole?
 - Give accessible attributes to elements
 - Write tests
-- Create a base module to import from
-- Filter leaderboards by today's date
+- Refactor CSS into mixins and reusable variables
 
 Ideas
 - Use Link params to pass the console clicked
