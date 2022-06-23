@@ -1,16 +1,14 @@
-import React, {
-  useState, useEffect, useRef, SyntheticEvent, FormEvent, SetStateAction,
-} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
 import {
-  query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData, addDoc,
+  query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData,
 } from 'firebase/firestore';
 
-import formatTimer from '../../utils/formatTimer';
-import capitalizeString from '../../utils/capitalizeString';
 import Modal from '../Modal/Modal';
-import GameDropdown from '../GameDropdown/GameDropdown';
+import GameTimer from './GameTimer';
 import GameImage from './GameImage';
-import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
+import GameCharImages from './GameCharImages';
+import GameDropdown from '../GameDropdown/GameDropdown';
 
 interface Props{
   selectedConsole: string | null
@@ -20,7 +18,6 @@ export default function GameView(props: Props) {
   const { selectedConsole: consoleName } = props;
 
   const [timeElapsed, setTimeElapsed] = useState(0);
-  const [playerAlias, setPlayerAlias] = useState('');
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
   const [validatedChars, setValidatedChars] = useState<string[]>([]);
@@ -47,11 +44,6 @@ export default function GameView(props: Props) {
     setTimeElapsed((prevTimeElapsed) => prevTimeElapsed + 1);
   };
 
-  const handleInputChange = (event: MouseEvent | SyntheticEvent) => {
-    const inputElement = event.target as HTMLInputElement;
-    setPlayerAlias(inputElement.value);
-  };
-
   /**
    * Moves dropdown to click coordinates
    */
@@ -73,6 +65,10 @@ export default function GameView(props: Props) {
     setLastClickedCoords([coordsX, coordsY]);
   };
 
+  /**
+   * Fetches character coordinates from database
+   * based on the passed name
+   */
   const fetchCharFromDatabase = (
     dbSnapshot: QuerySnapshot<DocumentData>,
     characterName: string,
@@ -82,7 +78,6 @@ export default function GameView(props: Props) {
   };
 
   const checkCoordinatesOnDatabase = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     characterName: string,
   ) => {
     const databaseQuery = query(collection(getFirestore(), 'coordinates'));
@@ -100,23 +95,6 @@ export default function GameView(props: Props) {
       // TODO change with ref
       document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');
     }
-  };
-
-  const submitScoreToDatabase = async (
-    e: FormEvent<HTMLFormElement>,
-    name: string,
-    consoleToSubmit: string | null,
-  ) => {
-    e.preventDefault();
-    const time = formatTimer(timeElapsed.toString());
-    const alias = name || 'Anonymous';
-
-    try {
-      await addDoc(collection(getFirestore(), `highscores-${consoleToSubmit}`), { alias, score: time });
-    } catch (err) {
-      console.log(err);
-    }
-    setPlayerAlias('');
   };
 
   const isClickValid = (characterName: string, characterToCheck: any) => (
@@ -148,53 +126,35 @@ export default function GameView(props: Props) {
    * values based on the registered click coordinates
    *
    */
-  const renderGameDropdown = (
-    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-  ) => {
+  const renderGameDropdown = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     setIsLastClickValid(false);
     moveDropdownOnClick((e.pageY - 80), e.pageX);
     storeLastClickedCoords(e);
   };
 
-  const renderCharacterImages = () => (
-    getConsoleCharacterData(consoleName).map(({ image, name }) => (
-      <div key={name} className="character-data-container">
-        <span className="character-name">{capitalizeString(name)}</span>
-        <img src={image} alt={name} className="character-image" />
-      </div>
-    ))
-  );
-
   return (
     <main className="gameview-container">
-
       <GameDropdown
         dropdownRef={dropdown}
         consoleName={consoleName}
-        setIsLastClickValid={setIsLastClickValid}
         isLastClickValid={isLastClickValid}
         validatedCharacters={validatedChars}
+        setIsLastClickValid={setIsLastClickValid}
         checkCoordinatesOnDatabase={checkCoordinatesOnDatabase}
       />
-
       { (isGameWin())
         && (
           <Modal
             timeElapsed={timeElapsed}
-            playerAlias={playerAlias}
             consoleName={consoleName}
-            validatedCharacters={validatedChars}
-            handleInputChange={handleInputChange}
-            submitScoreToDatabase={submitScoreToDatabase}
           />
         )}
-
-      <section className="characters-container">
-        {renderCharacterImages()}
-      </section>
-      <section className="timer-container">
-        {formatTimer(timeElapsed.toString())}
-      </section>
+      <GameCharImages
+        consoleName={consoleName}
+      />
+      <GameTimer
+        timeElapsed={timeElapsed}
+      />
       <GameImage
         consoleName={consoleName}
         renderGameDropdown={renderGameDropdown}

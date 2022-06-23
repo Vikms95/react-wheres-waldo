@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
@@ -11,7 +11,6 @@ interface Props{
   isLastClickValid: boolean
   setIsLastClickValid: React.Dispatch<React.SetStateAction<boolean>>
   checkCoordinatesOnDatabase: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     characterName: string) => void
 }
 

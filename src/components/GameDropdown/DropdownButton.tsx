@@ -4,7 +4,6 @@ import capitalizeString from '../../utils/capitalizeString';
 interface Props {
   name: string
   checkCoordinatesOnDatabase: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     characterName: string
   ) => void
 }
@@ -16,7 +15,7 @@ function DropdownButton(props: Props) {
       <button
         type="button"
         className="character-name"
-        onClick={(e) => checkCoordinatesOnDatabase(e, name)}
+        onClick={() => checkCoordinatesOnDatabase(name)}
       >
         {capitalizeString(name)}
       </button>

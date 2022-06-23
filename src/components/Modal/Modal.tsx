@@ -1,38 +1,52 @@
 import React, {
-  FormEvent, LegacyRef, SyntheticEvent, useEffect, useRef,
+  FormEvent, SyntheticEvent, useEffect, useRef, useState,
 } from 'react';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import formatTimer from '../../utils/formatTimer';
 
 interface Props{
     timeElapsed: number
-    playerAlias: string
     consoleName: string | null
-    validatedCharacters: string[]
-    handleInputChange: (event: MouseEvent | SyntheticEvent) => void
-    submitScoreToDatabase: (
-      e: FormEvent<HTMLFormElement>,
-      name: string,
-      consoleToSubmit: string | null) => Promise<void>
 }
 
 function Modal(props: Props) {
   const {
     timeElapsed,
-    playerAlias,
     consoleName,
-    validatedCharacters,
-    handleInputChange,
-    submitScoreToDatabase,
   } = props;
+
+  const [playerAlias, setPlayerAlias] = useState('');
 
   const modalRef = useRef<any>(null);
 
   useEffect(() => {
-    if (validatedCharacters.length === 3 && modalRef.current) {
+    if (modalRef.current) {
       modalRef.current.classList.add('show');
     }
   });
+
+  const handleInputChange = (event: MouseEvent | SyntheticEvent) => {
+    const inputElement = event.target as HTMLInputElement;
+    setPlayerAlias(inputElement.value);
+  };
+
+  const submitScoreToDatabase = async (
+    e: FormEvent<HTMLFormElement>,
+    name: string,
+    consoleToSubmit: string | null,
+  ) => {
+    e.preventDefault();
+    const time = formatTimer(timeElapsed.toString());
+    const alias = name || 'Anonymous';
+
+    try {
+      await addDoc(collection(getFirestore(), `highscores-${consoleToSubmit}`), { alias, score: time });
+    } catch (err) {
+      console.log('Error submiting your score to the database', err);
+    }
+    setPlayerAlias('');
+  };
 
   return (
     <section className="background-brightness-wrapper">
