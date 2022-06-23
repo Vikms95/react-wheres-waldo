@@ -88,7 +88,8 @@ export default function GameView(props: Props) {
     dbSnapshot: QuerySnapshot<DocumentData>,
     characterName: string,
   ) => {
-    const data = dbSnapshot.docs[0].data().characterCoordinates;
+    console.log(dbSnapshot);
+    const data = dbSnapshot.docs[0].data().objectToSubmit;
     return data[consoleName as string][characterName];
   };
 

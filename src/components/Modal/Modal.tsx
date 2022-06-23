@@ -2,7 +2,8 @@ import React, {
   FormEvent, SyntheticEvent, useEffect, useRef, useState,
 } from 'react';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import { Link } from 'react-router-dom';
+import ModalButtons from './ModalButtons';
+import ModalForm from './ModalForm';
 import formatTimer from '../../utils/formatTimer';
 
 interface Props{
@@ -57,6 +58,7 @@ function Modal(props: Props) {
     <section className="background-brightness-wrapper">
       <article className="game-win-modal-border" ref={modalRef}>
         <article className="game-win-modal">
+
           <article className="score-display">
             Your score is:
             {' '}
@@ -64,51 +66,18 @@ function Modal(props: Props) {
               {formatTimer(timeElapsed.toString())}
             </span>
           </article>
-          <form
-            className="alias-form"
-            onSubmit={(e) => submitScoreToDatabase(e, playerAlias, consoleName)}
-          >
 
-            <label
-              htmlFor="score"
-              className="form-input"
-            >
-              Enter alias
-              <input
-                id="score"
-                type="text"
-                value={playerAlias}
-                onChange={handleInputChange}
-                placeholder="Your alias here ..."
-              />
-              <hr className="input-hr" />
-            </label>
+          <ModalForm
+            playerAlias={playerAlias}
+            consoleName={consoleName}
+            handleInputChange={handleInputChange}
+            submitScoreToDatabase={submitScoreToDatabase}
+          />
 
-            <button type="submit"> Upload score </button>
-          </form>
-          <article className="form-buttons">
-            <Link to="/leaderboards">
-              <button
-                type="button"
-                className="leaderboard-button"
-              >
-                {' '}
-                Leaderboards
-              </button>
-            </Link>
-            <Link to="/game">
-              <button
-                type="button"
-                data-type={consoleName}
-              >
-                {' '}
-                Retry
-              </button>
-            </Link>
-            <Link to="/">
-              <button type="button"> Home </button>
-            </Link>
-          </article>
+          <ModalButtons
+            consoleName={consoleName}
+          />
+
         </article>
       </article>
     </section>

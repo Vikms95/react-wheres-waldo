@@ -38,13 +38,11 @@ const characterCoordinates = {
 };
 
 /**
- * Sets up character positions data only when the collection does not exist
+ * Sets up character positions data
  */
 const saveCoordinatesToDatabase = () => {
-  const consoleNames = ['super-nintendo', 'game-cube', 'playstation-1', 'playstation-2'];
-
+  // We check if the database is in existence, and only create it if it does not exist
   onSnapshot(query(collection(getFirestore(), 'coordinates')), async (snapshot) => {
-    // Only setup the database if no database is created
     if (snapshot.docs.length === 0) {
       try {
         await addDoc(collection(getFirestore(), 'coordinates'), { characterCoordinates });
@@ -53,10 +51,6 @@ const saveCoordinatesToDatabase = () => {
       }
     }
   });
-};
-
-const saveItemToDatabase = () => {
-
 };
 
 export default saveCoordinatesToDatabase;
