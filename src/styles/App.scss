@@ -1,5 +1,9 @@
 @import './variables.scss';
 
+*{
+  outline: 1px solid green;
+}
+
 html,
 body,
 #root,
@@ -140,17 +144,20 @@ ul{
   color: $font-color;
   background-color:$secondary-color;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   justify-items: center;
-  justify-content: center;
   align-items: center;
-  height: 100%;
-  padding: 0 3rem;
+  text-align-last: center;
+  min-height: 100%;
+  & > article > h2 {
+    display: flex;
+    justify-content: center;
+  }
 
   & > article > a > img{
-    height: auto;
-    width: max(15vw, 5rem);
     border-radius: 15px;
+    height: auto;
+    width: max(5rem, 18vw);
     box-shadow: 0px 5px 20px 1px;
     transition: transform .3s, box-shadow 1s;
 
@@ -247,6 +254,13 @@ ul{
   position: fixed;
   left: 5%;
   top: 15%;
+}
+
+@media (max-width: 515px){
+  .characters-container,
+  .timer-container{
+    margin-top: 20%;
+  }
 }
 
 .character-data-container{
