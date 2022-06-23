@@ -3,16 +3,21 @@ import {
   query, onSnapshot, collection, getFirestore, orderBy, limit,
 } from 'firebase/firestore';
 
-export default function Leaderboards() {
+interface Props{
+  selectedConsole: string
+}
+
+export default function Leaderboards(props: Props) {
+  const { selectedConsole } = props;
   const [scores, setScores] = useState<object[]>([]);
 
   useEffect(() => {
-    fetchScoresFromDatabase();
+    fetchScoresFromDatabase(selectedConsole);
   }, []);
 
-  const fetchScoresFromDatabase = () => {
+  const fetchScoresFromDatabase = (consoleName: string) => {
     const databaseQuery = query(
-      collection(getFirestore(), 'highscores'),
+      collection(getFirestore(), `highscores-${consoleName}`),
       orderBy('score', 'asc'),
       limit(50),
     );

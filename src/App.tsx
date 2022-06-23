@@ -8,6 +8,7 @@ import Navbar from './components/Navbar/Navbar';
 import Homepage from './components/Homepage/Homepage';
 import Leaderboards from './components/Leaderboards/Leaderboards';
 import GameView from './components/GameView/GameView';
+import LeaderboardMenu from './components/Leaderboards/LeaderboardMenu';
 import saveCoordinatesToDatabase from './utils/setupDatabase';
 
 export default function App() {
@@ -48,7 +49,11 @@ export default function App() {
           />
           <Route
             path="/leaderboards"
-            element={<Leaderboards />}
+            element={(
+              <LeaderboardMenu
+                handleConsoleImage={handleConsoleImage}
+              />
+)}
           />
           <Route
             path="/game"

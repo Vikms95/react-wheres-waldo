@@ -10,7 +10,10 @@ interface Props{
     consoleName: string | null
     validatedCharacters: string[]
     handleInputChange: (event: MouseEvent | SyntheticEvent) => void
-    submitScoreToDatabase: (e: FormEvent<HTMLFormElement>, name: string) => Promise<void>
+    submitScoreToDatabase: (
+      e: FormEvent<HTMLFormElement>,
+      name: string,
+      consoleToSubmit: string | null) => Promise<void>
 }
 
 function Modal(props: Props) {
@@ -44,7 +47,7 @@ function Modal(props: Props) {
           </article>
           <form
             className="alias-form"
-            onSubmit={(e) => submitScoreToDatabase(e, playerAlias)}
+            onSubmit={(e) => submitScoreToDatabase(e, playerAlias, consoleName)}
           >
 
             <label

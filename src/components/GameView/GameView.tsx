@@ -30,7 +30,6 @@ export default function GameView(props: Props) {
 
   const dropdown = useRef<HTMLInputElement>(null);
   const intervalId = useRef<NodeJS.Timer | null>(null);
-  // const modal = useRef<React.LegacyRef<HTMLElement> | undefined>(null);
 
   useEffect(() => {
     intervalId.current = setInterval(incrementTimer, 1000);
@@ -107,13 +106,14 @@ export default function GameView(props: Props) {
   const submitScoreToDatabase = async (
     e: FormEvent<HTMLFormElement>,
     name: string,
+    consoleToSubmit: string | null,
   ) => {
     e.preventDefault();
     const time = formatTimer(timeElapsed.toString());
     const alias = name || 'Anonymous';
 
     try {
-      await addDoc(collection(getFirestore(), 'highscores'), { alias, score: time });
+      await addDoc(collection(getFirestore(), `highscores-${consoleToSubmit}`), { alias, score: time });
     } catch (err) {
       console.log(err);
     }
