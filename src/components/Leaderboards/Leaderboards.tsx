@@ -37,30 +37,55 @@ export default function Leaderboards(props: Props) {
   const renderTodaysScores = () => {
     const today = getCurrentDate();
     return scores.filter((score: any) => (score.date === today))
-      .map((score: any) => <Score alias={score.alias} score={score} />);
+      .map((score: any) => (
+        <Score
+          alias={score.alias}
+          score={score.score}
+        />
+      ));
   };
 
   return (
     <main className="leaderboards-container">
-      <h1 className="leaderboards-title">
-        Leaderboards
-      </h1>
+      <section className="leaderboard-container">
 
-      <div className="table-headers">
-        <h2>Player</h2>
-        <h2>Score</h2>
-      </div>
-      <section className="today-scores">
-        {renderTodaysScores()}
+        <h1>
+          Last scores
+          <hr />
+        </h1>
+
+        <div className="table-headers">
+          <h2>Player</h2>
+          <h2>Score</h2>
+        </div>
+
+        <section className="leaderboards-table">
+          {renderTodaysScores()}
+        </section>
       </section>
-      <section className="leaderboards-table">
-        {scores.map((score: any) => (
-          <Score
-            alias={score.alias}
-            score={score.score}
-          />
-        ))}
+
+      <section className="leaderboard-container">
+
+        <h1>
+          All-time scores
+          <hr />
+
+        </h1>
+        <div className="table-headers">
+          <h2>Player</h2>
+          <h2>Score</h2>
+        </div>
+
+        <section className="leaderboards-table">
+          {scores.map((score: any) => (
+            <Score
+              alias={score.alias}
+              score={score.score}
+            />
+          ))}
+        </section>
       </section>
+
     </main>
   );
 }
