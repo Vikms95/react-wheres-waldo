@@ -16,39 +16,50 @@ function LeaderboardMenu(props: Props) {
 
   return (
     <section className="leaderboard-selection-container">
+      <article>
+        <h2>Super Nintendo</h2>
+        <Link
+          to="/super-nintendo"
+          data-type="super-nintendo"
+          onClick={(e) => handleConsoleImage(e)}
+        >
+          <img src={snes} alt="super-nintendo" data-type="super-nintendo" />
+        </Link>
+      </article>
 
-      <Link
-        to="/super-nintendo"
-        data-type="super-nintendo"
-        onClick={(e) => handleConsoleImage(e)}
-      >
-        <h2 data-type="super-nintendo">Super Nintendo</h2>
-        <img src={snes} alt="super-nintendo" data-type="super-nintendo" />
-      </Link>
-      <Link
-        to="/game-cube"
-        data-type="game-cube"
-        onClick={(e) => handleConsoleImage(e)}
-      >
-        <h2 data-type="game-cube">Gamecube</h2>
-        <img src={gc} alt="game-cube" data-type="game-cube" />
-      </Link>
-      <Link
-        to="/playstation-1"
-        data-type="playstation-1"
-        onClick={(e) => handleConsoleImage(e)}
-      >
-        <h2 data-type="playstation-1">Playstation 1</h2>
-        <img src={ps1} alt="playstation-1" data-type="playstation-1" />
-      </Link>
-      <Link
-        to="/playstation-2"
-        data-type="playstation-2"
-        onClick={(e) => handleConsoleImage(e)}
-      >
-        <h2 data-type="playstation-2">Playstation 2</h2>
-        <img src={ps2} alt="playstation-2" data-type="playstation-2" />
-      </Link>
+      <article>
+        <h2>Gamecube</h2>
+        <Link
+          to="/game-cube"
+          data-type="game-cube"
+          onClick={(e) => handleConsoleImage(e)}
+        >
+          <img src={gc} alt="game-cube" data-type="game-cube" />
+        </Link>
+
+      </article>
+      <article>
+
+        <h2>Playstation 1</h2>
+        <Link
+          to="/playstation-1"
+          data-type="playstation-1"
+          onClick={(e) => handleConsoleImage(e)}
+        >
+          <img src={ps1} alt="playstation-1" data-type="playstation-1" />
+        </Link>
+      </article>
+
+      <article>
+        <h2>Playstation 2</h2>
+        <Link
+          to="/playstation-2"
+          data-type="playstation-2"
+          onClick={(e) => handleConsoleImage(e)}
+        >
+          <img src={ps2} alt="playstation-2" data-type="playstation-2" />
+        </Link>
+      </article>
 
     </section>
   );

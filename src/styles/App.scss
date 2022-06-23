@@ -134,6 +134,8 @@ ul{
 
 
 .leaderboard-selection-container{
+  color: $font-color;
+  background-color:$secondary-color;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
@@ -141,7 +143,7 @@ ul{
   align-items: center;
   height: 100%;
 
-  & > a > img{
+  & > article > a > img{
     height: auto;
     width: max(15vw, 5rem);
     border-radius: 15px;

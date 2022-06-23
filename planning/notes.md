@@ -64,11 +64,11 @@ Take timer score from gameView --> -->
 <!-- - Make chars div vertical so it does not overlap with the photo and the alignment looks better? -->
 
 <!-- - Implement animations to modal -->
-- Add one leaderboard per map
+<!-- - Add one leaderboard per map -->
+- Place markers on the map when the char click is correct
 - Multiple fetches on VSC reload
 - Implement google sign in and use Google name for the leaderboards
 - CSS format and make responsive the Homepage, Leaderboards and the Game
-- Place markers on the map when the char click is correct
 - Fix weird error when submitting a score (score is still updated tho)
 - Button retry from modal to redo the same console map
 
