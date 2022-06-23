@@ -15,13 +15,14 @@ function LeaderboardMenu(props: Props) {
   const { handleSelectedConsole: handleConsoleImage, selectedConsole } = props;
 
   return (
-    <section className="map-selection-container">
+    <section className="leaderboard-selection-container">
 
       <Link
         to="/super-nintendo"
         data-type="super-nintendo"
         onClick={(e) => handleConsoleImage(e)}
       >
+        <h2 data-type="super-nintendo">Super Nintendo</h2>
         <img src={snes} alt="super-nintendo" data-type="super-nintendo" />
       </Link>
       <Link
@@ -29,6 +30,7 @@ function LeaderboardMenu(props: Props) {
         data-type="game-cube"
         onClick={(e) => handleConsoleImage(e)}
       >
+        <h2 data-type="game-cube">Gamecube</h2>
         <img src={gc} alt="game-cube" data-type="game-cube" />
       </Link>
       <Link
@@ -36,6 +38,7 @@ function LeaderboardMenu(props: Props) {
         data-type="playstation-1"
         onClick={(e) => handleConsoleImage(e)}
       >
+        <h2 data-type="playstation-1">Playstation 1</h2>
         <img src={ps1} alt="playstation-1" data-type="playstation-1" />
       </Link>
       <Link
@@ -43,6 +46,7 @@ function LeaderboardMenu(props: Props) {
         data-type="playstation-2"
         onClick={(e) => handleConsoleImage(e)}
       >
+        <h2 data-type="playstation-2">Playstation 2</h2>
         <img src={ps2} alt="playstation-2" data-type="playstation-2" />
       </Link>
 

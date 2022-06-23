@@ -101,7 +101,7 @@ ul{
 
 
 .instructions-text{
-  font-size: 1.2em;
+  font-size: max(1.2em, 1.2vw);
   padding: .5rem 2rem;
   line-height: 1.4em;
 }
@@ -110,26 +110,51 @@ ul{
   flex: 1 1 auto;
   display: grid;
   row-gap: 1.5rem;
+  column-gap: 1.5rem;
   align-items: flex-start;
   justify-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 2fr));
+  // grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  &> a > img{
+    height: auto;
+    width: clamp(5rem, 22vw, 18rem);
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px 1px;
+    transition: transform .3s, box-shadow 1s;
+
+    &:hover{
+      cursor: pointer;
+      transform: translateX(-3px) translateY(-3px);
+      box-shadow:0 2px 10px 0 white; 
+    }
+  }
 }
 
-.map-selection-container > a > img{
-  height: auto;
-  width: 10rem;
-  border-radius: 15px;
-  box-shadow: 0px 5px 20px 1px;
-  transition: transform .3s, box-shadow 1s;
+
+.leaderboard-selection-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  & > a > img{
+    height: auto;
+    width: max(15vw, 5rem);
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px 1px;
+    transition: transform .3s, box-shadow 1s;
 
   &:hover{
     cursor: pointer;
     transform: translateX(-3px) translateY(-3px);
     box-shadow:0 2px 10px 0 white; 
   }
-  
+  }
 }
-
 
 .leaderboards-container{
   display: flex;
@@ -324,14 +349,14 @@ ul{
   left: 50%;
   transform: translate(-50%,-50%);
   margin-top: 10%;
-  transition: margin-top .5s ease-out, opacity .5s, visibility .5s linear;
+  transition: margin-top .5s ease-out, opacity .8s, visibility .5s linear;
 }
 
 .game-win-modal-border.show{
   opacity: 1;
   visibility: visible;
   margin-top: 0;
-  transition: margin-top .5s ease-out, opacity .5s, visibility .5s linear;
+  transition: margin-top .5s ease-out, opacity .8s, visibility .5s linear;
 }
 
 

@@ -59,7 +59,7 @@ export default function App() {
           />
           <Route
             path={`/${selectedConsole}`}
-            element={<Leaderboards selectedConsole={`${selectedConsole}`} />}
+            element={<Leaderboards selectedConsole={selectedConsole} />}
           />
 
           <Route

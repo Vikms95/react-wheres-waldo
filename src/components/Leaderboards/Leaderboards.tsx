@@ -4,7 +4,7 @@ import {
 } from 'firebase/firestore';
 
 interface Props{
-  selectedConsole: string
+  selectedConsole: string | null
 }
 
 export default function Leaderboards(props: Props) {
@@ -15,8 +15,7 @@ export default function Leaderboards(props: Props) {
     fetchScoresFromDatabase(selectedConsole);
   }, []);
 
-  const fetchScoresFromDatabase = (consoleName: string) => {
-    console.log(consoleName);
+  const fetchScoresFromDatabase = (consoleName: string | null) => {
     const databaseQuery = query(
       collection(getFirestore(), `highscores-${consoleName}`),
       orderBy('score', 'asc'),
