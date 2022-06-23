@@ -12,7 +12,7 @@ import LeaderboardMenu from './components/Leaderboards/LeaderboardMenu';
 import saveCoordinatesToDatabase from './utils/setupDatabase';
 
 export default function App() {
-  const [consoleName, setConsoleName] = useState<string | null>(
+  const [selectedConsole, setSelectedConsole] = useState<string | null>(
     localStorage.getItem('consoleName') || '',
   );
 
@@ -31,7 +31,7 @@ export default function App() {
     const gameImage:string | null = imageElement.getAttribute('data-type');
 
     localStorage.setItem('consoleName', gameImage as string);
-    setConsoleName(gameImage);
+    setSelectedConsole(gameImage);
   };
 
   return (
@@ -48,9 +48,10 @@ export default function App() {
 )}
           />
           <Route
-            path="/leaderboards"
+            path="/leaderboards/*"
             element={(
               <LeaderboardMenu
+                selectedConsole={selectedConsole}
                 handleConsoleImage={handleConsoleImage}
               />
 )}
@@ -59,7 +60,7 @@ export default function App() {
             path="/game"
             element={(
               <GameView
-                consoleName={consoleName}
+                consoleName={selectedConsole}
               />
 )}
           />
