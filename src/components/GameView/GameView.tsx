@@ -66,17 +66,9 @@ export default function GameView(props: Props) {
   };
 
   /**
-   * Fetches character coordinates from database
-   * based on the passed name
+   * Queries an instance of the coordinates collection to
+   * later check on the clicked character name
    */
-  const fetchCharFromDatabase = (
-    dbSnapshot: QuerySnapshot<DocumentData>,
-    characterName: string,
-  ) => {
-    const data = dbSnapshot.docs[0].data().characterCoordinates;
-    return data[consoleName as string][characterName];
-  };
-
   const checkCoordinatesOnDatabase = (
     characterName: string,
   ) => {
@@ -88,11 +80,29 @@ export default function GameView(props: Props) {
     });
   };
 
+  /**
+   * Fetches character coordinates from database
+   * based on the passed name
+   */
+  const fetchCharFromDatabase = (
+    dbSnapshot: QuerySnapshot<DocumentData>,
+    characterName: string,
+  ) => {
+    const data = dbSnapshot.docs[0].data().characterCoordinates;
+    return data[consoleName as string][characterName];
+  };
+
+  /**
+   * Checks whether the clicked coordinates are equal
+   * to the ones on the database. If that is the case,
+   * sets the char to the validated list, sets the last
+   * click as valid and increases opacity on the character image
+   */
   const checkCoordsValidity = (characterName: string, characterToCheck: any) => {
     if (isClickValid(characterName, characterToCheck)) {
       setValidatedChars((prevValidatedChars) => [...prevValidatedChars, characterName]);
       setIsLastClickValid(true);
-      // TODO change with ref
+      // TODO change with ref?
       document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');
     }
   };
@@ -124,7 +134,6 @@ export default function GameView(props: Props) {
   /**
    * Takes event as parameter and changes element's top and left
    * values based on the registered click coordinates
-   *
    */
   const renderGameDropdown = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     setIsLastClickValid(false);

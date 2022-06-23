@@ -2,7 +2,6 @@ import { initializeApp } from 'firebase/app';
 import {
   addDoc, collection, getFirestore, onSnapshot, query,
 } from 'firebase/firestore';
-import getConsoleCharacterData from './getConsoleCharactersData';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBXpredE18hwvOQufPrjZR99-bhGB7cq6g',
@@ -54,6 +53,10 @@ const saveCoordinatesToDatabase = () => {
       }
     }
   });
+};
+
+const saveItemToDatabase = () => {
+
 };
 
 export default saveCoordinatesToDatabase;

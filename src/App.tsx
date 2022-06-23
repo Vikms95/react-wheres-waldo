@@ -22,12 +22,10 @@ export default function App() {
 
   /**
    * Sets the image to use when Gameview is loaded
-   * based on the console clicked
+   * based on the console button clicked
    */
-  const handleSelectedConsole = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-  ) => {
-    const imageElement = event.target as HTMLInputElement;
+  const handleSelectedConsole = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    const imageElement = e.target as HTMLInputElement;
     const gameImage:string | null = imageElement.getAttribute('data-type');
 
     localStorage.setItem('consoleName', gameImage as string);

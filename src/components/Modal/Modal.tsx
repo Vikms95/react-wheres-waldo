@@ -37,15 +37,20 @@ function Modal(props: Props) {
     consoleToSubmit: string | null,
   ) => {
     e.preventDefault();
-    const time = formatTimer(timeElapsed.toString());
-    const alias = name || 'Anonymous';
+    const { time, alias } = getScoreInfo(name);
+    setPlayerAlias('');
 
     try {
       await addDoc(collection(getFirestore(), `highscores-${consoleToSubmit}`), { alias, score: time });
     } catch (err) {
-      console.log('Error submiting your score to the database', err);
+      console.error('Error submiting your item to the database', err);
     }
-    setPlayerAlias('');
+  };
+
+  const getScoreInfo = (name: string) => {
+    const alias = name || 'Anonymous';
+    const time = formatTimer(timeElapsed.toString());
+    return { time, alias };
   };
 
   return (
