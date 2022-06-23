@@ -5,14 +5,11 @@ import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData, addDoc,
 } from 'firebase/firestore';
 
-import snes from '../../assets/snes.jpg';
-import ps1 from '../../assets/ps1.jpg';
-import ps2 from '../../assets/ps2.jpg';
-import gc from '../../assets/gamecube.jpg';
 import formatTimer from '../../utils/formatTimer';
 import capitalizeString from '../../utils/capitalizeString';
-import GameDropdown from '../GameDropdown/GameDropdown';
 import Modal from '../Modal/Modal';
+import GameDropdown from '../GameDropdown/GameDropdown';
+import GameImage from './GameImage';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 
 interface Props{
@@ -147,21 +144,6 @@ export default function GameView(props: Props) {
   );
 
   /**
-   * Renders one of the imported images based on
-   * consoleName prop
-   */
-  const renderGameImage = (name: string | null) => {
-    const IMAGES = {
-      'super-nintendo': snes,
-      'game-cube': gc,
-      'playstation-1': ps1,
-      'playstation-2': ps2,
-    };
-
-    return IMAGES[name as keyof typeof IMAGES];
-  };
-
-  /**
    * Takes event as parameter and changes element's top and left
    * values based on the registered click coordinates
    *
@@ -213,10 +195,9 @@ export default function GameView(props: Props) {
       <section className="timer-container">
         {formatTimer(timeElapsed.toString())}
       </section>
-      <img
-        src={renderGameImage(consoleName)}
-        alt={consoleName as string}
-        onClick={(e) => renderGameDropdown(e as React.MouseEvent<HTMLImageElement>)}
+      <GameImage
+        consoleName={consoleName}
+        renderGameDropdown={renderGameDropdown}
       />
     </main>
   );
