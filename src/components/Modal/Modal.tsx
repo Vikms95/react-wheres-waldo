@@ -5,6 +5,7 @@ import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import ModalForm from './ModalForm';
 import formatTimer from '../../utils/formatTimer';
 import ModalButton from './ModalButton';
+import getCurrentDate from '../../utils/getCurrentDate';
 
 interface Props{
     timeElapsed: number
@@ -38,11 +39,12 @@ function Modal(props: Props) {
     consoleToSubmit: string | null,
   ) => {
     e.preventDefault();
-    const { time, alias } = getScoreInfo(name);
+    const { score, alias } = getScoreInfo(name);
+    const date = getCurrentDate();
     setPlayerAlias('');
 
     try {
-      await addDoc(collection(getFirestore(), `highscores-${consoleToSubmit}`), { alias, score: time });
+      await addDoc(collection(getFirestore(), `highscores-${consoleToSubmit}`), { alias, score, date });
     } catch (err) {
       console.error('Error submiting your item to the database', err);
     }
@@ -50,8 +52,8 @@ function Modal(props: Props) {
 
   const getScoreInfo = (name: string) => {
     const alias = name || 'Anonymous';
-    const time = formatTimer(timeElapsed.toString());
-    return { time, alias };
+    const score = formatTimer(timeElapsed.toString());
+    return { score, alias };
   };
 
   return (

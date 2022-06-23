@@ -32,6 +32,7 @@ function ModalForm(props: Props) {
           value={playerAlias}
           onChange={handleInputChange}
           placeholder="Your alias here ..."
+          maxLength={15}
         />
         <hr className="input-hr" />
       </label>

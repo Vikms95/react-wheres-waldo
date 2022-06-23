@@ -4,7 +4,6 @@ import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData,
 } from 'firebase/firestore';
 
-import { time } from 'console';
 import Modal from '../Modal/Modal';
 import GameTimer from './GameTimer';
 import GameImage from './GameImage';

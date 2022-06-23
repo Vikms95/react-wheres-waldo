@@ -2,6 +2,8 @@ import React, { useState, useEffect, SetStateAction } from 'react';
 import {
   query, onSnapshot, collection, getFirestore, orderBy, limit,
 } from 'firebase/firestore';
+import Score from './Score';
+import getCurrentDate from '../../utils/getCurrentDate';
 
 interface Props{
   selectedConsole: string | null
@@ -13,6 +15,7 @@ export default function Leaderboards(props: Props) {
 
   useEffect(() => {
     fetchScoresFromDatabase(selectedConsole);
+    renderTodaysScores();
   }, []);
 
   const fetchScoresFromDatabase = (consoleName: string | null) => {
@@ -31,33 +34,32 @@ export default function Leaderboards(props: Props) {
     });
   };
 
+  const renderTodaysScores = () => {
+    const today = getCurrentDate();
+    return scores.filter((score: any) => (score.date === today))
+      .map((score: any) => <Score alias={score.alias} score={score} />);
+  };
+
   return (
     <main className="leaderboards-container">
-
       <h1 className="leaderboards-title">
         Leaderboards
       </h1>
 
+      <div className="table-headers">
+        <h2>Player</h2>
+        <h2>Score</h2>
+      </div>
+      <section className="today-scores">
+        {renderTodaysScores()}
+      </section>
       <section className="leaderboards-table">
-
-        <article className="table-header">
-          <h2>Players</h2>
-          <article className="player-names-container">
-            <ul className="table-list">
-              {scores?.map((score: any) => <div>{score.alias}</div>)}
-            </ul>
-          </article>
-        </article>
-
-        <article className="table-header">
-          <h2>Scores</h2>
-          <article className="player-scores-container">
-            <ul className="table-list">
-              {scores?.map((score: any) => <div>{score.score}</div>)}
-            </ul>
-          </article>
-        </article>
-
+        {scores.map((score: any) => (
+          <Score
+            alias={score.alias}
+            score={score.score}
+          />
+        ))}
       </section>
     </main>
   );
