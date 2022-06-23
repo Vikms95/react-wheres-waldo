@@ -66,15 +66,20 @@ Take timer score from gameView --> -->
 <!-- - Implement animations to modal -->
 <!-- - Add one leaderboard per map -->
 
-- Refactor Component children into more components
+<!-- - Refactor Component children into more components
   :check if some functions can be passed down to those components
-- Make database adding and fetching reusable
+   -->
+
 - Give keys to each mapped element/component
+- Make database adding and fetching reusable
 - CSS format and make responsive the Homepage, Leaderboards and the Game
 - Implement google sign in and use Google name for the leaderboards
 - Fix weird error when submitting a score (score is still updated tho)
 - Button retry from modal to redo the same console map
 - Multiple fetches on VSC reload
+- Check accessible html tags
+- Use context for consoleName and handleSelectedConsole?
+- Give accessible attributes to elements
 
 Ideas
 - Use Link params to pass the console clicked

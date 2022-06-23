@@ -2,19 +2,19 @@ import React, {
   FormEvent, SyntheticEvent, useEffect, useRef, useState,
 } from 'react';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import ModalButtons from './ModalButtons';
 import ModalForm from './ModalForm';
 import formatTimer from '../../utils/formatTimer';
+import ModalButton from './ModalButton';
 
 interface Props{
     timeElapsed: number
-    consoleName: string | null
+    selectedConsole: string | null
 }
 
 function Modal(props: Props) {
   const {
     timeElapsed,
-    consoleName,
+    selectedConsole,
   } = props;
 
   const [playerAlias, setPlayerAlias] = useState('');
@@ -69,14 +69,22 @@ function Modal(props: Props) {
 
           <ModalForm
             playerAlias={playerAlias}
-            consoleName={consoleName}
+            selectedConsole={selectedConsole}
             handleInputChange={handleInputChange}
             submitScoreToDatabase={submitScoreToDatabase}
           />
+          <article className="form-buttons">
+            <ModalButton
+              content="Leaderboards"
+              link="/leaderboards"
+              className="leaderboard-button"
+            />
 
-          <ModalButtons
-            consoleName={consoleName}
-          />
+            <ModalButton
+              content="Home"
+              link="/"
+            />
+          </article>
 
         </article>
       </article>

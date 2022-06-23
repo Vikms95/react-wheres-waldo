@@ -6,7 +6,7 @@ import DropdownButton from './DropdownButton';
 
 interface Props{
   dropdownRef: React.RefObject<HTMLInputElement>;
-  consoleName: string | null;
+  selectedConsole: string | null;
   validatedCharacters: string[];
   isLastClickValid: boolean
   setIsLastClickValid: React.Dispatch<React.SetStateAction<boolean>>
@@ -17,7 +17,7 @@ interface Props{
 export default function GameDropdown(props: Props) {
   const {
     dropdownRef,
-    consoleName,
+    selectedConsole,
     isLastClickValid,
     validatedCharacters,
     setIsLastClickValid,
@@ -38,7 +38,7 @@ export default function GameDropdown(props: Props) {
     if (dropdownRef.current) dropdownRef.current.style.display = 'none';
   };
 
-  const renderDropdownButtons = () => getConsoleCharacterData(consoleName).map(({ name }) => (
+  const renderDropdownButtons = () => getConsoleCharacterData(selectedConsole).map(({ name }) => (
     <DropdownButton
       key={name}
       name={name}

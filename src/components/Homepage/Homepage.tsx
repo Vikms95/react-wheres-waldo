@@ -10,7 +10,7 @@ interface Props{
 }
 
 export default function Homepage(props: Props) {
-  const { handleSelectedConsole: handleConsoleImage } = props;
+  const { handleSelectedConsole } = props;
 
   return (
     <main className="homepage-container">
@@ -48,28 +48,28 @@ export default function Homepage(props: Props) {
         <Link
           to="/game"
           data-type="super-nintendo"
-          onClick={(e) => handleConsoleImage(e)}
+          onClick={(e) => handleSelectedConsole(e)}
         >
           <img src={snes} alt="super-nintendo" data-type="super-nintendo" />
         </Link>
         <Link
           to="/game"
           data-type="game-cube"
-          onClick={(e) => handleConsoleImage(e)}
+          onClick={(e) => handleSelectedConsole(e)}
         >
           <img src={gc} alt="game-cube" data-type="game-cube" />
         </Link>
         <Link
           to="/game"
           data-type="playstation-1"
-          onClick={(e) => handleConsoleImage(e)}
+          onClick={(e) => handleSelectedConsole(e)}
         >
           <img src={ps1} alt="playstation-1" data-type="playstation-1" />
         </Link>
         <Link
           to="/game"
           data-type="playstation-2"
-          onClick={(e) => handleConsoleImage(e)}
+          onClick={(e) => handleSelectedConsole(e)}
         >
           <img src={ps2} alt="playstation-2" data-type="playstation-2" />
         </Link>

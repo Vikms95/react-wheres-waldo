@@ -3,14 +3,14 @@ import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 import capitalizeString from '../../utils/capitalizeString';
 
 interface Props{
-  consoleName: string | null
+  selectedConsole: string | null
 }
 
 function GameCharImages(props: Props) {
-  const { consoleName } = props;
+  const { selectedConsole } = props;
   return (
     <section className="characters-container">
-      {getConsoleCharacterData(consoleName).map(({ image, name }) => (
+      {getConsoleCharacterData(selectedConsole).map(({ image, name }) => (
         <div key={name} className="character-data-container">
           <span className="character-name">{capitalizeString(name)}</span>
           <img src={image} alt={name} className="character-image" />

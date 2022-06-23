@@ -4,6 +4,7 @@ import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData,
 } from 'firebase/firestore';
 
+import { time } from 'console';
 import Modal from '../Modal/Modal';
 import GameTimer from './GameTimer';
 import GameImage from './GameImage';
@@ -15,7 +16,7 @@ interface Props{
 }
 
 export default function GameView(props: Props) {
-  const { selectedConsole: consoleName } = props;
+  const { selectedConsole } = props;
 
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [isLastClickValid, setIsLastClickValid] = useState(false);
@@ -24,6 +25,11 @@ export default function GameView(props: Props) {
 
   const dropdown = useRef<HTMLInputElement>(null);
   const intervalId = useRef<NodeJS.Timer | null>(null);
+
+  useEffect(() => {
+    setValidatedChars([]);
+    setTimeElapsed(0);
+  }, []);
 
   useEffect(() => {
     intervalId.current = setInterval(incrementTimer, 1000);
@@ -88,9 +94,8 @@ export default function GameView(props: Props) {
     dbSnapshot: QuerySnapshot<DocumentData>,
     characterName: string,
   ) => {
-    console.log(dbSnapshot);
-    const data = dbSnapshot.docs[0].data().objectToSubmit;
-    return data[consoleName as string][characterName];
+    const data = dbSnapshot.docs[0].data().characterCoordinates;
+    return data[selectedConsole as string][characterName];
   };
 
   /**
@@ -146,7 +151,7 @@ export default function GameView(props: Props) {
     <main className="gameview-container">
       <GameDropdown
         dropdownRef={dropdown}
-        consoleName={consoleName}
+        selectedConsole={selectedConsole}
         isLastClickValid={isLastClickValid}
         validatedCharacters={validatedChars}
         setIsLastClickValid={setIsLastClickValid}
@@ -156,17 +161,17 @@ export default function GameView(props: Props) {
         && (
           <Modal
             timeElapsed={timeElapsed}
-            consoleName={consoleName}
+            selectedConsole={selectedConsole}
           />
         )}
       <GameCharImages
-        consoleName={consoleName}
+        selectedConsole={selectedConsole}
       />
       <GameTimer
         timeElapsed={timeElapsed}
       />
       <GameImage
-        consoleName={consoleName}
+        selectedConsole={selectedConsole}
         renderGameDropdown={renderGameDropdown}
       />
     </main>

@@ -142,6 +142,7 @@ ul{
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 0 3rem;
 
   & > article > a > img{
     height: auto;
@@ -350,7 +351,7 @@ ul{
 .game-win-modal-border{
   background-color: $primary-color;
   border-radius: 15px;
-  min-height: 31vw;
+  min-height: max(128px, 31.2vw);
   min-width: 36vw;
   padding: 3px;
   opacity: 0;
@@ -375,7 +376,8 @@ ul{
   font-size: 2vw;
   color: $font-color;
   background-color: $primary-color;
-  min-height: 30vw;
+  min-height: max(100px, 29vw);
+  // min-height: 30vw;
   min-width: 35vw;
   border: 1px solid rgb(255, 255, 255);
   border-radius: 15px;
@@ -425,10 +427,11 @@ ul{
 .alias-form{
   display: flex;
   justify-content: space-between;
-  column-gap: 3rem;
   align-content: center;
+  column-gap: 5vw;
 
   &> button{
+    align-self: center;
     font-size: max(1vw, .2rem);
     font-family: $font-family;
     width: clamp(2rem, 9vw, 10rem);
@@ -462,8 +465,8 @@ ul{
     background-color: transparent;
   }
 
-  &>.leaderboard-button{
-    width: clamp(3rem, 10vw, 10rem);
+  & > a >.leaderboard-button{
+    width: clamp(3rem, 13vw, 10rem);
     font-size: max(1.2vw, .1rem) ;
   }
 }

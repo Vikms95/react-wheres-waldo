@@ -2,7 +2,7 @@ import React, { FormEvent, SyntheticEvent } from 'react';
 
 interface Props{
   playerAlias: string
-  consoleName: string | null
+  selectedConsole: string | null
   handleInputChange: (event: MouseEvent | SyntheticEvent) => void
   submitScoreToDatabase: (
     e: FormEvent<HTMLFormElement>,
@@ -15,13 +15,13 @@ function ModalForm(props: Props) {
   const {
     submitScoreToDatabase,
     playerAlias,
-    consoleName,
+    selectedConsole,
     handleInputChange,
   } = props;
   return (
     <form
       className="alias-form"
-      onSubmit={(e) => submitScoreToDatabase(e, playerAlias, consoleName)}
+      onSubmit={(e) => submitScoreToDatabase(e, playerAlias, selectedConsole)}
     >
 
       <label htmlFor="score" className="form-input">

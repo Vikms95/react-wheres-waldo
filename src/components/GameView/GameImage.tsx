@@ -5,19 +5,19 @@ import ps2 from '../../assets/ps2.jpg';
 import gc from '../../assets/gamecube.jpg';
 
 interface Props{
-  consoleName: string | null
+  selectedConsole: string | null
   renderGameDropdown: (e: React.MouseEvent<HTMLImageElement>) => void
 }
 
 function GameImage(props: Props) {
   const {
-    consoleName,
+    selectedConsole,
     renderGameDropdown,
   } = props;
 
   /**
    * Renders one of the imported images based on
-   * consoleName prop
+   * selectedConsole prop
    */
   const renderGameImage = (name: string | null) => {
     const IMAGES = {
@@ -32,8 +32,8 @@ function GameImage(props: Props) {
 
   return (
     <img
-      src={renderGameImage(consoleName)}
-      alt={(consoleName as string)}
+      src={renderGameImage(selectedConsole)}
+      alt={(selectedConsole as string)}
       onClick={(e) => renderGameDropdown((e as React.MouseEvent<HTMLImageElement>))}
     />
   );
