@@ -66,6 +66,7 @@ Take timer score from gameView --> -->
 <!-- - Implement animations to modal -->
 <!-- - Add one leaderboard per map -->
 
+- Make database adding and fetching reusable
 - Refactor Component children into more components
 - Give keys to each mapped element/component
 - CSS format and make responsive the Homepage, Leaderboards and the Game
