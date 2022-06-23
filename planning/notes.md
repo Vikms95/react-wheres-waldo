@@ -66,6 +66,8 @@ Take timer score from gameView --> -->
 <!-- - Implement animations to modal -->
 <!-- - Add one leaderboard per map -->
 
+- Refactor Component children into more components
+- Give keys to each mapped element/component
 - CSS format and make responsive the Homepage, Leaderboards and the Game
 - Implement google sign in and use Google name for the leaderboards
 - Fix weird error when submitting a score (score is still updated tho)

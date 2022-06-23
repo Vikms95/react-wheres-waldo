@@ -16,7 +16,7 @@ import Modal from '../Modal/Modal';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 
 interface Props{
-  selectedConsole :string | null
+  selectedConsole: string | null
 }
 
 export default function GameView(props: Props) {
@@ -26,7 +26,7 @@ export default function GameView(props: Props) {
   const [playerAlias, setPlayerAlias] = useState('');
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
-  const [validatedCharacters, setValidatedCharacters] = useState<string[]>([]);
+  const [validatedChars, setValidatedChars] = useState<string[]>([]);
 
   const dropdown = useRef<HTMLInputElement>(null);
   const intervalId = useRef<NodeJS.Timer | null>(null);
@@ -37,10 +37,11 @@ export default function GameView(props: Props) {
   }, [timeElapsed]);
 
   useEffect(() => {
-    if (validatedCharacters.length === 3) {
+    // When three characters are validated, stop the timer
+    if (isGameWin()) {
       clearInterval(intervalId.current as NodeJS.Timer);
     }
-  }, [validatedCharacters]);
+  }, [validatedChars]);
 
   /**
    * Increments timer state by 1
@@ -88,20 +89,20 @@ export default function GameView(props: Props) {
     characterName: string,
   ) => {
     const databaseQuery = query(collection(getFirestore(), 'coordinates'));
+
     onSnapshot(databaseQuery, (snapshot) => {
       const characterToCheck = fetchCharFromDatabase(snapshot, characterName);
-
-      if (isClickValid(characterName, characterToCheck)) {
-        setValidatedCharacters(
-          (prevValidatedCharacters) => [...prevValidatedCharacters, characterName],
-        );
-
-        setIsLastClickValid(true);
-
-        // TODO change with ref
-        document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');
-      }
+      checkCoordsValidity(characterName, characterToCheck);
     });
+  };
+
+  const checkCoordsValidity = (characterName: string, characterToCheck: any) => {
+    if (isClickValid(characterName, characterToCheck)) {
+      setValidatedChars((prevValidatedChars) => [...prevValidatedChars, characterName]);
+      setIsLastClickValid(true);
+      // TODO change with ref
+      document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');
+    }
   };
 
   const submitScoreToDatabase = async (
@@ -126,12 +127,23 @@ export default function GameView(props: Props) {
   );
 
   const isCharPendingToValidate = (name: string) => (
-    !validatedCharacters.includes(name)
+    !validatedChars.includes(name)
   );
 
   const isClickInRange = (coords: number[], object: any) => (
+    isWidthInRange(coords, object) && isHeigthInRange(coords, object)
+  );
+
+  const isWidthInRange = (coords: number[], object: any) => (
     coords[0] >= object.width[0] && coords[0] <= object.width[1]
-    && coords[1] >= object.height[0] && coords[1] <= object.height[1]
+  );
+
+  const isHeigthInRange = (coords: number[], object: any) => (
+    coords[1] >= object.height[0] && coords[1] <= object.height[1]
+  );
+
+  const isGameWin = () => (
+    validatedChars.length === 3
   );
 
   /**
@@ -158,7 +170,6 @@ export default function GameView(props: Props) {
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,
   ) => {
     setIsLastClickValid(false);
-    console.log(e.pageY, e.pageX);
     moveDropdownOnClick((e.pageY - 80), e.pageX);
     storeLastClickedCoords(e);
   };
@@ -180,17 +191,17 @@ export default function GameView(props: Props) {
         consoleName={consoleName}
         setIsLastClickValid={setIsLastClickValid}
         isLastClickValid={isLastClickValid}
-        validatedCharacters={validatedCharacters}
+        validatedCharacters={validatedChars}
         checkCoordinatesOnDatabase={checkCoordinatesOnDatabase}
       />
 
-      { (validatedCharacters.length === 3)
+      { (isGameWin())
         && (
           <Modal
             timeElapsed={timeElapsed}
             playerAlias={playerAlias}
             consoleName={consoleName}
-            validatedCharacters={validatedCharacters}
+            validatedCharacters={validatedChars}
             handleInputChange={handleInputChange}
             submitScoreToDatabase={submitScoreToDatabase}
           />
