@@ -16,11 +16,11 @@ import Modal from '../Modal/Modal';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 
 interface Props{
-  consoleName :string | null
+  selectedConsole :string | null
 }
 
 export default function GameView(props: Props) {
-  const { consoleName } = props;
+  const { selectedConsole: consoleName } = props;
 
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [playerAlias, setPlayerAlias] = useState('');

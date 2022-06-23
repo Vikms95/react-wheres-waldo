@@ -6,11 +6,11 @@ import ps2 from '../../assets/ps2.jpg';
 import gc from '../../assets/gamecube.jpg';
 
 interface Props{
-  handleConsoleImage: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+  handleSelectedConsole: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }
 
 export default function Homepage(props: Props) {
-  const { handleConsoleImage } = props;
+  const { handleSelectedConsole: handleConsoleImage } = props;
 
   return (
     <main className="homepage-container">

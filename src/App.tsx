@@ -24,7 +24,7 @@ export default function App() {
    * Sets the image to use when Gameview is loaded
    * based on the console clicked
    */
-  const handleConsoleImage = (
+  const handleSelectedConsole = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
     const imageElement = event.target as HTMLInputElement;
@@ -43,7 +43,7 @@ export default function App() {
             path="/"
             element={(
               <Homepage
-                handleConsoleImage={handleConsoleImage}
+                handleSelectedConsole={handleSelectedConsole}
               />
 )}
           />
@@ -52,15 +52,21 @@ export default function App() {
             element={(
               <LeaderboardMenu
                 selectedConsole={selectedConsole}
-                handleConsoleImage={handleConsoleImage}
+                handleSelectedConsole={handleSelectedConsole}
               />
+
 )}
           />
+          <Route
+            path={`/${selectedConsole}`}
+            element={<Leaderboards selectedConsole={`${selectedConsole}`} />}
+          />
+
           <Route
             path="/game"
             element={(
               <GameView
-                consoleName={selectedConsole}
+                selectedConsole={selectedConsole}
               />
 )}
           />

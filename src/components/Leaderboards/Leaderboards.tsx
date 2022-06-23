@@ -16,6 +16,7 @@ export default function Leaderboards(props: Props) {
   }, []);
 
   const fetchScoresFromDatabase = (consoleName: string) => {
+    console.log(consoleName);
     const databaseQuery = query(
       collection(getFirestore(), `highscores-${consoleName}`),
       orderBy('score', 'asc'),
