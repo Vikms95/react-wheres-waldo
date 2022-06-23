@@ -188,6 +188,15 @@ ul{
 
 .gameview-container{
   position: relative;
+  overflow: hidden;
+}
+
+.success-mark{
+  padding: 30px;
+  position: absolute;
+  border: 3px solid red;
+  border-radius: 40px;
+  z-index: 999;
 }
 
 .gameview-container > img{

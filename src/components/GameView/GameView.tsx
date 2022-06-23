@@ -1,5 +1,5 @@
 import React, {
-  useState, useEffect, useRef, SyntheticEvent, FormEvent,
+  useState, useEffect, useRef, SyntheticEvent, FormEvent, SetStateAction,
 } from 'react';
 import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData, addDoc,
@@ -60,8 +60,8 @@ export default function GameView(props: Props) {
   const moveDropdownOnClick = (coordsY: number, coordsX: number) => {
     if (dropdown.current !== null) {
       dropdown.current.style.display = 'flex';
-      dropdown.current.style.top = `${coordsY}px`;
       dropdown.current.style.left = `${coordsX}px`;
+      dropdown.current.style.top = `${coordsY}px`;
     }
   };
 
@@ -91,12 +91,13 @@ export default function GameView(props: Props) {
     onSnapshot(databaseQuery, (snapshot) => {
       const characterToCheck = fetchCharFromDatabase(snapshot, characterName);
 
-      if (isCharPendingToValidate(characterName)
-       && isClickInRange(lastClickedCoords, characterToCheck)) {
+      if (isClickValid(characterName, characterToCheck)) {
         setValidatedCharacters(
           (prevValidatedCharacters) => [...prevValidatedCharacters, characterName],
         );
+
         setIsLastClickValid(true);
+
         // TODO change with ref
         document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');
       }
@@ -119,6 +120,10 @@ export default function GameView(props: Props) {
     }
     setPlayerAlias('');
   };
+
+  const isClickValid = (characterName: string, characterToCheck: any) => (
+    isCharPendingToValidate(characterName) && isClickInRange(lastClickedCoords, characterToCheck)
+  );
 
   const isCharPendingToValidate = (name: string) => (
     !validatedCharacters.includes(name)
@@ -153,6 +158,7 @@ export default function GameView(props: Props) {
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,
   ) => {
     setIsLastClickValid(false);
+    console.log(e.pageY, e.pageX);
     moveDropdownOnClick((e.pageY - 80), e.pageX);
     storeLastClickedCoords(e);
   };
