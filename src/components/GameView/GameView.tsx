@@ -6,10 +6,11 @@ import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData,
 } from 'firebase/firestore';
 
+import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 import Modal from '../Modal/Modal';
 import GameTimer from './GameTimer';
 import GameImage from './GameImage';
-import GameCharImages from './GameCharImages';
+import GameCharImage from './GameCharImage';
 import GameDropdown from '../GameDropdown/GameDropdown';
 import ConsoleContext from '../../context/ConsoleContext';
 
@@ -142,6 +143,15 @@ export default function GameView() {
     storeLastClickedCoords(e);
   };
 
+  const renderCharImages = () => (
+    getConsoleCharacterData(selectedConsole).map(({ image, name }) => (
+      <GameCharImage
+        image={image}
+        name={name}
+      />
+    ))
+  );
+
   return (
     <main className="gameview-container">
       <GameDropdown
@@ -157,7 +167,10 @@ export default function GameView() {
             timeElapsed={timeElapsed}
           />
         )}
-      <GameCharImages />
+
+      <section className="characters-container">
+        {renderCharImages()}
+      </section>
 
       <GameTimer
         timeElapsed={timeElapsed}

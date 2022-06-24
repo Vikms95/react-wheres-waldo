@@ -21,6 +21,7 @@
     ],
     "rules": {
       "no-unused-vars": 0,
+      "linebreak-style": 0,
       "no-use-before-define": "off",
       "no-param-reassign": "off",
       "jsx-a11y/click-events-have-key-events": "off",

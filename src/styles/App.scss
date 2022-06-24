@@ -530,7 +530,7 @@ ul{
   justify-content: space-evenly;
   gap: 1rem;
 
-  &> a >button{
+  &> a > button{
     font-size: max(1.5vw, .2rem);
     font-family: $font-family;
     width: clamp(2.5rem, 10vw, 10rem);

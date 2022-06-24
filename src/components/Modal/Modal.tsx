@@ -1,5 +1,5 @@
 import React, {
-  FormEvent, SyntheticEvent, useContext, useEffect, useRef, useState,
+  FormEvent, SyntheticEvent, useEffect, useRef, useState,
 } from 'react';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import ModalForm from './ModalForm';
