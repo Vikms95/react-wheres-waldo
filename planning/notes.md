@@ -75,7 +75,7 @@ Take timer score from gameView --> -->
 <!-- - Fix weird error when submitting a score (score is still updated tho) -->
 <!-- - Filter leaderboards by today's date -->
 <!-- - Use context for consoleName ? -->
-- Implement google sign in and use Google name for the leaderboards
+<!-- - Implement google sign in and use Google name for the leaderboards -->
 - Fix modal button styling
 - Create a base module to import from
 - Make database adding and fetching reusable
@@ -93,4 +93,4 @@ https://pierreroussel.artstation.com/projects/oOVVlJ
 
 Bugs
 <!-- -Reloading GameView causes it to crash, probably bc I don't have any console name as state? -->
--Clicking on the left or bottom edge of the image causes the window to expand and show blank
+<!-- -Clicking on the left or bottom edge of the image causes the window to expand and show blank -->

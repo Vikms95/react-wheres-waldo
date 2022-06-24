@@ -480,6 +480,18 @@ ul{
       color: $font-color;
     }
   }
+
+  &> button{
+    align-self: center;
+    font-size: max(.1rem , .8vw);
+    font-family: $font-family;
+    width: clamp(2rem, 9vw, 10rem);
+    height: 3vw;
+    border-radius: 40px;
+    color: $font-color;
+    border: 1px solid white;
+    background-color: transparent;
+  }
 }
 
 
@@ -499,7 +511,7 @@ ul{
     font-size: max(1vw, .2rem);
     font-family: $font-family;
     width: clamp(2rem, 9vw, 10rem);
-    height: 5vw;
+    height: 3vw;
     border-radius: 40px;
     color: $font-color;
     border: 1px solid white;

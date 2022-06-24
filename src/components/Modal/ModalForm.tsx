@@ -1,8 +1,9 @@
+import { sign } from 'crypto';
 import React, {
-  FormEvent, SyntheticEvent, useContext, useEffect,
+  FormEvent, SyntheticEvent, useContext, useEffect, useState,
 } from 'react';
 import ConsoleContext from '../../context/ConsoleContext';
-import { getUserName } from '../../utils/setupGoogleSignin';
+import { getUserName, isUserSignedIn, signIn } from '../../utils/setupGoogleSignin';
 
 interface Props{
   playerAlias: string
@@ -23,14 +24,15 @@ function ModalForm(props: Props) {
     handleInputChange,
   } = props;
 
-  useEffect(() => {
-    console.log(getUserName());
-  });
-
   const selectedConsole = useContext(ConsoleContext);
 
   const assignGoogleUsername = () => {
-    setPlayerAlias(getUserName() as string);
+    setPlayerAlias(() => getUserName() as string);
+  };
+
+  const signInAndAssignUsername = async () => {
+    await signIn();
+    assignGoogleUsername();
   };
 
   return (
@@ -38,7 +40,6 @@ function ModalForm(props: Props) {
       className="alias-form"
       onSubmit={(e) => submitScoreToDatabase(e, playerAlias, selectedConsole)}
     >
-
       <label htmlFor="score" className="form-input">
         <input
           id="score"
@@ -49,13 +50,24 @@ function ModalForm(props: Props) {
           maxLength={15}
         />
         <hr className="input-hr" />
-        <button
-          type="button"
-          className="use-google-username"
-          onClick={assignGoogleUsername}
-        >
-          Use Google username
-        </button>
+
+        {(isUserSignedIn())
+          ? (
+            <button
+              type="button"
+              onClick={assignGoogleUsername}
+            >
+              Use Google username
+            </button>
+          )
+          : (
+            <button
+              type="button"
+              onClick={signInAndAssignUsername}
+            >
+              Sign-in
+            </button>
+          )}
       </label>
 
       <button type="submit"> Upload score </button>

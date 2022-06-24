@@ -78,4 +78,5 @@ export {
   signIn,
   signOutUser,
   getUserName,
+  isUserSignedIn,
 };
