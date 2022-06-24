@@ -77,4 +77,5 @@ export {
   authStateObserver,
   signIn,
   signOutUser,
+  getUserName,
 };

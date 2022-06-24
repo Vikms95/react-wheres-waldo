@@ -76,6 +76,7 @@ Take timer score from gameView --> -->
 <!-- - Filter leaderboards by today's date -->
 <!-- - Use context for consoleName ? -->
 - Implement google sign in and use Google name for the leaderboards
+- Fix modal button styling
 - Create a base module to import from
 - Make database adding and fetching reusable
 - Check accessible html tags

@@ -5,7 +5,6 @@ import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import ModalForm from './ModalForm';
 import formatTimer from '../../utils/formatTimer';
 import ModalButton from './ModalButton';
-import ConsoleContext from '../../context/ConsoleContext';
 import getCurrentDate from '../../utils/getCurrentDate';
 
 interface Props{
@@ -18,8 +17,6 @@ function Modal(props: Props) {
   } = props;
 
   const [playerAlias, setPlayerAlias] = useState('');
-
-  const selectedConsole = useContext(ConsoleContext);
 
   const modalRef = useRef<any>(null);
 
@@ -72,6 +69,7 @@ function Modal(props: Props) {
 
           <ModalForm
             playerAlias={playerAlias}
+            setPlayerAlias={setPlayerAlias}
             handleInputChange={handleInputChange}
             submitScoreToDatabase={submitScoreToDatabase}
           />

@@ -1,8 +1,12 @@
-import React, { FormEvent, SyntheticEvent, useContext } from 'react';
+import React, {
+  FormEvent, SyntheticEvent, useContext, useEffect,
+} from 'react';
 import ConsoleContext from '../../context/ConsoleContext';
+import { getUserName } from '../../utils/setupGoogleSignin';
 
 interface Props{
   playerAlias: string
+  setPlayerAlias: React.Dispatch<React.SetStateAction<string>>
   handleInputChange: (event: MouseEvent | SyntheticEvent) => void
   submitScoreToDatabase: (
     e: FormEvent<HTMLFormElement>,
@@ -13,12 +17,21 @@ interface Props{
 
 function ModalForm(props: Props) {
   const {
-    submitScoreToDatabase,
     playerAlias,
+    setPlayerAlias,
+    submitScoreToDatabase,
     handleInputChange,
   } = props;
 
+  useEffect(() => {
+    console.log(getUserName());
+  });
+
   const selectedConsole = useContext(ConsoleContext);
+
+  const assignGoogleUsername = () => {
+    setPlayerAlias(getUserName() as string);
+  };
 
   return (
     <form
@@ -27,7 +40,6 @@ function ModalForm(props: Props) {
     >
 
       <label htmlFor="score" className="form-input">
-        Enter alias
         <input
           id="score"
           type="text"
@@ -37,6 +49,13 @@ function ModalForm(props: Props) {
           maxLength={15}
         />
         <hr className="input-hr" />
+        <button
+          type="button"
+          className="use-google-username"
+          onClick={assignGoogleUsername}
+        >
+          Use Google username
+        </button>
       </label>
 
       <button type="submit"> Upload score </button>
