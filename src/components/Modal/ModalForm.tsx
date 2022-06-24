@@ -4,6 +4,7 @@ import React, {
 } from 'react';
 import ConsoleContext from '../../context/ConsoleContext';
 import { getUserName, isUserSignedIn, signIn } from '../../utils/setupGoogleSignin';
+import ModalButton from './ModalButton';
 
 interface Props{
   playerAlias: string
@@ -50,11 +51,14 @@ function ModalForm(props: Props) {
           maxLength={15}
         />
         <hr className="input-hr" />
+      </label>
 
+      <div className="form-bottom">
         {(isUserSignedIn())
           ? (
             <button
               type="button"
+              className="form-button"
               onClick={assignGoogleUsername}
             >
               Use Google username
@@ -63,14 +67,29 @@ function ModalForm(props: Props) {
           : (
             <button
               type="button"
+              className="form-button"
               onClick={signInAndAssignUsername}
             >
               Sign-in
             </button>
           )}
-      </label>
 
-      <button type="submit"> Upload score </button>
+        <button type="submit" className="form-button"> Upload score </button>
+
+        <ModalButton
+          type="button"
+          content="Leaderboards"
+          link="/leaderboards"
+          className="leaderboard-button form-button"
+        />
+
+        <ModalButton
+          type="button"
+          className="form-button"
+          content="Home"
+          link="/"
+        />
+      </div>
     </form>
   );
 }

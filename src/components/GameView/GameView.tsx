@@ -6,6 +6,7 @@ import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData,
 } from 'firebase/firestore';
 
+import uniqid from 'uniqid';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 import Modal from '../Modal/Modal';
 import GameTimer from './GameTimer';
@@ -146,6 +147,7 @@ export default function GameView() {
   const renderCharImages = () => (
     getConsoleCharacterData(selectedConsole).map(({ image, name }) => (
       <GameCharImage
+        key={uniqid()}
         image={image}
         name={name}
       />

@@ -73,18 +73,6 @@ function Modal(props: Props) {
             handleInputChange={handleInputChange}
             submitScoreToDatabase={submitScoreToDatabase}
           />
-          <article className="form-buttons">
-            <ModalButton
-              content="Leaderboards"
-              link="/leaderboards"
-              className="leaderboard-button"
-            />
-
-            <ModalButton
-              content="Home"
-              link="/"
-            />
-          </article>
 
         </article>
       </article>
