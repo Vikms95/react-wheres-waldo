@@ -11,6 +11,7 @@ function Navbar() {
       <Link to="/leaderboards/*" className="webpage-header">
         <h1>Leaderboards</h1>
       </Link>
+
       <button
         type="button"
         className="sign-in webpage-header"
@@ -23,6 +24,7 @@ function Navbar() {
         className="sign-out webpage-header"
         onClick={signOutUser}
       >
+        <div className="user-pic" />
         {' '}
         Sign-out
       </button>

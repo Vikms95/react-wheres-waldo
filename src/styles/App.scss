@@ -72,12 +72,29 @@ ul{
 .sign-out{
   background-color: transparent;
   border: none;
-  flex-basis: 15rem;
+  flex-basis: 18rem;
+  &::after{
+    width: 0;
+  }
+}
+
+.sign-out{
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .sign-in[hidden=true],
 .sign-out[hidden=true]{
   display: none;
+}
+
+.user-pic{
+  border-radius: 50px;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
 }
 
 @media (max-width: 775px){
