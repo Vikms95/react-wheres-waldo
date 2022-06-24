@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { signIn } from '../../utils/setupGoogleSignin';
+import { signIn, signOutUser } from '../../utils/setupGoogleSignin';
 
 function Navbar() {
   return (
@@ -11,7 +11,21 @@ function Navbar() {
       <Link to="/leaderboards/*" className="webpage-header">
         <h1>Leaderboards</h1>
       </Link>
-      <button type="button" onClick={signIn}>Sign-in</button>
+      <button
+        type="button"
+        className="sign-in webpage-header"
+        onClick={signIn}
+      >
+        Sign-in with Google
+      </button>
+      <button
+        type="button"
+        className="sign-out webpage-header"
+        onClick={signOutUser}
+      >
+        {' '}
+        Sign-out
+      </button>
     </header>
   );
 }

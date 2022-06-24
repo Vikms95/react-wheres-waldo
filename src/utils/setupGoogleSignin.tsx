@@ -73,5 +73,8 @@ const initFirebaseAuth = () => {
 };
 
 export {
-  initFirebaseAuth, authStateObserver, signIn, signOutUser,
+  initFirebaseAuth,
+  authStateObserver,
+  signIn,
+  signOutUser,
 };

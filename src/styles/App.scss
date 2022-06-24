@@ -39,6 +39,7 @@ ul{
 .webpage-header{
   color: $font-color;
   flex: 0 1 5rem;
+  font-size: max(.8rem, 1.1vw);
   position: relative;
   display: inline-block;
   padding: 0 3rem;
@@ -64,6 +65,24 @@ ul{
   &:hover::after{
     transform: scalex(1);
     transform-origin: bottom left;
+  }
+}
+
+.sign-in,
+.sign-out{
+  background-color: transparent;
+  border: none;
+  flex-basis: 15rem;
+}
+
+.sign-in[hidden=true],
+.sign-out[hidden=true]{
+  display: none;
+}
+
+@media (max-width: 775px){
+  .navigation-bar{
+    padding: 2rem 0;
   }
 }
 
