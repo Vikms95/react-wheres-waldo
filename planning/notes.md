@@ -74,11 +74,11 @@ Take timer score from gameView --> -->
 <!-- - CSS format and make responsive Leaderboards -->
 <!-- - Fix weird error when submitting a score (score is still updated tho) -->
 <!-- - Filter leaderboards by today's date -->
+<!-- - Use context for consoleName ? -->
+- Implement google sign in and use Google name for the leaderboards
 - Create a base module to import from
 - Make database adding and fetching reusable
-- Implement google sign in and use Google name for the leaderboards
 - Check accessible html tags
-- Use context for consoleName and handleSelectedConsole?
 - Give accessible attributes to elements
 - Write tests
 - Refactor CSS into mixins and reusable variables

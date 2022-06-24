@@ -1,6 +1,7 @@
 import './styles/App.scss';
 import React, { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { initFirebaseAuth } from './utils/setupGoogleSignin';
 
 import Navbar from './components/Navbar';
 import Homepage from './components/Homepage';
@@ -17,6 +18,8 @@ export default function App() {
 
   useEffect(() => {
     saveCoordinatesToDatabase();
+    // ?
+    initFirebaseAuth();
   }, []);
 
   /**

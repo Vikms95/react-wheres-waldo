@@ -1,5 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 
-const Context = React.createContext(localStorage.getItem('consoleName') || '');
-
+const Context = createContext(localStorage.getItem('consoleName') || '');
 export default Context;
