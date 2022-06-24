@@ -1,19 +1,20 @@
-import React, { useState, useEffect, SetStateAction } from 'react';
+import React, {
+  useState, useEffect, useContext, SetStateAction,
+} from 'react';
+
 import {
   query, onSnapshot, collection, getFirestore, orderBy, limit,
 } from 'firebase/firestore';
-// @ts-ignore
+
 import uniqid from 'uniqid';
+import ConsoleContext from '../../context/ConsoleContext';
 import Score from './Score';
 import getCurrentDate from '../../utils/getCurrentDate';
 
-interface Props{
-  selectedConsole: string | null
-}
-
-export default function Leaderboards(props: Props) {
-  const { selectedConsole } = props;
+export default function Leaderboards() {
   const [scores, setScores] = useState<object[]>([]);
+
+  const selectedConsole = useContext(ConsoleContext);
 
   useEffect(() => {
     fetchScoresFromDatabase(selectedConsole);

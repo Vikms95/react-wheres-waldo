@@ -1,23 +1,25 @@
-import React, { FormEvent, SyntheticEvent } from 'react';
+import React, { FormEvent, SyntheticEvent, useContext } from 'react';
+import ConsoleContext from '../../context/ConsoleContext';
 
 interface Props{
   playerAlias: string
-  selectedConsole: string | null
   handleInputChange: (event: MouseEvent | SyntheticEvent) => void
   submitScoreToDatabase: (
     e: FormEvent<HTMLFormElement>,
     name: string,
     consoleToSubmit: string | null
-  ) => Promise<void>
+    ) => Promise<void>
 }
 
 function ModalForm(props: Props) {
   const {
     submitScoreToDatabase,
     playerAlias,
-    selectedConsole,
     handleInputChange,
   } = props;
+
+  const selectedConsole = useContext(ConsoleContext);
+
   return (
     <form
       className="alias-form"

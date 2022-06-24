@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState, useEffect, useRef, useContext,
+} from 'react';
 
 import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData,
@@ -9,36 +11,28 @@ import GameTimer from './GameTimer';
 import GameImage from './GameImage';
 import GameCharImages from './GameCharImages';
 import GameDropdown from '../GameDropdown/GameDropdown';
+import ConsoleContext from '../../context/ConsoleContext';
 
-interface Props{
-  selectedConsole: string | null
-}
-
-export default function GameView(props: Props) {
-  const { selectedConsole } = props;
-
+export default function GameView() {
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
   const [validatedChars, setValidatedChars] = useState<string[]>([]);
 
-  const dropdown = useRef<HTMLInputElement>(null);
-  const intervalId = useRef<NodeJS.Timer | null>(null);
+  const selectedConsole = useContext(ConsoleContext);
+
+  const dropdownRef = useRef<HTMLInputElement>(null);
+  const intervalIdRef = useRef<NodeJS.Timer | null>(null);
 
   useEffect(() => {
-    setValidatedChars([]);
-    setTimeElapsed(0);
-  }, []);
-
-  useEffect(() => {
-    intervalId.current = setInterval(incrementTimer, 1000);
-    return () => clearInterval(intervalId.current as NodeJS.Timer);
+    intervalIdRef.current = setInterval(incrementTimer, 1000);
+    return () => clearInterval(intervalIdRef.current as NodeJS.Timer);
   }, [timeElapsed]);
 
   useEffect(() => {
     // When three characters are validated, stop the timer
     if (isGameWin()) {
-      clearInterval(intervalId.current as NodeJS.Timer);
+      clearInterval(intervalIdRef.current as NodeJS.Timer);
     }
   }, [validatedChars]);
 
@@ -53,10 +47,10 @@ export default function GameView(props: Props) {
    * Moves dropdown to click coordinates
    */
   const moveDropdownOnClick = (coordsY: number, coordsX: number) => {
-    if (dropdown.current !== null) {
-      dropdown.current.style.display = 'flex';
-      dropdown.current.style.left = `${coordsX}px`;
-      dropdown.current.style.top = `${coordsY}px`;
+    if (dropdownRef.current !== null) {
+      dropdownRef.current.style.display = 'flex';
+      dropdownRef.current.style.left = `${coordsX}px`;
+      dropdownRef.current.style.top = `${coordsY}px`;
     }
   };
 
@@ -64,7 +58,9 @@ export default function GameView(props: Props) {
    * Stores last clicked coordinates on state to compare use them
    * whenever a character is selected from the dropdown later on
    */
-  const storeLastClickedCoords = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+  const storeLastClickedCoords = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
     const coordsX = Math.ceil((event.nativeEvent.offsetX / window.innerWidth) * 100);
     const coordsY = Math.ceil((event.nativeEvent.offsetY / window.innerWidth) * 100);
     setLastClickedCoords([coordsX, coordsY]);
@@ -149,8 +145,7 @@ export default function GameView(props: Props) {
   return (
     <main className="gameview-container">
       <GameDropdown
-        dropdownRef={dropdown}
-        selectedConsole={selectedConsole}
+        dropdownRef={dropdownRef}
         isLastClickValid={isLastClickValid}
         validatedCharacters={validatedChars}
         setIsLastClickValid={setIsLastClickValid}
@@ -160,17 +155,14 @@ export default function GameView(props: Props) {
         && (
           <Modal
             timeElapsed={timeElapsed}
-            selectedConsole={selectedConsole}
           />
         )}
-      <GameCharImages
-        selectedConsole={selectedConsole}
-      />
+      <GameCharImages />
+
       <GameTimer
         timeElapsed={timeElapsed}
       />
       <GameImage
-        selectedConsole={selectedConsole}
         renderGameDropdown={renderGameDropdown}
       />
     </main>

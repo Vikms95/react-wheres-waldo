@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 import capitalizeString from '../../utils/capitalizeString';
+import ConsoleContext from '../../context/ConsoleContext';
 
-interface Props{
-  selectedConsole: string | null
-}
-
-function GameCharImages(props: Props) {
-  const { selectedConsole } = props;
+function GameCharImages() {
+  const selectedConsole = useContext(ConsoleContext);
   return (
     <section className="characters-container">
       {getConsoleCharacterData(selectedConsole).map(({ image, name }) => (

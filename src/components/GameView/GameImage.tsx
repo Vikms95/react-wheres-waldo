@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import snes from '../../assets/snes.jpg';
 import ps1 from '../../assets/ps1.jpg';
 import ps2 from '../../assets/ps2.jpg';
 import gc from '../../assets/gamecube.jpg';
+import ConsoleContext from '../../context/ConsoleContext';
 
 interface Props{
-  selectedConsole: string | null
   renderGameDropdown: (e: React.MouseEvent<HTMLImageElement>) => void
 }
 
 function GameImage(props: Props) {
   const {
-    selectedConsole,
     renderGameDropdown,
   } = props;
 
+  const selectedConsole = useContext(ConsoleContext);
   /**
    * Renders one of the imported images based on
    * selectedConsole prop

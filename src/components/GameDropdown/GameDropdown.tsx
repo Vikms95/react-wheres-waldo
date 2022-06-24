@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
 import DropdownButton from './DropdownButton';
+import ConsoleContext from '../../context/ConsoleContext';
 
 interface Props{
   dropdownRef: React.RefObject<HTMLInputElement>;
-  selectedConsole: string | null;
   validatedCharacters: string[];
   isLastClickValid: boolean
   setIsLastClickValid: React.Dispatch<React.SetStateAction<boolean>>
@@ -17,12 +17,13 @@ interface Props{
 export default function GameDropdown(props: Props) {
   const {
     dropdownRef,
-    selectedConsole,
     isLastClickValid,
     validatedCharacters,
     setIsLastClickValid,
     checkCoordinatesOnDatabase,
   } = props;
+
+  const selectedConsole = useContext(ConsoleContext);
 
   /**
    * Renders succesful click feedback everytime
@@ -38,13 +39,14 @@ export default function GameDropdown(props: Props) {
     if (dropdownRef.current) dropdownRef.current.style.display = 'none';
   };
 
-  const renderDropdownButtons = () => getConsoleCharacterData(selectedConsole).map(({ name }) => (
-    <DropdownButton
-      key={name}
-      name={name}
-      checkCoordinatesOnDatabase={checkCoordinatesOnDatabase}
-    />
-  ));
+  const renderDropdownButtons = () => (
+    getConsoleCharacterData(selectedConsole).map(({ name }) => (
+      <DropdownButton
+        key={name}
+        name={name}
+        checkCoordinatesOnDatabase={checkCoordinatesOnDatabase}
+      />
+    )));
 
   const renderSuccesfulClick = () => (
     <li className="succesful-click">

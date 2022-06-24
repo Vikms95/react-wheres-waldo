@@ -7,6 +7,7 @@ import Homepage from './components/Homepage';
 import Leaderboards from './components/Leaderboards';
 import GameView from './components/GameView';
 import LeaderboardMenu from './components/Leaderboards/LeaderboardMenu';
+import ConsoleContext from './context/ConsoleContext';
 import saveCoordinatesToDatabase from './utils/setupDatabase';
 
 export default function App() {
@@ -19,12 +20,12 @@ export default function App() {
   }, []);
 
   /**
-   * Sets the image to use when Gameview is loaded
-   * based on the console button clicked
-   */
+     * Sets the image to use when Gameview is loaded
+     * based on the console button clicked
+     */
   const handleSelectedConsole = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-    | React.MouseEvent<HTMLButtonElement>,
+      | React.MouseEvent<HTMLButtonElement>,
   ) => {
     const imageElement = e.target as HTMLInputElement;
     const gameImage:string | null = imageElement.getAttribute('data-type');
@@ -34,43 +35,44 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <HashRouter>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={(
-              <Homepage
-                handleSelectedConsole={handleSelectedConsole}
-              />
+    <ConsoleContext.Provider value={selectedConsole as string}>
+      <div className="App">
+        <HashRouter>
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={(
+                <Homepage
+                  handleSelectedConsole={handleSelectedConsole}
+                />
 )}
-          />
-          <Route
-            path="/leaderboards/*"
-            element={(
-              <LeaderboardMenu
-                selectedConsole={selectedConsole}
-                handleSelectedConsole={handleSelectedConsole}
-              />
+            />
+            <Route
+              path="/leaderboards/*"
+              element={(
+                <LeaderboardMenu
+                  handleSelectedConsole={handleSelectedConsole}
+                />
 
 )}
-          />
-          <Route
-            path={`/${selectedConsole}`}
-            element={<Leaderboards selectedConsole={selectedConsole} />}
-          />
-
-          <Route
-            path="/game"
-            element={(
-              <GameView
-                selectedConsole={selectedConsole}
-              />
+            />
+            <Route
+              path={`/${selectedConsole}`}
+              element={(
+                <Leaderboards />
 )}
-          />
-        </Routes>
-      </HashRouter>
-    </div>
+            />
+
+            <Route
+              path="/game"
+              element={(
+                <GameView />
+)}
+            />
+          </Routes>
+        </HashRouter>
+      </div>
+    </ConsoleContext.Provider>
   );
 }

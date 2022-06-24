@@ -1,24 +1,25 @@
 import React, {
-  FormEvent, SyntheticEvent, useEffect, useRef, useState,
+  FormEvent, SyntheticEvent, useContext, useEffect, useRef, useState,
 } from 'react';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import ModalForm from './ModalForm';
 import formatTimer from '../../utils/formatTimer';
 import ModalButton from './ModalButton';
+import ConsoleContext from '../../context/ConsoleContext';
 import getCurrentDate from '../../utils/getCurrentDate';
 
 interface Props{
     timeElapsed: number
-    selectedConsole: string | null
 }
 
 function Modal(props: Props) {
   const {
     timeElapsed,
-    selectedConsole,
   } = props;
 
   const [playerAlias, setPlayerAlias] = useState('');
+
+  const selectedConsole = useContext(ConsoleContext);
 
   const modalRef = useRef<any>(null);
 
@@ -71,7 +72,6 @@ function Modal(props: Props) {
 
           <ModalForm
             playerAlias={playerAlias}
-            selectedConsole={selectedConsole}
             handleInputChange={handleInputChange}
             submitScoreToDatabase={submitScoreToDatabase}
           />
