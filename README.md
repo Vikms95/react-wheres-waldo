@@ -51,6 +51,13 @@ npm start
 3. 
 4. 
 
+
+## Challenges I faced 
+
+1. 
+2. 
+3. 
+
 ## Technologies used
 
 1. React
@@ -61,10 +68,5 @@ npm start
 6. Jest/TL
 7. Firebase
 
-## Challenges I faced 
-
-1. 
-2. 
-3. 
 
 ## Room for improvement
