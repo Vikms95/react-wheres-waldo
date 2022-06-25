@@ -51,36 +51,35 @@ export default function Leaderboards() {
 
   return (
     <main className="leaderboards-container">
-      <section className="leaderboard-container">
+      <table className="leaderboard-container">
 
         <h1>
           Last scores
           <hr />
         </h1>
 
-        <div className="table-headers">
+        <thead className="table-headers">
           <h2>Player</h2>
           <h2>Score</h2>
-        </div>
+        </thead>
 
-        <section className="leaderboards-table">
+        <td colSpan={2} className="leaderboards-table">
           {renderTodaysScores()}
-        </section>
-      </section>
+        </td>
+      </table>
 
-      <section className="leaderboard-container">
+      <table className="leaderboard-container">
 
         <h1>
           All-time scores
           <hr />
-
         </h1>
-        <div className="table-headers">
+        <thead className="table-headers">
           <h2>Player</h2>
           <h2>Score</h2>
-        </div>
+        </thead>
 
-        <section className="leaderboards-table">
+        <td className="leaderboards-table">
           {scores.map((score: any) => (
             <Score
               key={uniqid()}
@@ -88,8 +87,8 @@ export default function Leaderboards() {
               score={score.score}
             />
           ))}
-        </section>
-      </section>
+        </td>
+      </table>
 
     </main>
   );

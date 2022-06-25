@@ -60,6 +60,7 @@ function ModalForm(props: Props) {
                 type="button"
                 className="use-google-username"
                 onClick={assignGoogleUsername}
+                tabIndex={-1}
               >
                 Use Google username
               </button>
@@ -71,6 +72,7 @@ function ModalForm(props: Props) {
                   type="button"
                   className="google-username"
                   onClick={signInAndAssignUsername}
+                  tabIndex={-1}
                 >
                   Sign in
                 </button>

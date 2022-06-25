@@ -76,9 +76,11 @@ Take timer score from gameView --> -->
 <!-- - Filter leaderboards by today's date -->
 <!-- - Use context for consoleName ? -->
 <!-- - Implement google sign in and use Google name for the leaderboards -->
-- Fix modal button styling
-- Use table for the leaderboards and make it look like a grid
-- Create a base module to import from
+<!-- - Fix modal button styling -->
+<!-- - Use table for the leaderboards and make it look like a grid -->
+<!-- - Create a base module to import from -->
+- Fix min padding on character images and dropdown
+-Fix tabindex on modal to be able to move to the "Post score" after the input
 - Make database adding and fetching reusable
 - Check accessible html tags
 - Give accessible attributes to elements
@@ -93,7 +95,9 @@ https://www.youtube.com/watch?v=QBLbXgeXMU8&list=WL&index=6
 https://pierreroussel.artstation.com/projects/oOVVlJ
 
 Bugs
-- Make modal bigger on mobile,(higher min sizes on max() and clamp())
--Google pic does not show?
+<!-- - Character images constant rerender
+  :not giving them a key makes them not rerender -->
+<!-- - Make modal bigger on mobile,(higher min sizes on max() and clamp()) -->
+<!-- -Google pic does not show? -->
 <!-- -Reloading GameView causes it to crash, probably bc I don't have any console name as state? -->
 <!-- -Clicking on the left or bottom edge of the image causes the window to expand and show blank -->
