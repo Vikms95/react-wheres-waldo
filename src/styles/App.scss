@@ -60,7 +60,7 @@ ul{
     transform: scaleX(0);
     top: 60px;
     height: 2px;
-    left: 2px;
+    left: 25px;
     transform-origin: bottom left;
     background-color: #ffffff;
     transition: transform .5s ease-out;
@@ -76,7 +76,7 @@ ul{
 .sign-out{
   background-color: transparent;
   border: none;
-  flex-basis: 18rem;
+  flex-basis: 12rem;
   &::after{
     width: 0;
   }
@@ -97,8 +97,8 @@ ul{
 .user-pic{
   border-radius: 50px;
   background-size: cover;
-  height: 50px;
-  width: 50px;
+  height: max(30px, 3vw);
+  width: max(30px, 3vw);
 }
 
 @media (max-width: 739px){
@@ -277,8 +277,8 @@ ul{
   background-color: rgba($color: $primary-color, $alpha: .8);
   color:$font-color;
   border-radius: 40px;
-  padding:1.5vw 2vw;
-  font-size: 2vw;
+  padding:max(.5rem, 1.5vw) max(1rem ,2vw);
+  font-size: max(.8em, 2vw);
   position: fixed;
   right: 5%;
   top: 15%;
@@ -291,9 +291,9 @@ ul{
   flex-direction: column;
   gap: 1rem;
   border-radius: 40px;
-  padding: 1rem 1rem;
+  padding: 1rem max(.3rem, 1.5vw);
   position: fixed;
-  left: (5%);
+  left: 5%;
   top: 15%;
   transition: margin-top .2s;
 }
@@ -301,14 +301,14 @@ ul{
 @media (max-width: 752px){
   .characters-container,
   .timer-container{
-    margin-top: 20%;
+    margin-top: 5%;
   }
 }
 
 @media (max-width: 451px){
   .characters-container,
   .timer-container{
-    margin-top: 30%;
+    margin-top: 10%;
   }
 }
 
@@ -317,7 +317,6 @@ ul{
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  flex-grow: 1;
 }
 
 .character-name{
@@ -327,12 +326,12 @@ ul{
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  font-size: 1.7vw;
+  font-size: max(.8em, 1.7vw);
   font-variant: small-caps;
 }
 .character-data-container > img {
   flex: 1 1 5vw;
-  max-width: 5vw;
+  max-width: max(2rem, 5vw);
 
   &.selected{
     opacity: .5;

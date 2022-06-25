@@ -79,8 +79,10 @@ Take timer score from gameView --> -->
 <!-- - Fix modal button styling -->
 <!-- - Use table for the leaderboards and make it look like a grid -->
 <!-- - Create a base module to import from -->
-- Fix min padding on character images and dropdown
--Fix tabindex on modal to be able to move to the "Post score" after the input
+<!-- - Fix min padding on character images and dropdown -->
+<!-- -Fix tabindex on modal to be able to move to the "Post score" after the input -->
+- Media query for header to delete 2 items and create a dropdown on the right?
+- Fix dropdown padding and not appearing on the right place on mobile view
 - Make database adding and fetching reusable
 - Check accessible html tags
 - Give accessible attributes to elements
