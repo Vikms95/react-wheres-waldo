@@ -37,53 +37,55 @@ function ModalForm(props: Props) {
   };
 
   return (
-    <form
-      autoComplete="off"
-      className="alias-form"
-      onSubmit={(e) => submitScoreToDatabase(e, playerAlias, selectedConsole)}
-    >
-      <label htmlFor="score" className="form-input">
-        <input
-          id="score"
-          type="text"
-          value={playerAlias}
-          onChange={handleInputChange}
-          placeholder="Your alias here ..."
-          maxLength={15}
-        />
-      </label>
-      <div className="google-username-container">
-        {(isUserSignedIn())
-          ? (
-            <button
-              type="button"
-              className="use-google-username"
-              onClick={assignGoogleUsername}
-            >
-              Use Google username
-            </button>
-          )
-          : (
-            <span className="google-username">
-              Use your Google username?
+    <>
+      <form
+        autoComplete="off"
+        className="alias-form"
+        onSubmit={(e) => submitScoreToDatabase(e, playerAlias, selectedConsole)}
+      >
+        <label htmlFor="score" className="form-input">
+          <input
+            id="score"
+            type="text"
+            value={playerAlias}
+            onChange={handleInputChange}
+            placeholder="Your alias here ..."
+            maxLength={15}
+          />
+        </label>
+        <div className="google-username-container">
+          {(isUserSignedIn())
+            ? (
               <button
                 type="button"
-                className="google-username"
-                onClick={signInAndAssignUsername}
+                className="use-google-username"
+                onClick={assignGoogleUsername}
               >
-                Sign in
+                Use Google username
               </button>
-            </span>
-          )}
-      </div>
+            )
+            : (
+              <span className="google-username">
+                Use your Google username?
+                <button
+                  type="button"
+                  className="google-username"
+                  onClick={signInAndAssignUsername}
+                >
+                  Sign in
+                </button>
+              </span>
+            )}
+        </div>
 
-      <button
-        type="submit"
-        className="form-button submit"
-      >
-        {' '}
-        Upload score
-      </button>
+        <button
+          type="submit"
+          className="form-button submit"
+        >
+          {' '}
+          Post score
+        </button>
+      </form>
 
       <div className="form-bottom">
         <ModalButton
@@ -100,7 +102,7 @@ function ModalForm(props: Props) {
           link="/"
         />
       </div>
-    </form>
+    </>
   );
 }
 

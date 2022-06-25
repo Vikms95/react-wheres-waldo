@@ -1,5 +1,8 @@
 @import './variables.scss';
 
+*{
+  outline:solid 1px green;
+}
 
 html,
 body,
@@ -422,14 +425,14 @@ ul{
 }
 
 .game-win-modal{
-  font-size: 2vw;
   color: $font-color;
   background-color: #283445;
-  min-height: max(250px, 29vw);
-  min-width: 35vw;
+  font-size: max(1.4em, 3vw);
+  min-height: max(250px, 37vw);
+  min-width: max(250px,43vw);
   border-radius: 15px;
   display: grid;
-  grid-template-rows: 1fr 2.5fr;
+  grid-template-rows: 1fr 1.2fr .8fr;
   justify-content: center;
   justify-items: center;
   align-items: center;
@@ -445,8 +448,8 @@ ul{
 }
 
 .game-win-modal.show{
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
   margin-top: 0;
   transition: margin-top .5s ease-out, opacity .8s, visibility .5s linear;
 }
@@ -461,30 +464,17 @@ ul{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1vw;
-
-  &> button{
-    align-self: center;
-    font-size: max(.1rem , .8vw);
-    font-family: $font-family;
-    width: clamp(2rem, 9vw, 10rem);
-    height: 3vw;
-    border-radius: 40px;
-    color: $font-color;
-    border: 1px solid white;
-    background-color: transparent;
-  }
 
   &>input{
     text-align: center;
     color: $font-color;
-    padding:1vw;
+    padding: max(.2rem, .9vw);
+    width: max(10rem, 27vw);
+    font-size: max(.45em,1.2vw);
     border:none;
     font-weight: 900;
     background-color: rgb(74, 89, 105);
     border-radius: 20px;
-    font-size: 1.2vw;
-    width: 20vw;
 
     &::placeholder{
       color: $font-color;
@@ -499,33 +489,34 @@ ul{
 
 .google-username-container{
   text-align: center;
-  display: inline;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border:none;
   position: absolute;
-  margin-bottom: max(.2rem, 52%);
-  margin-left: max(.2rem ,7%);
+  margin-bottom: max(5.9rem, 15vw);
+  margin-left: max(.4rem, 2.9vw);
 }
 
 .use-google-username{
   color: rgb(0, 162, 255);
   border: none;
   background-color: transparent;
-  font-size: max(.2em, 1vw );
-  margin-left: max(.3rem , 4%);
-  width: max(2.1rem, 15vw);
+  font-size: max(.4em, 1vw);
+  margin-left: max(1.4rem, 4.2vw);
 }
 
 span.google-username{
-  font-size: max(.2em, 1vw );
+  font-size: max(.4em, 1.2vw );
   color:rgba(145, 141, 141, 0.896);
 }
 
 button.google-username{
-  width: max(2.1rem, 5.2vw);
-  font-size: max(.2rem,1vw );
-  font-weight: bolder;
-  background-color: transparent;
   color: rgb(0, 162, 255);
+  background-color: transparent;
+  width: max(2.3rem,7vw);
+  font-size: max(.8em, 1.2vw );
+  font-weight: bolder;
   border:none;
 
   &:hover{
@@ -543,8 +534,7 @@ button.google-username{
 
 .form-bottom{
   display: grid;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
   grid-template-columns: repeat(2, 1fr);
   column-gap: max(.5rem, 4vw);
 }
@@ -555,8 +545,9 @@ button.google-username{
   font-family: $font-family;
   background-color: rgba(145, 141, 141, 0.896);
   font-weight: 900;
-  width: clamp(2.1rem, 9vw, 10rem);
-  font-size: max(1vw, .2rem);
+  font-size: max(.5em, .5vw);
+  width: clamp(6.4rem, 13vw, 20rem);
+  padding:max(.8rem, 2.1vw);
   height: 2.8vw;
   border: none;
   border-radius: 40px;
