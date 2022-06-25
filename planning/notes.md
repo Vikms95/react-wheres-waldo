@@ -93,5 +93,7 @@ https://www.youtube.com/watch?v=QBLbXgeXMU8&list=WL&index=6
 https://pierreroussel.artstation.com/projects/oOVVlJ
 
 Bugs
+- Make modal bigger on mobile,(higher min sizes on max() and clamp())
+-Google pic does not show?
 <!-- -Reloading GameView causes it to crash, probably bc I don't have any console name as state? -->
 <!-- -Clicking on the left or bottom edge of the image causes the window to expand and show blank -->

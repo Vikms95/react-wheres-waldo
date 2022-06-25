@@ -97,9 +97,9 @@ ul{
   width: 50px;
 }
 
-@media (max-width: 775px){
+@media (max-width: 739px){
   .navigation-bar{
-    padding: 2rem 0;
+    padding-bottom: 1rem;
   }
 }
 
@@ -241,6 +241,7 @@ ul{
 }
 
 .score{
+  display: flex;
   font-style: oblique;
 }
 
@@ -285,14 +286,22 @@ ul{
   border-radius: 40px;
   padding: 1rem 1rem;
   position: fixed;
-  left: 5%;
+  left: (5%);
   top: 15%;
+  transition: margin-top .2s;
 }
 
-@media (max-width: 515px){
+@media (max-width: 752px){
   .characters-container,
   .timer-container{
     margin-top: 20%;
+  }
+}
+
+@media (max-width: 451px){
+  .characters-container,
+  .timer-container{
+    margin-top: 30%;
   }
 }
 
@@ -416,11 +425,11 @@ ul{
   font-size: 2vw;
   color: $font-color;
   background-color: #283445;
-  min-height: max(120px, 29vw);
+  min-height: max(250px, 29vw);
   min-width: 35vw;
   border-radius: 15px;
   display: grid;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 1fr 2.5fr;
   justify-content: center;
   justify-items: center;
   align-items: center;
@@ -452,7 +461,7 @@ ul{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 1rem;
+  margin-bottom: 1vw;
 
   &> button{
     align-self: center;
@@ -467,8 +476,9 @@ ul{
   }
 
   &>input{
+    text-align: center;
     color: $font-color;
-    padding:.8vw;
+    padding:1vw;
     border:none;
     font-weight: 900;
     background-color: rgb(74, 89, 105);
@@ -478,39 +488,49 @@ ul{
 
     &::placeholder{
       color: $font-color;
+      font-weight: 400;
     }
 
     &:focus{
       outline:solid rgb(0, 162, 255);
     }
   }
-
-
 }
 
-.google-username{
-  position: absolute;
+.google-username-container{
   text-align: center;
   display: inline;
   border:none;
-  background-color: transparent;
+  position: absolute;
+  margin-bottom: max(.2rem, 52%);
+  margin-left: max(.2rem ,7%);
+}
+
+.use-google-username{
   color: rgb(0, 162, 255);
-  top: 37%;
-  left: 20%;
+  border: none;
+  background-color: transparent;
+  font-size: max(.2em, 1vw );
+  margin-left: max(.3rem , 4%);
+  width: max(2.1rem, 15vw);
 }
 
 span.google-username{
-  font-size: max(1vw, .2rem);
+  font-size: max(.2em, 1vw );
   color:rgba(145, 141, 141, 0.896);
 }
 
 button.google-username{
-  position: absolute;
-  top:.080rem;
-  left: max(97%,5vw);
-  width: max(2rem, 5vw);
-  font-size: max(1vw, .2rem);
+  width: max(2.1rem, 5.2vw);
+  font-size: max(.2rem,1vw );
   font-weight: bolder;
+  background-color: transparent;
+  color: rgb(0, 162, 255);
+  border:none;
+
+  &:hover{
+   color:rgb(81, 185, 245);
+  }
 }
 
 .alias-form{
@@ -523,7 +543,7 @@ button.google-username{
 
 .form-bottom{
   display: grid;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   grid-template-columns: repeat(2, 1fr);
   column-gap: max(.5rem, 4vw);
@@ -531,12 +551,12 @@ button.google-username{
 
 .form-button{
   color: $font-color;
-  font-weight: 900;
   justify-self: center;
   font-family: $font-family;
   background-color: rgba(145, 141, 141, 0.896);
+  font-weight: 900;
+  width: clamp(2.1rem, 9vw, 10rem);
   font-size: max(1vw, .2rem);
-  width: clamp(2.5rem, 9vw, 10rem);
   height: 2.8vw;
   border: none;
   border-radius: 40px;
@@ -553,6 +573,11 @@ button.google-username{
 
 .form-button.submit{
   background-color: rgb(0, 162, 255);
+  margin-bottom: 1vw;
+
+  &:hover{
+    background-color:rgb(60, 176, 244);;
+  }
 }
 
 

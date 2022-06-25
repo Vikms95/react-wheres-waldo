@@ -1,10 +1,11 @@
 import React, {
   FormEvent, SyntheticEvent, useEffect, useRef, useState,
 } from 'react';
+import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ModalForm from './ModalForm';
 import formatTimer from '../../utils/formatTimer';
-import ModalButton from './ModalButton';
 import getCurrentDate from '../../utils/getCurrentDate';
 
 interface Props{
@@ -59,7 +60,9 @@ function Modal(props: Props) {
       <article className="game-win-modal" ref={modalRef}>
 
         <article className="score-display">
-          Your score is:
+          <FontAwesomeIcon icon={faStopwatch} />
+          {' '}
+          Your score is
           {' '}
           <span className="timer-value">
             {formatTimer(timeElapsed.toString())}

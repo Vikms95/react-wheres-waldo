@@ -38,6 +38,7 @@ function ModalForm(props: Props) {
 
   return (
     <form
+      autoComplete="off"
       className="alias-form"
       onSubmit={(e) => submitScoreToDatabase(e, playerAlias, selectedConsole)}
     >
@@ -51,29 +52,30 @@ function ModalForm(props: Props) {
           maxLength={15}
         />
       </label>
-      {(isUserSignedIn())
-        ? (
-
-          <button
-            type="button"
-            className="google-username"
-            onClick={assignGoogleUsername}
-          >
-            Use Google username
-          </button>
-        )
-        : (
-          <span className="google-username">
-            Use your Google username?
+      <div className="google-username-container">
+        {(isUserSignedIn())
+          ? (
             <button
               type="button"
-              className="google-username"
-              onClick={signInAndAssignUsername}
+              className="use-google-username"
+              onClick={assignGoogleUsername}
             >
-              Sign in
+              Use Google username
             </button>
-          </span>
-        )}
+          )
+          : (
+            <span className="google-username">
+              Use your Google username?
+              <button
+                type="button"
+                className="google-username"
+                onClick={signInAndAssignUsername}
+              >
+                Sign in
+              </button>
+            </span>
+          )}
+      </div>
 
       <button
         type="submit"
