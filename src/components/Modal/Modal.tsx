@@ -56,25 +56,23 @@ function Modal(props: Props) {
 
   return (
     <section className="background-brightness-wrapper">
-      <article className="game-win-modal-border" ref={modalRef}>
-        <article className="game-win-modal">
+      <article className="game-win-modal" ref={modalRef}>
 
-          <article className="score-display">
-            Your score is:
-            {' '}
-            <span className="timer-value">
-              {formatTimer(timeElapsed.toString())}
-            </span>
-          </article>
-
-          <ModalForm
-            playerAlias={playerAlias}
-            setPlayerAlias={setPlayerAlias}
-            handleInputChange={handleInputChange}
-            submitScoreToDatabase={submitScoreToDatabase}
-          />
-
+        <article className="score-display">
+          Your score is:
+          {' '}
+          <span className="timer-value">
+            {formatTimer(timeElapsed.toString())}
+          </span>
         </article>
+
+        <ModalForm
+          playerAlias={playerAlias}
+          setPlayerAlias={setPlayerAlias}
+          handleInputChange={handleInputChange}
+          submitScoreToDatabase={submitScoreToDatabase}
+        />
+
       </article>
     </section>
   );

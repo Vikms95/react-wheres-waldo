@@ -77,6 +77,7 @@ Take timer score from gameView --> -->
 <!-- - Use context for consoleName ? -->
 <!-- - Implement google sign in and use Google name for the leaderboards -->
 - Fix modal button styling
+- Use table for the leaderboards and make it look like a grid
 - Create a base module to import from
 - Make database adding and fetching reusable
 - Check accessible html tags

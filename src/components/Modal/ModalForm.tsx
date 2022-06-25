@@ -50,32 +50,40 @@ function ModalForm(props: Props) {
           placeholder="Your alias here ..."
           maxLength={15}
         />
-        <hr className="input-hr" />
       </label>
+      {(isUserSignedIn())
+        ? (
 
-      <div className="form-bottom">
-        {(isUserSignedIn())
-          ? (
+          <button
+            type="button"
+            className="google-username"
+            onClick={assignGoogleUsername}
+          >
+            Use Google username
+          </button>
+        )
+        : (
+          <span className="google-username">
+            Use your Google username?
             <button
               type="button"
-              className="form-button"
-              onClick={assignGoogleUsername}
-            >
-              Use Google username
-            </button>
-          )
-          : (
-            <button
-              type="button"
-              className="form-button"
+              className="google-username"
               onClick={signInAndAssignUsername}
             >
-              Sign-in
+              Sign in
             </button>
-          )}
+          </span>
+        )}
 
-        <button type="submit" className="form-button"> Upload score </button>
+      <button
+        type="submit"
+        className="form-button submit"
+      >
+        {' '}
+        Upload score
+      </button>
 
+      <div className="form-bottom">
         <ModalButton
           type="button"
           content="Leaderboards"

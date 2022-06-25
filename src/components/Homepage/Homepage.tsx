@@ -18,30 +18,30 @@ export default function Homepage(props: Props) {
       <section className="instructions-container">
         <article className="instructions-article">
           <h3 className="instructions-header">Instructions</h3>
-          <div className="instructions-text">
+          <p className="instructions-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatum nulla ex molestias error cum ipsa, repellendus
             vitae placeat dolores aliquam pariatur ducimus eum, recusandae
             consectetur quae. Fugiat tempore asperiores placeat.
-          </div>
+          </p>
         </article>
         <article className="instructions-article">
           <h4 className="instructions-header">How to play</h4>
-          <div className="instructions-text">
+          <p className="instructions-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatum nulla ex molestias error cum ipsa, repellendus
             vitae placeat dolores aliquam pariatur ducimus eum, recusandae
             consectetur quae. Fugiat tempore asperiores placeat.
-          </div>
+          </p>
         </article>
         <article className="instructions-article">
           <h4 className="instructions-header">Leaderboard</h4>
-          <div className="instructions-text">
+          <p className="instructions-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatum nulla ex molestias error cum ipsa, repellendus
             vitae placeat dolores aliquam pariatur ducimus eum, recusandae
             consectetur quae. Fugiat tempore asperiores placeat.
-          </div>
+          </p>
         </article>
       </section>
 

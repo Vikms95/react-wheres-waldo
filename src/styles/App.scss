@@ -412,37 +412,12 @@ ul{
   z-index: 1;
 }
 
-.game-win-modal-border{
-  background-color: $primary-color;
-  border-radius: 15px;
-  min-height: max(128px, 31.2vw);
-  min-width: 36vw;
-  padding: 3px;
-  opacity: 0;
-  visibility: hidden;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  margin-top: 10%;
-  transition: margin-top .5s ease-out, opacity .8s, visibility .5s linear;
-}
-
-.game-win-modal-border.show{
-  opacity: 1;
-  visibility: visible;
-  margin-top: 0;
-  transition: margin-top .5s ease-out, opacity .8s, visibility .5s linear;
-}
-
-
 .game-win-modal{
   font-size: 2vw;
   color: $font-color;
-  background-color: $primary-color;
+  background-color: #283445;
   min-height: max(120px, 29vw);
   min-width: 35vw;
-  border: 1px solid rgb(255, 255, 255);
   border-radius: 15px;
   display: grid;
   grid-template-rows: 1fr 2fr;
@@ -450,9 +425,21 @@ ul{
   justify-items: center;
   align-items: center;
   position: fixed;
+  opacity: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  visibility: hidden;
+  margin-top: 10%;
+  box-shadow: 0px 8px 8px #000;
+  transition: margin-top .5s ease-out, opacity .8s, visibility .5s linear;
+}
+
+.game-win-modal.show{
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0;
+  transition: margin-top .5s ease-out, opacity .8s, visibility .5s linear;
 }
 
 .timer-value{
@@ -460,25 +447,12 @@ ul{
 }
 
 .form-input{
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   row-gap: 1rem;
-
-  &>input{
-    color: $font-color;
-    padding:.8vw;
-    border:none;
-    background-color: transparent;
-    outline: none;
-    font-size: 1.2vw;
-    width: 10vw;
-
-    &::placeholder{
-      color: $font-color;
-    }
-  }
 
   &> button{
     align-self: center;
@@ -491,38 +465,80 @@ ul{
     border: 1px solid white;
     background-color: transparent;
   }
+
+  &>input{
+    color: $font-color;
+    padding:.8vw;
+    border:none;
+    font-weight: 900;
+    background-color: rgb(74, 89, 105);
+    border-radius: 20px;
+    font-size: 1.2vw;
+    width: 20vw;
+
+    &::placeholder{
+      color: $font-color;
+    }
+
+    &:focus{
+      outline:solid rgb(0, 162, 255);
+    }
+  }
+
+
 }
 
+.google-username{
+  position: absolute;
+  text-align: center;
+  display: inline;
+  border:none;
+  background-color: transparent;
+  color: rgb(0, 162, 255);
+  top: 37%;
+  left: 20%;
+}
 
-.input-hr{
-  width: 100%;
-  margin-top: -1rem;
+span.google-username{
+  font-size: max(1vw, .2rem);
+  color:rgba(145, 141, 141, 0.896);
+}
+
+button.google-username{
+  position: absolute;
+  top:.080rem;
+  left: max(97%,5vw);
+  width: max(2rem, 5vw);
+  font-size: max(1vw, .2rem);
+  font-weight: bolder;
 }
 
 .alias-form{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-content: center;
   row-gap: max(.5rem, 2vw);
 }
 
 .form-bottom{
   display: grid;
+  justify-content: space-between;
+  align-items: center;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  row-gap: max(.5rem, 2vw);
-  column-gap: max(.5rem, 2vw);
+  column-gap: max(.5rem, 4vw);
 }
 
 .form-button{
   color: $font-color;
-  background-color: transparent;
   font-weight: 900;
+  justify-self: center;
   font-family: $font-family;
+  background-color: rgba(145, 141, 141, 0.896);
   font-size: max(1vw, .2rem);
   width: clamp(2.5rem, 9vw, 10rem);
-  height: 3vw;
-  border: 1px solid white;
+  height: 2.8vw;
+  border: none;
   border-radius: 40px;
   display: flex;
   justify-content: center;
@@ -531,12 +547,12 @@ ul{
   flex-wrap: nowrap;
 
   &:hover{
-    background-color:$secondary-color;
+    background-color:rgba(168, 158, 158, 0.896);
   }
 }
 
-.form-button.leaderboard-button{
-  
+.form-button.submit{
+  background-color: rgb(0, 162, 255);
 }
 
 
