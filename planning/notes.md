@@ -82,12 +82,15 @@ Take timer score from gameView --> -->
 <!-- - Fix min padding on character images and dropdown -->
 <!-- -Fix tabindex on modal to be able to move to the "Post score" after the input -->
 - Media query for header to delete 2 items and create a dropdown on the right? 550px
+  :already created, but sign-in/out buttons are not being switched, trying to use ref but it is initally being passed as null
+
 - Fix dropdown padding and not appearing on the right place on mobile view
 - Make database adding and fetching reusable
 - Check accessible html tags
 - Give accessible attributes to elements
 - Write tests
 - Refactor CSS into mixins and reusable variables
+-ValidateDOMNesting(...): <button> cannot appear as a descendant of <button>.
 
 Ideas
 - Use Link params to pass the console clicked

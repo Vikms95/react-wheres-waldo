@@ -17,7 +17,6 @@ const authStateObserver = (
   if (user) {
     const profilePicUrl = getProfilePicUrl();
     const userName = getUserName();
-
     picEls.forEach((el) => {
       el.style.backgroundImage = `url(${addSizeToGoogleProfilePic(profilePicUrl)})`;
       el.removeAttribute('hidden');
