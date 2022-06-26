@@ -1,13 +1,20 @@
 import React, {
-  LegacyRef, useRef, useState,
+  useRef, useState, useEffect,
 } from 'react';
 import { Link } from 'react-router-dom';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signIn, signOutUser } from '../../utils/setupGoogleSignin';
+import NavDropdown from './NavDropdown';
 
 function Navbar() {
   const dropdownRef = useRef<HTMLUListElement>(null);
+  const [isDropdownRendered, setIsDropdownRendered] = useState(false);
+
+  useEffect(() => {
+    console.log('Hi');
+    document.addEventListener('click', handleClickOutsideDropdown);
+  }, []);
 
   const renderHeaderDropdown = () => {
     if (dropdownRef.current !== null && dropdownRef.current.hasAttribute('hidden')) {
@@ -16,6 +23,23 @@ function Navbar() {
       dropdownRef.current?.setAttribute('hidden', 'true');
     }
   };
+
+  /**
+   * Takes a reference from an element and checks if
+   * the click is within the element
+   */
+  const isClickOutside = (
+    event: MouseEvent,
+    ref?: React.MutableRefObject<any>,
+    condition?: any,
+  ) => !ref?.current.contains(event.target as HTMLInputElement);
+
+  // const handleClickOutsideDropdown = (event: MouseEvent) => {
+  //   console.log(event.target);
+  //   if (isClickOutside(event, dropdownRef)) {
+  //   //   dropdownRef.current?.setAttribute('hidden', 'true');
+  //   }
+  // };
 
   return (
     <nav className="navigation-bar">
@@ -54,34 +78,11 @@ function Navbar() {
       >
         <FontAwesomeIcon icon={faEllipsis} />
 
-        <ul className="header-dropdown" ref={dropdownRef as LegacyRef<HTMLUListElement> | undefined} hidden>
-          <li>
-            <Link to="/leaderboards/*" className="dropdown-item">
-              <div>Leaderboards</div>
-            </Link>
-          </li>
-
-          <li>
-            <button
-              type="button"
-              className="sign-in webpage-dropdown"
-              onClick={signIn}
-            >
-              Sign-in with Google
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              className="sign-out webpage-dropdown"
-              onClick={signOutUser}
-            >
-              <div className="user-pic" />
-              {' '}
-              Sign-out
-            </button>
-          </li>
-        </ul>
+        <NavDropdown
+          dropdownRef={dropdownRef}
+          isDropdownRendered={isDropdownRendered as boolean}
+          handleClickOutsideDropdown={handleClickOutsideDropdown}
+        />
 
       </div>
 

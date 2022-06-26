@@ -81,12 +81,12 @@ Take timer score from gameView --> -->
 <!-- - Create a base module to import from -->
 <!-- - Fix min padding on character images and dropdown -->
 <!-- -Fix tabindex on modal to be able to move to the "Post score" after the input -->
-- Media query for header to delete 2 items and create a dropdown on the right? 550px
+<!-- - Media query for header to delete 2 items and create a dropdown on the right? 550px -->
   <!-- :already created, but sign-in/out buttons are not being switched, trying to use ref but it is initally being passed as null -->
-  :when its being closed, the signin/signout elements get detected, but not when it gets opened
+  <!-- :when its being closed, the signin/signout elements get detected, but not when it gets opened
   :since the ones on the dropdown are not being mounted by the conditional render, they are not being located un
   like the ones on the header. 
-    :do not use coniditional rendering?
+    :do not use coniditional rendering? -->
 
 - Fix dropdown padding and not appearing on the right place on mobile view
 - Make database adding and fetching reusable

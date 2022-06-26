@@ -30,8 +30,6 @@ const authStateObserver = (
     });
 
     signOutEls.forEach((el) => {
-      console.log(el);
-
       el.removeAttribute('hidden');
     });
 
@@ -75,7 +73,6 @@ const isUserSignedIn = () => (
 );
 
 const initFirebaseAuth = () => {
-  console.log('Hi');
   onAuthStateChanged(getAuth(), authStateObserver);
 };
 
