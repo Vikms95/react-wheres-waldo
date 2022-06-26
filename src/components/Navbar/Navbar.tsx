@@ -1,17 +1,19 @@
-import React, { LegacyRef, useRef, useState } from 'react';
+import React, {
+  LegacyRef, useRef, useState,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signIn, signOutUser } from '../../utils/setupGoogleSignin';
 
 function Navbar() {
-  const [isDropdownRendered, setIsDropdownRendered] = useState(false);
   const dropdownRef = useRef<HTMLUListElement>(null);
 
   const renderHeaderDropdown = () => {
-    if (dropdownRef.current !== null) {
-      dropdownRef.current.style.display = 'flex';
-      setIsDropdownRendered(!isDropdownRendered);
+    if (dropdownRef.current !== null && dropdownRef.current.hasAttribute('hidden')) {
+      dropdownRef.current.removeAttribute('hidden');
+    } else {
+      dropdownRef.current?.setAttribute('hidden', 'true');
     }
   };
 
@@ -52,9 +54,7 @@ function Navbar() {
       >
         <FontAwesomeIcon icon={faEllipsis} />
 
-        {(isDropdownRendered)
-        && (
-        <ul className="header-dropdown" ref={dropdownRef}>
+        <ul className="header-dropdown" ref={dropdownRef as LegacyRef<HTMLUListElement> | undefined} hidden>
           <li>
             <Link to="/leaderboards/*" className="dropdown-item">
               <div>Leaderboards</div>
@@ -82,7 +82,7 @@ function Navbar() {
             </button>
           </li>
         </ul>
-        )}
+
       </div>
 
     </nav>

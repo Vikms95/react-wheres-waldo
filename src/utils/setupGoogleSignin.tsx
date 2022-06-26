@@ -10,24 +10,31 @@ const authStateObserver = (
   user: any,
 ) => {
   const picEls = Array.from(document.querySelectorAll('.user-pic')) as HTMLElement[];
-  const nameEls = Array.from(document.querySelectorAll('.user-name')) as HTMLElement[];
-  const signInEls = Array.from(document.querySelectorAll('.sign-in')) as HTMLElement[];
-  const signOutEls = Array.from(document.querySelectorAll('.sign-out')) as HTMLElement[];
+  const nameEls = Array.from(document.querySelectorAll('.user-name'));
+  const signInEls = Array.from(document.querySelectorAll('.sign-in'));
+  const signOutEls = Array.from(document.querySelectorAll('.sign-out'));
 
   if (user) {
+    // const userName = getUserName();
+
+    // nameEls.forEach((el) => {
+    //   el.textContent = userName as string;
+    //   el.removeAttribute('hidden');
+    // });
+
     const profilePicUrl = getProfilePicUrl();
-    const userName = getUserName();
+
     picEls.forEach((el) => {
       el.style.backgroundImage = `url(${addSizeToGoogleProfilePic(profilePicUrl)})`;
       el.removeAttribute('hidden');
     });
 
-    nameEls.forEach((el) => {
-      el.textContent = userName as string;
+    signOutEls.forEach((el) => {
+      console.log(el);
+
       el.removeAttribute('hidden');
     });
 
-    signOutEls.forEach((el) => { el.removeAttribute('hidden'); });
     signInEls.forEach((el) => { el.setAttribute('hidden', 'true'); });
 
     // might need to implement saveMessagingToken?
@@ -68,6 +75,7 @@ const isUserSignedIn = () => (
 );
 
 const initFirebaseAuth = () => {
+  console.log('Hi');
   onAuthStateChanged(getAuth(), authStateObserver);
 };
 

@@ -62,7 +62,7 @@ div.open-header-dropdown{
   transform-origin: top center;
   transition: all 400ms ease-in;
   z-index: 1;
-  display: none;
+  // display: none;
 
   & > * > .dropdown-item{
     color: white;
