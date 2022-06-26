@@ -81,7 +81,7 @@ Take timer score from gameView --> -->
 <!-- - Create a base module to import from -->
 <!-- - Fix min padding on character images and dropdown -->
 <!-- -Fix tabindex on modal to be able to move to the "Post score" after the input -->
-- Media query for header to delete 2 items and create a dropdown on the right?
+- Media query for header to delete 2 items and create a dropdown on the right? 550px
 - Fix dropdown padding and not appearing on the right place on mobile view
 - Make database adding and fetching reusable
 - Check accessible html tags

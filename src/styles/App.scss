@@ -34,15 +34,48 @@ ul{
 .navigation-bar{
   background-color:$primary-color; 
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+}
+
+
+button.open-header-dropdown{
+  position: relative;
+  display: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 1.4rem;
+}
+
+.header-dropdown{
+  border-radius: 15px;
+  background-color: $primary-color;
+  position: absolute;
+  top: 50%;
+  right: -170%;
+  &>li{
+    color: white;
+  }
+
+}
+
+@media only screen and (max-width:650px) {
+  button.open-header-dropdown{
+    display: flex;
+  }
+
+  button.sign-in,
+  button.sign-out,
+  .leaderboards.webpage-header{
+    display: none;
+  }
 }
 
 .webpage-header{
   color: $font-color;
   flex: 0 1 5rem;
-  font-size: max(.5rem, .8vw);
+  font-size: max(1rem, .8vw);
   position: relative;
   display: flex;
   justify-content: center;
@@ -74,9 +107,9 @@ ul{
 
 .sign-in,
 .sign-out{
+  flex-basis: 12rem;
   background-color: transparent;
   border: none;
-  flex-basis: 12rem;
   &::after{
     width: 0;
   }
@@ -101,16 +134,9 @@ ul{
   width: max(30px, 3vw);
 }
 
-@media (max-width: 739px){
-  .navigation-bar{
-    padding-bottom: 1rem;
-  }
-}
-
 .homepage-container,
 .leaderboards-container{
   @include page-positioning;
-
   background-color: $secondary-color;
   color: $font-color;
 }
