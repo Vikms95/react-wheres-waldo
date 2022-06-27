@@ -287,6 +287,7 @@ div.open-header-dropdown{
 }
 
 
+
 .leaderboards-table{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -300,12 +301,20 @@ div.open-header-dropdown{
   padding: 2rem 0;
 }
 
+.table-title{
+  font-size: 2em;
+  text-align: center;
+}
+
 .table-headers{
   background-color: $primary-color;
   display: flex;
   justify-content: center;
   gap: 7rem;
-  font-size: smaller;
+  font-size: 2em;
+  padding: .5rem 2rem;
+  border-radius: 5px;
+  margin-top: 1rem;
 }
 
 .table-list{

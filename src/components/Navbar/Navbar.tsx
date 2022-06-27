@@ -13,7 +13,6 @@ function Navbar() {
   const [isDropdownRendered, setIsDropdownRendered] = useState(false);
 
   useEffect(() => {
-    console.log('Hi');
     document.addEventListener('click', handleClickOutsideDropdown);
   }, []);
 
@@ -36,7 +35,6 @@ function Navbar() {
   ) => !ref?.current.contains(event.target as HTMLInputElement);
 
   const handleClickOutsideDropdown = (event: MouseEvent) => {
-    console.log(event.target);
     if (isClickOutside(event, dropdownRef)) {
     //   dropdownRef.current?.setAttribute('hidden', 'true');
     }
