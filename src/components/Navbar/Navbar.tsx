@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import { Link } from 'react-router-dom';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signIn, signOutUser } from '../../utils/setupGoogleSignin';
 import NavDropdown from './NavDropdown';
@@ -34,12 +35,12 @@ function Navbar() {
     condition?: any,
   ) => !ref?.current.contains(event.target as HTMLInputElement);
 
-  // const handleClickOutsideDropdown = (event: MouseEvent) => {
-  //   console.log(event.target);
-  //   if (isClickOutside(event, dropdownRef)) {
-  //   //   dropdownRef.current?.setAttribute('hidden', 'true');
-  //   }
-  // };
+  const handleClickOutsideDropdown = (event: MouseEvent) => {
+    console.log(event.target);
+    if (isClickOutside(event, dropdownRef)) {
+    //   dropdownRef.current?.setAttribute('hidden', 'true');
+    }
+  };
 
   return (
     <nav className="navigation-bar">
@@ -57,7 +58,8 @@ function Navbar() {
         className="sign-in webpage-header"
         onClick={signIn}
       >
-        Sign-in with Google
+        <FontAwesomeIcon icon={faGoogle} />
+        Sign in
       </button>
 
       <button

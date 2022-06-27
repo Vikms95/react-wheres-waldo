@@ -87,8 +87,9 @@ Take timer score from gameView --> -->
   :since the ones on the dropdown are not being mounted by the conditional render, they are not being located un
   like the ones on the header. 
     :do not use coniditional rendering? -->
+<!-- - Header dropdown not closing -->
+<!-- - Fix dropdown padding and not appearing on the right place on mobile view -->
 
-- Fix dropdown padding and not appearing on the right place on mobile view
 - Make database adding and fetching reusable
 - Check accessible html tags
 - Give accessible attributes to elements

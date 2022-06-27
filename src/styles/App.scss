@@ -43,7 +43,7 @@ div.open-header-dropdown{
   border: none;
   background-color: transparent;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
 }
 
 .header-dropdown{
@@ -54,37 +54,30 @@ div.open-header-dropdown{
   padding: 15px;
   position: absolute;
   top: 150%;
-  right: 300%;
-  perspective: 1000px;
-  animation: growDown 300ms ease-in-out forwards;
-  transform-origin: top center;
-  transition: all 400ms ease-in;
+  right: 10vw;
   z-index: 1;
 
   & > * > .dropdown-item{
-    color: white;
-    
+    color: white;  
+    border-radius: 15px;
+    width: 100%;
+
     &:hover{
       text-shadow:1px 1px #ffffff; 
     }
   }
 }
 
-.webpage-dropdown{
-  color: white;
+.sign-in.dropdown-item{
+  margin-left: 2rem;
 }
 
-@keyframes growDown {
-  0% {
-      transform: scaleY(0)
-  }
-  80% {
-      transform: scaleY(1.1)
-  }
-  100% {
-      transform: scaleY(1)
-  }
+.webpage-dropdown{
+  color: white;
+  width: 100%;
 }
+
+
 
 @media only screen and (max-width:650px) {
   div.open-header-dropdown{
@@ -136,6 +129,14 @@ div.open-header-dropdown{
   flex-basis: 15rem;
   background-color: transparent;
   border: none;
+  padding: .5rem 0;
+  display: flex;
+  gap: 1rem;
+
+  &.webpage-dropdown{
+    font-size: .7em;
+  }
+
   &::after{
     width: 0;
   }
@@ -156,6 +157,7 @@ div.open-header-dropdown{
   display: none;
 }
 
+
 .user-pic{
   border-radius: 50px;
   background-size: cover;
@@ -171,7 +173,6 @@ div.open-header-dropdown{
 }
 
 .homepage-container{
-  flex-grow: 1;
   min-height: 100%;
   max-height: fit-content;
   row-gap: 4rem;
@@ -209,10 +210,8 @@ div.open-header-dropdown{
   flex: 1 1 auto;
   display: grid;
   row-gap: 1.5rem;
-  column-gap: 1.5rem;
   align-items: flex-start;
   justify-items: center;
-  // grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
 
@@ -231,12 +230,18 @@ div.open-header-dropdown{
   }
 }
 
+@media (min-width: 1617px ){
+  .map-selection-container{
+    grid-template-columns: repeat(auto-fill,minmax(16rem, 1fr));
+    grid-template-rows: none;
+  }
+}
+
 
 .leaderboard-selection-container{
   color: $font-color;
   background-color:$secondary-color;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   justify-items: center;
   align-items: center;
   text-align-last: center;
@@ -249,7 +254,7 @@ div.open-header-dropdown{
   & > article > a > img{
     border-radius: 15px;
     height: auto;
-    width: max(5rem, 18vw);
+    width: max(7rem, 20vw);
     box-shadow: 0px 5px 20px 1px;
     transition: transform .3s, box-shadow 1s;
 
@@ -258,6 +263,18 @@ div.open-header-dropdown{
       transform: translateX(-3px) translateY(-3px);
       box-shadow:0 2px 10px 0 white; 
     }
+  }
+}
+
+@media (min-width:720px){
+  .leaderboard-selection-container{
+  grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width:1200px){
+  .leaderboard-selection-container{
+  grid-template-columns: repeat(4, 1fr);
   }
 }
 

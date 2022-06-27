@@ -15,13 +15,6 @@ const authStateObserver = (
   const signOutEls = Array.from(document.querySelectorAll('.sign-out'));
 
   if (user) {
-    // const userName = getUserName();
-
-    // nameEls.forEach((el) => {
-    //   el.textContent = userName as string;
-    //   el.removeAttribute('hidden');
-    // });
-
     const profilePicUrl = getProfilePicUrl();
 
     picEls.forEach((el) => {
@@ -34,8 +27,6 @@ const authStateObserver = (
     });
 
     signInEls.forEach((el) => { el.setAttribute('hidden', 'true'); });
-
-    // might need to implement saveMessagingToken?
   } else {
     nameEls.forEach((el) => { el.setAttribute('hidden', 'true'); });
     picEls.forEach((el) => { el.setAttribute('hidden', 'true'); });

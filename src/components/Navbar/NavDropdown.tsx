@@ -1,5 +1,7 @@
-import React, { LegacyRef, useEffect } from 'react';
+import React, { LegacyRef } from 'react';
 import { Link } from 'react-router-dom';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signIn, signOutUser } from '../../utils/setupGoogleSignin';
 
 interface Props{
@@ -20,12 +22,13 @@ function NavDropdown(props: Props) {
       </li>
 
       <li>
-        <button type="button" className="sign-in webpage-dropdown" onClick={signIn}>
-          Sign-in with Google
+        <button type="button" className="sign-in webpage-dropdown dropdown-item" onClick={signIn}>
+          <FontAwesomeIcon icon={faGoogle} />
+          Sign in
         </button>
       </li>
       <li>
-        <button type="button" className="sign-out webpage-dropdown" onClick={signOutUser}>
+        <button type="button" className="sign-out webpage-dropdown dropdown-item" onClick={signOutUser}>
           <div className="user-pic" />
           {' '}
           Sign-out
