@@ -6,12 +6,10 @@ import { signIn, signOutUser } from '../../utils/setupGoogleSignin';
 
 interface Props{
   dropdownRef: React.RefObject<HTMLUListElement>
-  isDropdownRendered: boolean
-  handleClickOutsideDropdown: (event: MouseEvent) => void
 }
 
 function NavDropdown(props: Props) {
-  const { dropdownRef, isDropdownRendered, handleClickOutsideDropdown } = props;
+  const { dropdownRef } = props;
 
   return (
     <ul className="header-dropdown" ref={(dropdownRef as LegacyRef<HTMLUListElement> | undefined)} hidden>

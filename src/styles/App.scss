@@ -442,6 +442,7 @@ div.open-header-dropdown{
   flex-grow: 1;
   width: 100%;
   border-radius: 15px;
+  font-size:max(1.5em, 1.5vw); 
   
   &:hover{
     background-color: $secondary-color;
@@ -451,7 +452,7 @@ div.open-header-dropdown{
     transform: translateY(2px);
   }
   &>button{
-    padding: .2rem 3vw;
+    padding:.2rem max(.1rem, 1vw);
     border: none;
     background-color: transparent;
   }
@@ -473,7 +474,7 @@ div.open-header-dropdown{
   font-weight: 500;
   font-variant: small-caps;
   padding: .2rem 3vw;
-  font-size: 1.5vw;
+  font-size: max(1em, 1.5vw);
 
   &:hover{
     background-color: rgb(235, 79, 79);
@@ -492,7 +493,7 @@ div.open-header-dropdown{
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  font-size: 1.5vw;
+  font-size: max(1em, 1.5vw);
   font-variant: small-caps;
 }
 

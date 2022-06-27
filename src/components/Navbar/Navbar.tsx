@@ -85,8 +85,6 @@ function Navbar() {
 
         <NavDropdown
           dropdownRef={dropdownRef}
-          isDropdownRendered={isDropdownRendered as boolean}
-          handleClickOutsideDropdown={handleClickOutsideDropdown}
         />
 
       </div>

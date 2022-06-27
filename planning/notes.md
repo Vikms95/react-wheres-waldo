@@ -89,17 +89,19 @@ Take timer score from gameView --> -->
     :do not use coniditional rendering? -->
 <!-- - Header dropdown not closing -->
 <!-- - Fix dropdown padding and not appearing on the right place on mobile view -->
-
+<!-- 
 - Hide dropdown if clicked outside of it when rendered
-  :dropdown is
-- Make database adding and fetching reusable
-- Check accessible html tags
+  :dropdown is -->
+
 - Give accessible attributes to elements
 - Write tests
+    https://daveceddia.com/what-to-test-in-react-app/
+    https://daveceddia.com/testing-for-proptypes-errors/
+    https://reactjs.org/docs/testing-recipes.html
+    https://reactjs.org/docs/testing-environments.html
+    
 - Refactor CSS into mixins and reusable variables
--ValidateDOMNesting(...): <button> cannot appear as a descendant of <button>.
-
-Warning: validateDOMNesting(...): <td> cannot appear as a child of <th>.
+- Make database adding and fetching reusable
 
 Ideas
 - Use Link params to pass the console clicked
