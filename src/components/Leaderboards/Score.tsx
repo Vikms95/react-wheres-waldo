@@ -9,12 +9,12 @@ function Score(props: Props) {
   const { alias, score } = props;
   return (
     <>
-      <th>
+      <tr>
         <td colSpan={2} className="alias">{alias}</td>
-      </th>
-      <th>
+      </tr>
+      <tr>
         <td colSpan={2} className="score">{score}</td>
-      </th>
+      </tr>
     </>
   );
 }

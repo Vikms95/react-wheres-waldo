@@ -47,20 +47,19 @@ div.open-header-dropdown{
 }
 
 .header-dropdown{
+  box-shadow: 0px 4px 8px #000;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;
   background-color:#49566b;
   padding: 15px;
   position: absolute;
-  top: 150%;
+  top: 100%;
   right: 10vw;
   z-index: 1;
 
   & > * > .dropdown-item{
     color: white;  
-    border-radius: 15px;
-    width: 100%;
 
     &:hover{
       text-shadow:1px 1px #ffffff; 
@@ -76,8 +75,6 @@ div.open-header-dropdown{
   color: white;
   width: 100%;
 }
-
-
 
 @media only screen and (max-width:650px) {
   div.open-header-dropdown{
@@ -147,9 +144,9 @@ div.open-header-dropdown{
 
 .sign-out{
   display: flex;
-  gap: 2rem;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 
 .sign-in[hidden=true],
@@ -284,6 +281,7 @@ div.open-header-dropdown{
   align-items: flex-start;
   min-height: 100vh;
   flex-wrap: wrap;
+  row-gap: 5rem;
 }
 
 

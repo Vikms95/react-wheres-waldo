@@ -10,6 +10,7 @@ import NavDropdown from './NavDropdown';
 
 function Navbar() {
   const dropdownRef = useRef<HTMLUListElement>(null);
+  const renderDropdownButtonRef = useRef(null);
   const [isDropdownRendered, setIsDropdownRendered] = useState(false);
 
   useEffect(() => {
@@ -31,12 +32,15 @@ function Navbar() {
   const isClickOutside = (
     event: MouseEvent,
     ref?: React.MutableRefObject<any>,
-    condition?: any,
-  ) => !ref?.current.contains(event.target as HTMLInputElement);
+    secondRef?: React.MutableRefObject<any>,
+  ) => (
+    // if the dropdown is not clicked but that click does not include the button
+    !ref?.current.contains(event.target as HTMLInputElement)
+    && !secondRef?.current.contains(event.target as HTMLInputElement));
 
   const handleClickOutsideDropdown = (event: MouseEvent) => {
-    if (isClickOutside(event, dropdownRef)) {
-    //   dropdownRef.current?.setAttribute('hidden', 'true');
+    if (isClickOutside(event, dropdownRef, renderDropdownButtonRef)) {
+      dropdownRef.current?.setAttribute('hidden', 'true');
     }
   };
 
@@ -74,6 +78,7 @@ function Navbar() {
         role="button"
         tabIndex={0}
         className="open-header-dropdown"
+        ref={renderDropdownButtonRef}
         onClick={renderHeaderDropdown}
       >
         <FontAwesomeIcon icon={faEllipsis} />

@@ -7,8 +7,8 @@ import {
 } from 'firebase/firestore';
 
 import uniqid from 'uniqid';
-import ConsoleContext from '../../context/ConsoleContext';
 import Score from './Score';
+import ConsoleContext from '../../context/ConsoleContext';
 import getCurrentDate from '../../utils/getCurrentDate';
 
 export default function Leaderboards() {

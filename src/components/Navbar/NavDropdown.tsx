@@ -22,13 +22,21 @@ function NavDropdown(props: Props) {
       </li>
 
       <li>
-        <button type="button" className="sign-in webpage-dropdown dropdown-item" onClick={signIn}>
+        <button
+          type="button"
+          className="sign-in webpage-dropdown dropdown-item"
+          onClick={signIn}
+        >
           <FontAwesomeIcon icon={faGoogle} />
           Sign in
         </button>
       </li>
       <li>
-        <button type="button" className="sign-out webpage-dropdown dropdown-item" onClick={signOutUser}>
+        <button
+          type="button"
+          className="sign-out webpage-dropdown dropdown-item"
+          onClick={signOutUser}
+        >
           <div className="user-pic" />
           {' '}
           Sign-out

@@ -90,6 +90,8 @@ Take timer score from gameView --> -->
 <!-- - Header dropdown not closing -->
 <!-- - Fix dropdown padding and not appearing on the right place on mobile view -->
 
+- Hide dropdown if clicked outside of it when rendered
+  :dropdown is
 - Make database adding and fetching reusable
 - Check accessible html tags
 - Give accessible attributes to elements
