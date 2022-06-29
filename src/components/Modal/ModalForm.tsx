@@ -1,9 +1,8 @@
-import React, {
-  FormEvent, SyntheticEvent, useContext, useEffect, useState,
-} from 'react';
+import React, { FormEvent, SyntheticEvent, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import ConsoleContext from '../../context/ConsoleContext';
 import { getUserName, isUserSignedIn, signIn } from '../../utils/setupGoogleSignin';
+import ConsoleContext from '../../context/ConsoleContext';
 import formatTimer from '../../utils/formatTimer';
 import getCurrentDate from '../../utils/getCurrentDate';
 
@@ -23,7 +22,7 @@ function ModalForm(props: Props) {
   } = props;
 
   const selectedConsole = useContext(ConsoleContext);
-
+  const navigate = useNavigate();
   /**
    * Submits a new "highscore" item to the respective
    * collection based on the parameter "consoleToSubmit"
@@ -46,6 +45,12 @@ function ModalForm(props: Props) {
     } catch (err) {
       console.error('Error submiting your item to the database', err);
     }
+    console.log('hi');
+    navigateToURL('/');
+  };
+
+  const navigateToURL = (url: string) => {
+    navigate(url);
   };
 
   /**
