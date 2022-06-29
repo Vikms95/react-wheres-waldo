@@ -19,17 +19,18 @@ export default function GameView() {
   const selectedConsole = useContext(ConsoleContext);
 
   const dropdownRef = useRef<HTMLInputElement>(null);
-  const intervalIdRef = useRef<NodeJS.Timer | null>(null);
+  const timeElapsedIntervalIdRef = useRef<NodeJS.Timer | null>(null);
+  const lastClickIntervalIdRef = useRef<NodeJS.Timer | null>(null);
 
   useEffect(() => {
-    intervalIdRef.current = setInterval(incrementTimer, 1000);
-    return () => clearInterval(intervalIdRef.current as NodeJS.Timer);
+    timeElapsedIntervalIdRef.current = setInterval(incrementTimer, 1000);
+    return () => clearInterval(timeElapsedIntervalIdRef.current as NodeJS.Timer);
   }, [timeElapsed]);
 
   useEffect(() => {
     // When three characters are validated, stop the timer
     if (isGameWin()) {
-      clearInterval(intervalIdRef.current as NodeJS.Timer);
+      clearInterval(timeElapsedIntervalIdRef.current as NodeJS.Timer);
     }
   }, [validatedChars]);
 
@@ -72,6 +73,9 @@ export default function GameView() {
    * values based on the registered click coordinates
    */
   const renderGameDropdown = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    // Clear the interval that would close the last dropdown,
+    // so it does not close our newly rendered dropdown
+    clearInterval(lastClickIntervalIdRef.current as NodeJS.Timer);
     setIsLastClickValid(false);
     moveDropdownOnClick((e.pageY - 80), e.pageX);
     storeLastClickedCoords(e);
@@ -94,6 +98,7 @@ export default function GameView() {
         validatedChars={validatedChars}
         isLastClickValid={isLastClickValid}
         lastClickedCoords={lastClickedCoords}
+        lastClickIntervalIdRef={lastClickIntervalIdRef}
         setValidatedChars={setValidatedChars}
         setIsLastClickValid={setIsLastClickValid}
       />

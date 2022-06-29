@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useRef } from 'react';
 import {
   query, onSnapshot, collection, getFirestore, QuerySnapshot, DocumentData,
 } from 'firebase/firestore';
@@ -13,6 +13,7 @@ interface Props{
   validatedChars: string[];
   lastClickedCoords: number[]
   isLastClickValid: boolean
+  lastClickIntervalIdRef: React.MutableRefObject<NodeJS.Timer | null>
   setValidatedChars: React.Dispatch<React.SetStateAction<string[]>>
   setIsLastClickValid: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -23,6 +24,7 @@ export default function GameDropdown(props: Props) {
     validatedChars,
     lastClickedCoords,
     isLastClickValid,
+    lastClickIntervalIdRef,
     setValidatedChars,
     setIsLastClickValid,
   } = props;
@@ -36,7 +38,7 @@ export default function GameDropdown(props: Props) {
    */
   useEffect(() => {
     setTimeout(() => setIsLastClickValid, 1000);
-    setTimeout(closeDropdown, 1200);
+    lastClickIntervalIdRef.current = setTimeout(closeDropdown, 1200);
   }, [validatedChars]);
 
   /**
