@@ -19,6 +19,7 @@ function LeaderboardMenu(props: Props) {
         <Link
           to="/super-nintendo"
           data-type="super-nintendo"
+          data-testid="super-nintendo-leaderboard"
           onClick={(e) => handleSelectedConsole(e)}
         >
           <img src={snes} alt="super-nintendo" data-type="super-nintendo" />

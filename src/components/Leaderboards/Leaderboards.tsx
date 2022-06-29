@@ -59,7 +59,10 @@ export default function Leaderboards() {
   };
 
   return (
-    <main className="leaderboards-container">
+    <main
+      className="leaderboards-container"
+      data-testid="leaderboards-container"
+    >
       <table className="leaderboard-container" cellPadding={-5}>
 
         <thead className="table-title">
