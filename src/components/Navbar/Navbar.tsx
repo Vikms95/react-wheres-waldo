@@ -76,6 +76,7 @@ function Navbar() {
       <div
         role="button"
         tabIndex={0}
+        data-testid="open-header-dropdown"
         className="open-header-dropdown"
         ref={renderDropdownButtonRef}
         onClick={renderHeaderDropdown}

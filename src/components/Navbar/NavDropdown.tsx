@@ -14,6 +14,7 @@ function NavDropdown(props: Props) {
   return (
     <ul
       className="header-dropdown"
+      data-testid="header-dropdown"
       ref={(dropdownRef as LegacyRef<HTMLUListElement> | undefined)}
       hidden
     >
