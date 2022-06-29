@@ -49,6 +49,7 @@ export default function Homepage(props: Props) {
         <Link
           to="/game"
           data-type="super-nintendo"
+          data-testid="super-nintendo"
           onClick={(e) => handleSelectedConsole(e)}
         >
           <img src={snes} alt="super-nintendo" data-type="super-nintendo" />

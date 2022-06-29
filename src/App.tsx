@@ -5,10 +5,10 @@ import { initFirebaseAuth } from './utils/setupGoogleSignin';
 
 import Navbar from './components/Navbar';
 import Homepage from './components/Homepage';
-import Leaderboards from './components/Leaderboards';
 import GameView from './components/GameView';
-import LeaderboardMenu from './components/Leaderboards/LeaderboardMenu';
+import Leaderboards from './components/Leaderboards';
 import ConsoleContext from './context/ConsoleContext';
+import LeaderboardMenu from './components/Leaderboards/LeaderboardMenu';
 import saveCoordinatesToDatabase from './utils/setupDatabase';
 
 export default function App() {
@@ -18,7 +18,6 @@ export default function App() {
 
   useEffect(() => {
     saveCoordinatesToDatabase();
-    // ?
     initFirebaseAuth();
   }, []);
 
@@ -39,7 +38,7 @@ export default function App() {
 
   return (
     <ConsoleContext.Provider value={selectedConsole as string}>
-      <div className="App">
+      <div className="App" data-testid="App">
         <HashRouter>
           <Navbar />
           <Routes>
