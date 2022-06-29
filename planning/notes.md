@@ -93,6 +93,7 @@ Take timer score from gameView --> -->
 - Hide dropdown if clicked outside of it when rendered
   :dropdown is -->
 
+- Go to home when a score is submitted 
 - Give accessible attributes to elements
 - Write tests
     https://daveceddia.com/what-to-test-in-react-app/

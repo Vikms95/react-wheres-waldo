@@ -17,16 +17,15 @@ export default function Leaderboards() {
   const selectedConsole = useContext(ConsoleContext);
 
   useEffect(() => {
-    fetchScoresFromDatabase(selectedConsole);
-    renderTodaysScores();
+    setScoresFromDatabase(selectedConsole);
+    // renderTodaysScores(); test if it breaks something by commenting
   }, []);
 
-  const fetchScoresFromDatabase = (consoleName: string | null) => {
-    const databaseQuery = query(
-      collection(getFirestore(), `highscores-${consoleName}`),
-      orderBy('score', 'asc'),
-      limit(50),
-    );
+  /**
+   * Sets scores taken from fetchScoresFromDatabase as state
+   */
+  const setScoresFromDatabase = (consoleName: string | null) => {
+    const databaseQuery = fetchScoresFromDatabase(consoleName);
 
     onSnapshot(databaseQuery, (snapshot) => {
       snapshot.docs.forEach((doc) => {
@@ -37,9 +36,19 @@ export default function Leaderboards() {
     });
   };
 
+  /**
+   * Fetches scores from Firebase collection based on the consoleName parameter
+   */
+  const fetchScoresFromDatabase = (consoleName: string | null) => query(
+    collection(getFirestore(), `highscores-${consoleName}`),
+    orderBy('score', 'asc'),
+    limit(50),
+  );
+
   const renderTodaysScores = () => {
     const today = getCurrentDate();
-    return scores.filter((score: any) => (score.date === today))
+    return scores
+      .filter((score: any) => (score.date === today))
       .map((score: any) => (
         <Score
           key={uniqid()}

@@ -75,7 +75,6 @@ export default function Homepage(props: Props) {
           <img src={ps2} alt="playstation-2" data-type="playstation-2" />
         </Link>
       </section>
-
     </main>
   );
 }

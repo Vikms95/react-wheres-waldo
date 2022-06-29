@@ -2,20 +2,17 @@ import React, {
   FormEvent, SyntheticEvent, useEffect, useRef, useState,
 } from 'react';
 import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ModalForm from './ModalForm';
+import ModalButton from './ModalButton';
 import formatTimer from '../../utils/formatTimer';
-import getCurrentDate from '../../utils/getCurrentDate';
 
 interface Props{
     timeElapsed: number
 }
 
 function Modal(props: Props) {
-  const {
-    timeElapsed,
-  } = props;
+  const { timeElapsed } = props;
 
   const [playerAlias, setPlayerAlias] = useState('');
 
@@ -30,29 +27,6 @@ function Modal(props: Props) {
   const handleInputChange = (event: MouseEvent | SyntheticEvent) => {
     const inputElement = event.target as HTMLInputElement;
     setPlayerAlias(inputElement.value);
-  };
-
-  const submitScoreToDatabase = async (
-    e: FormEvent<HTMLFormElement>,
-    name: string,
-    consoleToSubmit: string | null,
-  ) => {
-    e.preventDefault();
-    const { score, alias } = getScoreInfo(name);
-    const date = getCurrentDate();
-    setPlayerAlias('');
-
-    try {
-      await addDoc(collection(getFirestore(), `highscores-${consoleToSubmit}`), { alias, score, date });
-    } catch (err) {
-      console.error('Error submiting your item to the database', err);
-    }
-  };
-
-  const getScoreInfo = (name: string) => {
-    const alias = name || 'Anonymous';
-    const score = formatTimer(timeElapsed.toString());
-    return { score, alias };
   };
 
   return (
@@ -70,11 +44,27 @@ function Modal(props: Props) {
         </article>
 
         <ModalForm
+          timeElapsed={timeElapsed}
           playerAlias={playerAlias}
           setPlayerAlias={setPlayerAlias}
           handleInputChange={handleInputChange}
-          submitScoreToDatabase={submitScoreToDatabase}
         />
+
+        <article className="form-bottom">
+          <ModalButton
+            type="button"
+            link="/leaderboards"
+            content="Leaderboards"
+            className="leaderboard-button form-button"
+          />
+
+          <ModalButton
+            type="button"
+            link="/"
+            content="Home"
+            className="form-button"
+          />
+        </article>
 
       </article>
     </section>

@@ -12,7 +12,11 @@ function NavDropdown(props: Props) {
   const { dropdownRef } = props;
 
   return (
-    <ul className="header-dropdown" ref={(dropdownRef as LegacyRef<HTMLUListElement> | undefined)} hidden>
+    <ul
+      className="header-dropdown"
+      ref={(dropdownRef as LegacyRef<HTMLUListElement> | undefined)}
+      hidden
+    >
       <li>
         <Link to="/leaderboards/*" className="dropdown-item">
           <div>Leaderboards</div>

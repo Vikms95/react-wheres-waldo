@@ -1,31 +1,62 @@
-import { sign } from 'crypto';
 import React, {
   FormEvent, SyntheticEvent, useContext, useEffect, useState,
 } from 'react';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import ConsoleContext from '../../context/ConsoleContext';
 import { getUserName, isUserSignedIn, signIn } from '../../utils/setupGoogleSignin';
-import ModalButton from './ModalButton';
+import formatTimer from '../../utils/formatTimer';
+import getCurrentDate from '../../utils/getCurrentDate';
 
 interface Props{
+  timeElapsed: number
   playerAlias: string
   setPlayerAlias: React.Dispatch<React.SetStateAction<string>>
   handleInputChange: (event: MouseEvent | SyntheticEvent) => void
-  submitScoreToDatabase: (
-    e: FormEvent<HTMLFormElement>,
-    name: string,
-    consoleToSubmit: string | null
-    ) => Promise<void>
 }
 
 function ModalForm(props: Props) {
   const {
+    timeElapsed,
     playerAlias,
     setPlayerAlias,
-    submitScoreToDatabase,
     handleInputChange,
   } = props;
 
   const selectedConsole = useContext(ConsoleContext);
+
+  /**
+   * Submits a new "highscore" item to the respective
+   * collection based on the parameter "consoleToSubmit"
+   */
+  const submitScoreToDatabase = async (
+    e: FormEvent<HTMLFormElement>,
+    name: string,
+    consoleToSubmit: string | null,
+  ) => {
+    e.preventDefault();
+    const { score, alias } = getScoreInfo(name);
+    const date = getCurrentDate();
+    setPlayerAlias('');
+
+    try {
+      await addDoc(
+        collection(getFirestore(), `highscores-${consoleToSubmit}`),
+        { alias, score, date },
+      );
+    } catch (err) {
+      console.error('Error submiting your item to the database', err);
+    }
+  };
+
+  /**
+   * Gets the name parameter that if empty, returns "Anonymous"
+   * Gets the time from timeElapsed and formats it to ++:++
+   */
+  const getScoreInfo = (name: string) => {
+    const alias = name || 'Anonymous';
+    const score = formatTimer(timeElapsed.toString());
+    return { score, alias };
+  };
 
   const assignGoogleUsername = () => {
     setPlayerAlias(() => getUserName() as string);
@@ -37,74 +68,56 @@ function ModalForm(props: Props) {
   };
 
   return (
-    <>
-      <form
-        autoComplete="off"
-        className="alias-form"
-        onSubmit={(e) => submitScoreToDatabase(e, playerAlias, selectedConsole)}
-      >
-        <label htmlFor="score" className="form-input">
-          <input
-            id="score"
-            type="text"
-            value={playerAlias}
-            onChange={handleInputChange}
-            placeholder="Your alias here ..."
-            maxLength={15}
-          />
-        </label>
-        <div className="google-username-container">
-          {(isUserSignedIn())
-            ? (
+    <form
+      autoComplete="off"
+      className="alias-form"
+      onSubmit={(e) => submitScoreToDatabase(e, playerAlias, selectedConsole)}
+    >
+      <label htmlFor="score" className="form-input">
+        <input
+          id="score"
+          type="text"
+          maxLength={15}
+          value={playerAlias}
+          onChange={handleInputChange}
+          placeholder="Your alias here ..."
+        />
+      </label>
+      <div className="google-username-container">
+        {(isUserSignedIn())
+          ? (
+            <button
+              type="button"
+              tabIndex={-1}
+              className="use-google-username"
+              onClick={assignGoogleUsername}
+            >
+              Use Google username
+            </button>
+          )
+          : (
+            <span className="google-username">
+              Use your Google username?
               <button
                 type="button"
-                className="use-google-username"
-                onClick={assignGoogleUsername}
                 tabIndex={-1}
+                className="google-username"
+                onClick={signInAndAssignUsername}
               >
-                Use Google username
+                Sign in
               </button>
-            )
-            : (
-              <span className="google-username">
-                Use your Google username?
-                <button
-                  type="button"
-                  className="google-username"
-                  onClick={signInAndAssignUsername}
-                  tabIndex={-1}
-                >
-                  Sign in
-                </button>
-              </span>
-            )}
-        </div>
-
-        <button
-          type="submit"
-          className="form-button submit"
-        >
-          {' '}
-          Post score
-        </button>
-      </form>
-
-      <div className="form-bottom">
-        <ModalButton
-          type="button"
-          content="Leaderboards"
-          link="/leaderboards"
-          className="leaderboard-button form-button"
-        />
-
-        <ModalButton
-          type="button"
-          className="form-button"
-          content="Home"
-          link="/"
-        />
+            </span>
+          )}
       </div>
-    </>
+
+      <button
+        type="submit"
+        className="form-button submit"
+      >
+        {' '}
+        Post score
+      </button>
+    </form>
   );
 }
 

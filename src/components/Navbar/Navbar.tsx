@@ -11,10 +11,10 @@ import NavDropdown from './NavDropdown';
 function Navbar() {
   const dropdownRef = useRef<HTMLUListElement>(null);
   const renderDropdownButtonRef = useRef(null);
-  const [isDropdownRendered, setIsDropdownRendered] = useState(false);
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutsideDropdown);
+    return () => document.removeEventListener('click', handleClickOutsideDropdown);
   }, []);
 
   const renderHeaderDropdown = () => {
@@ -46,7 +46,6 @@ function Navbar() {
 
   return (
     <nav className="navigation-bar">
-
       <Link to="/" className="webpage-header">
         <h1> FindMe </h1>
       </Link>
@@ -88,7 +87,6 @@ function Navbar() {
         />
 
       </div>
-
     </nav>
   );
 }

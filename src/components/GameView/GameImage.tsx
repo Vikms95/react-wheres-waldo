@@ -15,6 +15,7 @@ function GameImage(props: Props) {
   } = props;
 
   const selectedConsole = useContext(ConsoleContext);
+
   /**
    * Renders one of the imported images based on
    * selectedConsole prop
