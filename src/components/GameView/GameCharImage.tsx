@@ -11,7 +11,7 @@ function GameCharImage(props: Props) {
   return (
     <div key={name} className="character-data-container">
       <span className="character-name">{capitalizeString(name)}</span>
-      <img src={image} alt={name} className="character-image" />
+      <img src={image} alt="character-to-find" className="character-image" />
     </div>
   );
 }
