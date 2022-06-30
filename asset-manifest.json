@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/react-wheres-waldo/static/css/main.f1153332.css",
+    "main.js": "/react-wheres-waldo/static/js/main.bf3911fa.js",
+    "static/media/zero-snes.png": "/react-wheres-waldo/static/media/zero-snes.49d9bec44bbbf1626a71.png",
+    "static/media/ratchet-ps2.png": "/react-wheres-waldo/static/media/ratchet-ps2.af5286733ffbe024bff4.png",
+    "static/media/mario-snes.png": "/react-wheres-waldo/static/media/mario-snes.84bd7d62b28378724e54.png",
+    "static/media/chrono-snes.png": "/react-wheres-waldo/static/media/chrono-snes.3e47c5ca161ccf1ca10a.png",
+    "static/media/marth-gc.png": "/react-wheres-waldo/static/media/marth-gc.11ab4ad72588caea25fc.png",
+    "static/media/prince-ps2.png": "/react-wheres-waldo/static/media/prince-ps2.f62adbcd09f4067f98ee.png",
+    "static/media/snes.jpg": "/react-wheres-waldo/static/media/snes.055103f78c41536d78d0.jpg",
+    "static/media/ps1.jpg": "/react-wheres-waldo/static/media/ps1.c7a8f4957c261d6ce699.jpg",
+    "static/media/ps2.jpg": "/react-wheres-waldo/static/media/ps2.94c255537def77b4057e.jpg",
+    "static/media/gamecube.jpg": "/react-wheres-waldo/static/media/gamecube.937cbc9e4deba83e3ae3.jpg",
+    "static/media/samus-gc.png": "/react-wheres-waldo/static/media/samus-gc.8c13944474bbc69058fb.png",
+    "static/media/vivi-ps1.png": "/react-wheres-waldo/static/media/vivi-ps1.e8ca8ba56c659cd6ce6b.png",
+    "static/media/alucard-ps1.png": "/react-wheres-waldo/static/media/alucard-ps1.62980f04d530b0927e42.png",
+    "static/media/toad-gc.png": "/react-wheres-waldo/static/media/toad-gc.a09787e5022ca5a6f607.png",
+    "static/media/chibi-ps2.png": "/react-wheres-waldo/static/media/chibi-ps2.2d098ada6cdd711d798e.png",
+    "static/media/mantis-ps1.png": "/react-wheres-waldo/static/media/mantis-ps1.65cff2ec75f9d418b49a.png",
+    "index.html": "/react-wheres-waldo/index.html",
+    "main.f1153332.css.map": "/react-wheres-waldo/static/css/main.f1153332.css.map",
+    "main.bf3911fa.js.map": "/react-wheres-waldo/static/js/main.bf3911fa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1153332.css",
+    "static/js/main.bf3911fa.js"
+  ]
+}
