@@ -1,5 +1,7 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  fireEvent, render, screen, waitFor,
+} from '@testing-library/react';
 import { unmountComponentAtNode } from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import { act } from 'react-dom/test-utils';
@@ -48,5 +50,14 @@ test('does render all buttons', () => {
 });
 
 test('input does render the values from state', () => {
-  const inputEl = screen.getByRole('textbox');
+  // const inputEl = screen.getByRole('textbox');
+
+  // act(() => {
+  //   fireEvent.keyDown(inputEl, {
+  //     key: 'KeyA',
+  //     keyCode: 65,
+  //   });
+  // });
+
+  // expect(inputEl).toHaveValue('test');
 });
