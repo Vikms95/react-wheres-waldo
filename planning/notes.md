@@ -93,7 +93,7 @@ Take timer score from gameView --> -->
 - Hide dropdown if clicked outside of it when rendered
   :dropdown is -->
 
-- Go to home when a score is submitted 
+<!-- - Go to home when a score is submitted  -->
 - Give accessible attributes to elements
 - Write tests
     https://daveceddia.com/what-to-test-in-react-app/
@@ -102,7 +102,7 @@ Take timer score from gameView --> -->
     https://reactjs.org/docs/testing-environments.html
     
 - Refactor CSS into mixins and reusable variables
-- Make database adding and fetching reusable
+<!-- - Make database adding and fetching reusable -->
 
 Ideas
 - Use Link params to pass the console clicked

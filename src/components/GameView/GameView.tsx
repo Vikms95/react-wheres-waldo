@@ -14,7 +14,7 @@ export default function GameView() {
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
-  const [validatedChars, setValidatedChars] = useState<string[]>(['', '', '']);
+  const [validatedChars, setValidatedChars] = useState<string[]>([]);
 
   const selectedConsole = useContext(ConsoleContext);
 

@@ -1,10 +1,9 @@
 import React from 'react';
 import {
-  fireEvent, render, screen, waitFor,
+  fireEvent, render, screen,
 } from '@testing-library/react';
 import { unmountComponentAtNode } from 'react-dom';
 import { HashRouter } from 'react-router-dom';
-import { act } from 'react-dom/test-utils';
 import App from '../../App';
 import Modal from './Modal';
 

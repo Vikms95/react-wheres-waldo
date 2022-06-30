@@ -3,6 +3,7 @@ const formatTimer = (timer: string) => {
   let formattedSeconds;
 
   const toSeconds = parseInt(timer, 10);
+
   const hours = Math.floor(toSeconds / 3600);
   const minutes = Math.floor((toSeconds - (hours * 3600)) / 60);
   const seconds = toSeconds - (hours * 3600) - (minutes * 60);
