@@ -35,6 +35,7 @@ function GameImage(props: Props) {
     <img
       src={renderGameImage(selectedConsole)}
       alt={(selectedConsole as string)}
+      data-testid={selectedConsole}
       onClick={(e) => renderGameDropdown((e as React.MouseEvent<HTMLImageElement>))}
     />
   );

@@ -2,7 +2,7 @@ import React, {
   useState, useEffect, useRef, useContext,
 } from 'react';
 
-import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
+import { getConsoleCharacterData } from '../../utils/characterData';
 import Modal from '../Modal/Modal';
 import GameTimer from './GameTimer';
 import GameImage from './GameImage';
@@ -14,7 +14,7 @@ export default function GameView() {
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [isLastClickValid, setIsLastClickValid] = useState(false);
   const [lastClickedCoords, setLastClickedCoords] = useState([0, 0]);
-  const [validatedChars, setValidatedChars] = useState<string[]>([]);
+  const [validatedChars, setValidatedChars] = useState<string[]>(['', '', '']);
 
   const selectedConsole = useContext(ConsoleContext);
 

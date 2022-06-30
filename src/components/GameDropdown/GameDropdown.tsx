@@ -4,7 +4,7 @@ import {
 } from 'firebase/firestore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
-import getConsoleCharacterData from '../../utils/getConsoleCharactersData';
+import { getConsoleCharacterData } from '../../utils/characterData';
 import DropdownButton from './DropdownButton';
 import ConsoleContext from '../../context/ConsoleContext';
 
@@ -48,6 +48,7 @@ export default function GameDropdown(props: Props) {
   const checkCoordinatesOnDatabase = (
     characterName: string,
   ) => {
+    console.log('Hi');
     const databaseQuery = query(collection(getFirestore(), 'coordinates'));
 
     onSnapshot(databaseQuery, (snapshot) => {

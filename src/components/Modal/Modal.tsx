@@ -1,5 +1,5 @@
 import React, {
-  FormEvent, SyntheticEvent, useEffect, useRef, useState,
+  SyntheticEvent, useEffect, useRef, useState,
 } from 'react';
 import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -38,7 +38,7 @@ function Modal(props: Props) {
           {' '}
           Your score is
           {' '}
-          <span className="timer-value">
+          <span className="timer-value" data-testid="timer-value">
             {formatTimer(timeElapsed.toString())}
           </span>
         </article>

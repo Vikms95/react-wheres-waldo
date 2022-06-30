@@ -38,4 +38,27 @@ const getConsoleCharacterData = (consoleName: string | null) => {
   return CHARACTER_IMAGES[consoleName as keyof typeof CHARACTER_IMAGES];
 };
 
-export default getConsoleCharacterData;
+const characterCoordinates = {
+  'super-nintendo': {
+    mario: { width: [87, 94], height: [101, 112] },
+    chrono: { width: [48, 53], height: [126, 134] },
+    zero: { width: [26, 38], height: [128, 138] },
+  },
+  'game-cube': {
+    samus: { width: [82, 89], height: [112, 120] },
+    marth: { width: [48, 54], height: [139, 148] },
+    toad: { width: [33, 38], height: [94, 98] },
+  },
+  'playstation-1': {
+    mantis: { width: [45, 50], height: [143, 148] },
+    vivi: { width: [42, 46], height: [109, 115] },
+    alucard: { width: [61, 68], height: [140, 148] },
+  },
+  'playstation-2': {
+    ratchet: { width: [44, 50], height: [126, 134] },
+    prince: { width: [76, 81], height: [93, 100] },
+    chibi: { width: [23, 28], height: [77, 84] },
+  },
+};
+
+export { getConsoleCharacterData, characterCoordinates };
