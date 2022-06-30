@@ -36,6 +36,7 @@ function ModalForm(props: Props) {
     const { score, alias } = getScoreInfo(name);
     const date = getCurrentDate();
     setPlayerAlias('');
+    navigateToURL('/');
 
     try {
       await addDoc(
@@ -45,8 +46,6 @@ function ModalForm(props: Props) {
     } catch (err) {
       console.error('Error submiting your item to the database', err);
     }
-    console.log('hi');
-    navigateToURL('/');
   };
 
   const navigateToURL = (url: string) => {

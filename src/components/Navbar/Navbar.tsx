@@ -1,5 +1,5 @@
 import React, {
-  useRef, useState, useEffect,
+  useRef, useEffect,
 } from 'react';
 import { Link } from 'react-router-dom';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';

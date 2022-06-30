@@ -18,7 +18,6 @@ export default function Leaderboards() {
 
   useEffect(() => {
     setScoresFromDatabase(selectedConsole);
-    // renderTodaysScores(); test if it breaks something by commenting
   }, []);
 
   /**

@@ -2,26 +2,33 @@ import React from 'react';
 import {
   fireEvent, render, screen, act,
 } from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
 import App from './App';
 
-describe('app rendering', () => {
-  test('renders application', () => {
-    const component = render(<App />);
-    expect(component).not.toBeNull();
-  });
+let container: any = null;
 
-  test('does not render application', () => {
-    render(<div />);
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
 
-    expect(screen
-      .queryByRole('heading', { name: 'FindMe' }))
-      .not.toBeInTheDocument();
-  });
+  render(
+    <App />,
+  );
+});
+
+afterEach(() => {
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
+test('renders application', () => {
+  expect(container).not.toBeNull();
 });
 
 describe('localStorage', () => {
   test('does store consoleName on localStorage when console panel is clicked', () => {
-    render(<App />);
+    // render(<App />);
 
     const snesButtonEl = screen.getByTestId('super-nintendo');
     jest.spyOn(Object.getPrototypeOf(window.localStorage), 'setItem');
@@ -34,7 +41,7 @@ describe('localStorage', () => {
   });
 
   test('does not store consoleName to localStorage when console panel is not clicked', () => {
-    render(<App />);
+    // render(<App />);
 
     const headerEl = screen.getByRole('heading', { name: 'FindMe' });
     jest.spyOn(Object.getPrototypeOf(window.localStorage), 'setItem');
@@ -47,14 +54,14 @@ describe('localStorage', () => {
   });
 
   test('does not call localStorage *getItem* when its value is empty', () => {
-    render(<App />);
+    // render(<App />);
 
     jest.spyOn(Object.getPrototypeOf(window.localStorage), 'getItem');
     expect(localStorage.getItem).not.toHaveBeenCalled();
   });
 
   test('does call localStorage *getItem* when its value is previously set', () => {
-    render(<App />);
+    // render(<App />);
 
     act(() => {
       window.localStorage.setItem('consoleName', 'super-nintendo');
@@ -67,7 +74,7 @@ describe('localStorage', () => {
 
 describe('react-router', () => {
   test('does render Homepage component when home button is clicked', () => {
-    render(<App />);
+    // render(<App />);
 
     const headerEl = screen.getByRole('heading', { name: 'FindMe' });
 
@@ -80,7 +87,7 @@ describe('react-router', () => {
   });
 
   test('does not render Homepage component when home button is not clicked', () => {
-    render(<App />);
+    // render(<App />);
 
     const leaderboardsEl = screen.getByRole('heading', { name: 'Leaderboards' });
 
@@ -93,7 +100,7 @@ describe('react-router', () => {
   });
 
   test('does render LeaderboardsMenu component when leaderboard button is clicked', () => {
-    render(<App />);
+    // render(<App />);
 
     const leaderboardsEl = screen.getByRole('heading', { name: 'Leaderboards' });
 
@@ -106,7 +113,7 @@ describe('react-router', () => {
   });
 
   test('does not render LeaderboardMenu component when leaderboard button is not clicked', () => {
-    render(<App />);
+    // render(<App />);
 
     const headerEl = screen.getByRole('heading', { name: 'FindMe' });
 
@@ -119,7 +126,7 @@ describe('react-router', () => {
   });
 
   test('does render Leaderboards component when leaderboard panel is clicked', () => {
-    render(<App />);
+    // render(<App />);
 
     const leaderboardsEl = screen.getByRole('heading', { name: 'Leaderboards' });
 
@@ -132,7 +139,7 @@ describe('react-router', () => {
   });
 
   test('does not render Leaderboard component when leaderboard panel is not clicked', () => {
-    render(<App />);
+    // render(<App />);
 
     const leaderboardsEl = screen.getByRole('heading', { name: 'Leaderboards' });
 
