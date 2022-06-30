@@ -82,13 +82,14 @@ export default function GameView() {
   };
 
   const renderCharImages = () => (
-    getConsoleCharacterData(selectedConsole).map(({ image, name }) => (
-      <GameCharImage
-        key={image}
-        image={image}
-        name={name}
-      />
-    ))
+    getConsoleCharacterData(selectedConsole)
+      .map(({ image, name }) => (
+        <GameCharImage
+          key={image}
+          image={image}
+          name={name}
+        />
+      ))
   );
 
   return (

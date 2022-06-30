@@ -127,6 +127,7 @@ export default function GameDropdown(props: Props) {
     <div
       className="dropdown-container"
       ref={dropdownRef}
+      data-testid="dropdown-container"
     >
       <ul className="character-list">
         {(isLastClickValid)
