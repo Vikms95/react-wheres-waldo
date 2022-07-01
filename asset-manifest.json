@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-wheres-waldo/static/css/main.f1153332.css",
-    "main.js": "/react-wheres-waldo/static/js/main.bf3911fa.js",
+    "main.css": "/react-wheres-waldo/static/css/main.0e121aa3.css",
+    "main.js": "/react-wheres-waldo/static/js/main.a876eab0.js",
     "static/media/zero-snes.png": "/react-wheres-waldo/static/media/zero-snes.49d9bec44bbbf1626a71.png",
     "static/media/ratchet-ps2.png": "/react-wheres-waldo/static/media/ratchet-ps2.af5286733ffbe024bff4.png",
     "static/media/mario-snes.png": "/react-wheres-waldo/static/media/mario-snes.84bd7d62b28378724e54.png",
@@ -19,11 +19,11 @@
     "static/media/chibi-ps2.png": "/react-wheres-waldo/static/media/chibi-ps2.2d098ada6cdd711d798e.png",
     "static/media/mantis-ps1.png": "/react-wheres-waldo/static/media/mantis-ps1.65cff2ec75f9d418b49a.png",
     "index.html": "/react-wheres-waldo/index.html",
-    "main.f1153332.css.map": "/react-wheres-waldo/static/css/main.f1153332.css.map",
-    "main.bf3911fa.js.map": "/react-wheres-waldo/static/js/main.bf3911fa.js.map"
+    "main.0e121aa3.css.map": "/react-wheres-waldo/static/css/main.0e121aa3.css.map",
+    "main.a876eab0.js.map": "/react-wheres-waldo/static/js/main.a876eab0.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1153332.css",
-    "static/js/main.bf3911fa.js"
+    "static/css/main.0e121aa3.css",
+    "static/js/main.a876eab0.js"
   ]
 }
