@@ -1,8 +1,8 @@
 # PROJECT NAME
 
-# 👉 [LIVE PREVIEW](link) 👈
+# 👉 [LIVE PREVIEW](vikms95.github.io/react-wheres-waldo/) 👈
 
-![alt text](src/assets/memolearn-preview.gif?raw=true "screenshot of memory card gameplay")
+![alt text](src/assets/Waldo-showcase.gif "screenshot of memory card gameplay")
 
 ## Description
 Classic Where's Waldo game where a picture is shown to the user to find the characters proposed.
