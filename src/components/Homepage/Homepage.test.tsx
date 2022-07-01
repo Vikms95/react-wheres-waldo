@@ -31,7 +31,7 @@ test('does render Homepage component', () => {
 });
 
 test('does properly render instructions title', () => {
-  screen.getByText('Instructions');
+  screen.getByText('Find your favourite videogame characters!');
   screen.getByText('How to play');
   screen.getByText('Leaderboard');
 });

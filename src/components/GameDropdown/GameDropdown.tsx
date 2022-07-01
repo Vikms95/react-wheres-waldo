@@ -48,7 +48,6 @@ export default function GameDropdown(props: Props) {
   const checkCoordinatesOnDatabase = (
     characterName: string,
   ) => {
-    console.log('Hi');
     const databaseQuery = query(collection(getFirestore(), 'coordinates'));
 
     onSnapshot(databaseQuery, (snapshot) => {
@@ -79,8 +78,7 @@ export default function GameDropdown(props: Props) {
     if (isClickValid(characterName, characterToCheck)) {
       setValidatedChars((prevValidatedChars) => [...prevValidatedChars, characterName]);
       setIsLastClickValid(true);
-      // TODO change with ref?
-      document.querySelector(`[alt=${characterName}]`)?.classList.add('selected');
+      styleSelectedCharacter(characterName);
     }
   };
 
@@ -106,6 +104,15 @@ export default function GameDropdown(props: Props) {
 
   const closeDropdown = () => {
     if (dropdownRef.current) dropdownRef.current.style.display = 'none';
+  };
+
+  const styleSelectedCharacter = (charName: string) => {
+    const charEls = document.querySelectorAll('span.character-name');
+    charEls.forEach((char: any) => {
+      if (char.textContent.toLowerCase() === charName && char.nextSibling) {
+        char.nextSibling.classList.add('selected');
+      }
+    });
   };
 
   const renderDropdownButtons = () => (
