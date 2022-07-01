@@ -20,7 +20,11 @@ all the scores registered are stored in a Firebase database.
 
 ## Functionalities
 
-1. 
+1. Select between different 4 consoles to play the game with 
+2. Select any point on the image and choose a character from the dropdown
+3. Upload your score to a global database
+4. Use a custom username, Google username or update the score as anonymous
+5. Sign in with your Google username
 
 
 ## Getting started
@@ -54,9 +58,12 @@ npm start
 
 ## Challenges I faced 
 
-1. 
+1. Create only one database when the Firebase SDK get triggered
 2. 
 3. 
+4.
+5.
+6.
 
 ## Technologies used
 
@@ -70,3 +77,7 @@ npm start
 
 
 ## Room for improvement
+1. Add all the character on each map and choose 3 of them randomly when the game starts
+2. Use custom hooks to abstract the React logic on each component
+3. Mock Firebase on the unit tests
+4. Tests the application further
