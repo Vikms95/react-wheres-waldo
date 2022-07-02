@@ -36,48 +36,47 @@ npm install
 npm start
 ```
 
+## Technologies used
+
+1. React
+2. react-router
+3. Typescript
+4. SASS
+5. ESLint
+6. Jest/TL
+7. Firebase
+
 ## Project Objectives
 
 1. Learn how to integrate an app with a Firebase backend database
 2. Learn how to use semantic HTML, landmark elements, roles and aria-roles
 3. Learn how to integrate responsive design and media-queries
-4. Use a css preprocessor
+4. Use a CSS preprocessor
 5. Use typescript's strict mode upfront
 6. Keep using different git tools to solidify what I've learnt on previous lessons
 7. Establishing a good testing architecture combining unit and UI tests
 8. Learn how to check roles within the Devtools to know which elements to getByRole on my UI tests
 
 
-## What I've learnt with this project
+## What I've learnt with this project / Challenges I faced 
 
-1. 
-2. 
-3. 
-4. 
-
-
-## Challenges I faced 
-
-1. Create only one database when the Firebase SDK get triggered
-2. 
-3. 
-4.
-5.
-6.
-
-## Technologies used
-
-1. React
-2. react-router
-3. Typescript
-4. Sass
-5. ESLint
-6. Jest/TL
-7. Firebase
-
+1. Integrate Firebase backend with an application
+2. Usage of semantic HTML, landmark elements and roles
+3. How to check a11y roles on the dev tools console so I can use them for getByRole on RTL
+4. Basic usage of SASS variables, nested selectors and mixins
+5. How to retrieve and add data to a database
+6. Usage of Google Sign-in and Sign-out to get personal information of the user
+7. Usage of nested routes with react-router
+8. Proper responsive design using units relative to the viewport size
+9. Create a responsive Navbar which will hide elements from the navbar and add them to a floating dropdown on the side accordign to the window size
+10. Create only one database when the Firebase SDK get triggered
+11. Get the coordinates of the button click event relative to the window width, so no matter what the width is, the posisitions of the character would not get distorted.
+12. Usage of setInterval to hide an element after a certain time of being rendered (setting a setInterval on its useEffect)
+13. Take some inspiration for design before hoping in to code.
 
 ## Room for improvement
 1. Add all the character on each map and choose 3 of them randomly when the game starts
 2. Use custom hooks to abstract the React logic on each component
 3. Mock Firebase on the unit tests
 4. Tests the application further
+5. Improve the Homepage text sizes and weights (it's hard to discern what's a title and what's not)
