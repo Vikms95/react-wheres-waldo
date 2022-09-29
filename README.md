@@ -1,6 +1,6 @@
 # PROJECT NAME
 
-# 👉 [LIVE PREVIEW](vikms95.github.io/react-wheres-waldo/) 👈
+# 👉 [LIVE PREVIEW](https://vikms95.github.io/react-wheres-waldo/) 👈
 
 ![alt text](src/assets/Waldo-showcase.gif "screenshot of memory card gameplay")
 
