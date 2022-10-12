@@ -1,4 +1,4 @@
-# PROJECT NAME
+# FINDME
 
 # 👉 [LIVE PREVIEW](https://vikms95.github.io/react-wheres-waldo/) 👈
 
